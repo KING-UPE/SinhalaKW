@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Brand Identity Colors */
+  --kw-yellow: #FFC20E;
+  --kw-yellow-hover: #EAA800;
+  --kw-yellow-light: #FFF9E6;
+  --kw-yellow-border: #FDE047;
+  --kw-navy: #235E83;
+  --kw-navy-dark: #16405B;
+  --kw-navy-light: #EEF6FA;
+
+  /* Modern Light Theme Foundations */
+  --bg-canvas: #FFFFFF;
+  --bg-subtle: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --border-subtle: #E2E8F0;
+  --border-accent: rgba(255, 194, 14, 0.4);
+  --text-headline: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  
+  /* Layered Editorial Shadows */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  --shadow-hover: 0 20px 35px -5px rgba(15, 23, 42, 0.08), 0 8px 16px -3px rgba(15, 23, 42, 0.04);
+  --shadow-gold: 0 10px 25px -3px rgba(255, 194, 14, 0.35);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-canvas);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Sinhala', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-canvas);
+  color: var(--text-headline);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sinhala-text {
+  font-family: 'Noto Sans Sinhala', 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.75;
+}
+
+/* Subtle Premium Ambient Background Grid */
+.bg-mesh-pattern {
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(255, 194, 14, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 45%, rgba(35, 94, 131, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 30% 85%, rgba(255, 194, 14, 0.05) 0%, transparent 40%);
+}
+
+/* Floating Glass Header */
+.floating-nav {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
+}
+
+/* Editorial Bento Cards */
+.bento-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: #CBD5E1;
+}
+
+.bento-gold-accent {
+  border-color: #FDE68A;
+  background: linear-gradient(180deg, #FFFDF5 0%, #FFFFFF 100%);
+}
+
+.bento-gold-accent:hover {
+  border-color: #FBBF24;
+}
+
+.bento-navy-accent {
+  border-color: #BAE6FD;
+  background: linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%);
+}
+
+.bento-navy-accent:hover {
+  border-color: #38BDF8;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--kw-yellow);
+  color: #0F172A;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 0.85rem 1.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-gold);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--kw-yellow-hover);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 14px 28px -4px rgba(255, 194, 14, 0.45);
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: #0F172A;
+  border: 1px solid var(--border-subtle);
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.85rem 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  border-color: #94A3B8;
+  background: #F8FAFC;
+  transform: translateY(-2px);
+}
+
+/* Badges */
+.pill-badge-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--kw-yellow-light);
+  color: #854D0E;
+  border: 1px solid var(--kw-yellow-border);
+}
+
+.pill-badge-navy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--kw-navy-light);
+  color: var(--kw-navy);
+  border: 1px solid #BAE6FD;
+}
+
+/* Numbered Step Pathway */
+.roadmap-step {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.roadmap-step:hover {
+  transform: translateY(-3px);
+}
+
+.step-num-watermark {
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(15, 23, 42, 0.04);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Video Presentation Container */
+.theater-container {
+  border-radius: 1.75rem;
+  overflow: hidden;
+  background: #0F172A;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  position: relative;
+}
+
+.theater-container video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.theater-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--kw-yellow);
+  color: #0F172A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 194, 14, 0.55);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+  z-index: 10;
+}
+
+.theater-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--kw-yellow-hover);
+}
+
+/* Lightbox Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #FFFFFF;
+  border-radius: 1.75rem;
+  max-width: 950px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.3);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Floating WhatsApp Button */
+.floating-action-whatsapp {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.floating-action-whatsapp:hover {
+  transform: scale(1.1) rotate(6deg);
+  box-shadow: 0 14px 35px rgba(37, 211, 102, 0.55);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Global Face Preservation & Image Alignment */
+.object-top {
+  object-position: top center !important;
+}
+
+.gallery-item img {
+  object-position: center center !important;
+}
+
+.theater-container video {
+  object-position: center center;
+}
