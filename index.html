@@ -64,8 +64,8 @@
         <img src="assets/logos/tight_logo_b.png" alt="Sinhala KW Logo" class="h-9 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-102">
       </a>
 
-      <!-- Centered Navigation Links -->
-      <nav class="hidden md:flex items-center space-x-7 text-sm font-semibold text-slate-700">
+      <!-- Centered Navigation Links (Desktop lg: and up) -->
+      <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-700">
         <a href="#about" class="hover:text-[#235E83] transition" data-i18n="navAbout">ගුරුතුමිය ගැන</a>
         <a href="#process" class="hover:text-[#235E83] transition" data-i18n="navProcess">ක්‍රමවේදය</a>
         <a href="#pillars" class="hover:text-[#235E83] transition" data-i18n="navPillars">සුවිශේෂතා</a>
@@ -89,8 +89,8 @@
         </a>
       </div>
 
-      <!-- Mobile Hamburger Button -->
-      <div class="flex md:hidden items-center gap-2">
+      <!-- Mobile & Tablet Hamburger Button -->
+      <div class="flex lg:hidden items-center gap-2">
         <button id="mobileMenuBtn" class="p-2 rounded-xl border border-slate-200 text-slate-700 bg-slate-50">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
@@ -98,8 +98,8 @@
 
     </div>
 
-    <!-- Mobile Navigation Dropdown -->
-    <div id="mobileNavMenu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border border-slate-200 mt-2 rounded-2xl p-5 shadow-xl">
+    <!-- Mobile & Tablet Navigation Dropdown -->
+    <div id="mobileNavMenu" class="hidden lg:hidden bg-white/95 backdrop-blur-xl border border-slate-200 mt-2 rounded-2xl p-5 shadow-xl">
       <div class="flex flex-col space-y-3.5 text-sm font-semibold text-slate-700">
         <a href="#about" class="hover:text-[#235E83]" data-i18n="navAbout">ගුරුතුමිය ගැන</a>
         <a href="#process" class="hover:text-[#235E83]" data-i18n="navProcess">ක්‍රමවේදය</a>
@@ -723,6 +723,293 @@
 
         </div>
 
+        <!-- RESPONSIVE CLASS TIMETABLE (WEEKLY SCHEDULE) -->
+        <div class="mt-14 max-w-5xl mx-auto">
+          <div class="text-center mb-8">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200/80 mb-2">
+              <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span>පන්ති කාලසටහන</span>
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight sinhala-text">
+              2026 සහ 2027 සාමාන්‍ය පෙළ සතිපතා කාලසටහන
+            </h3>
+            <p class="text-slate-600 text-sm mt-1 max-w-xl mx-auto">
+              ඔබට වඩාත් පහසු දිනය සහ වේලාව තෝරාගෙන සජීවීව හෝ Online ඔස්සේ පන්තියට සම්බන්ධ වන්න.
+            </p>
+          </div>
+
+          <!-- Desktop / Tablet Responsive Table View (Visible md: and up) -->
+          <div class="hidden md:block overflow-x-auto rounded-2xl border border-slate-200/90 shadow-sm bg-white">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-50/80 border-b border-slate-200/80 text-xs font-bold text-slate-600 uppercase tracking-wider">
+                  <th class="py-4 px-5">ශ්‍රේණිය / විභාගය</th>
+                  <th class="py-4 px-5">ස්ථානය / මාදිලිය</th>
+                  <th class="py-4 px-5">දිනය සහ වේලාව</th>
+                  <th class="py-4 px-5">විෂය කොටස් / අන්තර්ගතය</th>
+                  <th class="py-4 px-5 text-right">සම්බන්ධ වීම</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-sm">
+                <!-- Row 1: Online 2026 -->
+                <tr class="hover:bg-slate-50/60 transition">
+                  <td class="py-4 px-5">
+                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
+                  </td>
+                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+                    ONLINE (දිවයින පුරා)
+                  </td>
+                  <td class="py-4 px-5 text-slate-700">
+                    <div class="font-semibold text-slate-900">බ්‍රහස්පතින්දා</div>
+                    <div class="text-xs text-slate-500 font-mono">ප.ව. 3:00 - 6:30</div>
+                  </td>
+                  <td class="py-4 px-5 text-xs text-slate-600">
+                    සිද්ධාන්ත + විභාග ප්‍රශ්න පත්‍ර + Recordings
+                  </td>
+                  <td class="py-4 px-5 text-right">
+                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%202026%20Online%20Class" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
+                      ලියාපදිංචිය
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Row 2: Online 2027 -->
+                <tr class="hover:bg-slate-50/60 transition">
+                  <td class="py-4 px-5">
+                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
+                  </td>
+                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
+                    ONLINE (දිවයින පුරා)
+                  </td>
+                  <td class="py-4 px-5 text-slate-700">
+                    <div class="font-semibold text-slate-900">අඟහරුවාදා</div>
+                    <div class="text-xs text-slate-500 font-mono">ප.ව. 3:30 - 6:00</div>
+                  </td>
+                  <td class="py-4 px-5 text-xs text-slate-600">
+                    මූලික සිද්ධාන්ත + රචනා හා ව්‍යාකරණ හුරුව
+                  </td>
+                  <td class="py-4 px-5 text-right">
+                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%202027%20Online%20Class" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
+                      ලියාපදිංචිය
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Row 3: Mathugama 2026 -->
+                <tr class="hover:bg-slate-50/60 transition">
+                  <td class="py-4 px-5">
+                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
+                  </td>
+                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
+                    ZINERGY මතුගම
+                  </td>
+                  <td class="py-4 px-5 text-slate-700">
+                    <div class="font-semibold text-slate-900">සෙනසුරාදා</div>
+                    <div class="text-xs text-slate-500 font-mono">පෙ.ව. 8:00 - 12:30</div>
+                  </td>
+                  <td class="py-4 px-5 text-xs text-slate-600">
+                    සම්පූර්ණ සිද්ධාන්ත + පන්තියේදීම ප්‍රශ්න පත්‍ර ලියවීම
+                  </td>
+                  <td class="py-4 px-5 text-right">
+                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Zinergy%20Matugama%202026" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
+                      ලියාපදිංචිය
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Row 4: Mathugama 2027 -->
+                <tr class="hover:bg-slate-50/60 transition">
+                  <td class="py-4 px-5">
+                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
+                  </td>
+                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
+                    ZINERGY මතුගම
+                  </td>
+                  <td class="py-4 px-5 text-slate-700">
+                    <div class="font-semibold text-slate-900">සෙනසුරාදා</div>
+                    <div class="text-xs text-slate-500 font-mono">ප.ව. 1:00 - 4:00</div>
+                  </td>
+                  <td class="py-4 px-5 text-xs text-slate-600">
+                    10 වසර විෂය නිර්දේශය + සාහිත්‍ය රසවින්දන පදනම
+                  </td>
+                  <td class="py-4 px-5 text-right">
+                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Zinergy%20Matugama%202027" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
+                      ලියාපදිංචිය
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Row 5: Meegahathenna 2026 -->
+                <tr class="hover:bg-slate-50/60 transition">
+                  <td class="py-4 px-5">
+                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
+                  </td>
+                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span>
+                    LAYARA මීගහතැන්න
+                  </td>
+                  <td class="py-4 px-5 text-slate-700">
+                    <div class="font-semibold text-slate-900">ඉරිදා</div>
+                    <div class="text-xs text-slate-500 font-mono">පෙ.ව. 8:00 - 12:30</div>
+                  </td>
+                  <td class="py-4 px-5 text-xs text-slate-600">
+                    සිද්ධාන්ත + සතිපතා ඇගයීම් + පෞද්ගලික අවධානය
+                  </td>
+                  <td class="py-4 px-5 text-right">
+                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Layara%202026" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
+                      ලියාපදිංචිය
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Row 6: Meegahathenna 2027 -->
+                <tr class="hover:bg-slate-50/60 transition">
+                  <td class="py-4 px-5">
+                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
+                  </td>
+                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span>
+                    LAYARA මීගහතැන්න
+                  </td>
+                  <td class="py-4 px-5 text-slate-700">
+                    <div class="font-semibold text-slate-900">ඉරිදා</div>
+                    <div class="text-xs text-slate-500 font-mono">ප.ව. 1:00 - 4:00</div>
+                  </td>
+                  <td class="py-4 px-5 text-xs text-slate-600">
+                    මූලික සිද්ධාන්ත + විචාර ලියවීමේ විශේෂ වැඩපිළිවෙළ
+                  </td>
+                  <td class="py-4 px-5 text-right">
+                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Layara%202027" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
+                      ලියාපදිංචිය
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mobile Card Fallback (Visible < md: / on mobile screens) -->
+          <div class="block md:hidden space-y-3.5">
+            <!-- Mobile Schedule Card 1 -->
+            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
+                <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+                  ONLINE
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-sm font-bold text-slate-900">බ්‍රහස්පතින්දා</div>
+                <div class="text-xs font-mono font-semibold text-slate-600">ප.ව. 3:00 - 6:30</div>
+              </div>
+              <div class="text-xs text-slate-500">සජීවී Zoom දේශන + Recordings + Tutes නිවසටම</div>
+              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%202026%20Online%20Class" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
+                WhatsApp මඟින් ලියාපදිංචි වන්න
+              </a>
+            </div>
+
+            <!-- Mobile Schedule Card 2 -->
+            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
+                <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+                  ONLINE
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-sm font-bold text-slate-900">අඟහරුවාදා</div>
+                <div class="text-xs font-mono font-semibold text-slate-600">ප.ව. 3:30 - 6:00</div>
+              </div>
+              <div class="text-xs text-slate-500">මූලික සිද්ධාන්ත + රචනා හා ව්‍යාකරණ හුරුව</div>
+              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%202027%20Online%20Class" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
+                WhatsApp මඟින් ලියාපදිංචි වන්න
+              </a>
+            </div>
+
+            <!-- Mobile Schedule Card 3 -->
+            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
+                <span class="text-xs font-bold text-blue-600 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
+                  ZINERGY මතුගම
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-sm font-bold text-slate-900">සෙනසුරාදා</div>
+                <div class="text-xs font-mono font-semibold text-slate-600">පෙ.ව. 8:00 - 12:30</div>
+              </div>
+              <div class="text-xs text-slate-500">පන්තිය තුළදීම ප්‍රශ්න පත්‍ර ලිවීම හා ඇගයීම</div>
+              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Zinergy%20Matugama%202026" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
+                WhatsApp මඟින් ලියාපදිංචි වන්න
+              </a>
+            </div>
+
+            <!-- Mobile Schedule Card 4 -->
+            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
+                <span class="text-xs font-bold text-blue-600 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
+                  ZINERGY මතුගම
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-sm font-bold text-slate-900">සෙනසුරාදා</div>
+                <div class="text-xs font-mono font-semibold text-slate-600">ප.ව. 1:00 - 4:00</div>
+              </div>
+              <div class="text-xs text-slate-500">10 වසර විෂය නිර්දේශය + සාහිත්‍ය රසවින්දන පදනම</div>
+              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Zinergy%20Matugama%202027" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
+                WhatsApp මඟින් ලියාපදිංචි වන්න
+              </a>
+            </div>
+
+            <!-- Mobile Schedule Card 5 -->
+            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
+                <span class="text-xs font-bold text-purple-600 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block"></span>
+                  LAYARA මීගහතැන්න
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-sm font-bold text-slate-900">ඉරිදා</div>
+                <div class="text-xs font-mono font-semibold text-slate-600">පෙ.ව. 8:00 - 12:30</div>
+              </div>
+              <div class="text-xs text-slate-500">සිද්ධාන්ත + සතිපතා ඇගයීම් + පෞද්ගලික අවධානය</div>
+              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Layara%202026" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
+                WhatsApp මඟින් ලියාපදිංචි වන්න
+              </a>
+            </div>
+
+            <!-- Mobile Schedule Card 6 -->
+            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
+                <span class="text-xs font-bold text-purple-600 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block"></span>
+                  LAYARA මීගහතැන්න
+                </span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-sm font-bold text-slate-900">ඉරිදා</div>
+                <div class="text-xs font-mono font-semibold text-slate-600">ප.ව. 1:00 - 4:00</div>
+              </div>
+              <div class="text-xs text-slate-500">මූලික සිද්ධාන්ත + විචාර ලියවීමේ විශේෂ වැඩපිළිවෙළ</div>
+              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Layara%202027" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
+                WhatsApp මඟින් ලියාපදිංචි වන්න
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -834,7 +1121,7 @@
         </div>
 
         <!-- Staggered Gallery Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="gallery-item seminars rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
             <img src="assets/optimized/seminars/seminar_crowd1.webp" alt="Seminar Crowd" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
           </div>
