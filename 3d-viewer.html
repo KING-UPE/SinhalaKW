@@ -62,17 +62,17 @@
 
   <!-- Bottom Floating Control Bar -->
   <footer class="fixed bottom-6 left-1/2 -translate-x-1/2 z-20 glass-panel rounded-2xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xl max-w-[95vw] overflow-x-auto">
-    <button id="btnGlobeShell" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition bg-[#FFC20E] text-slate-950 shadow-md whitespace-nowrap">
-      🌐 3D Spherical Shell
-    </button>
-    <button id="btnGlobeSolid" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10 whitespace-nowrap">
+    <button id="btnGlobeSolid" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition bg-[#FFC20E] text-slate-950 shadow-md whitespace-nowrap">
       ✨ 3D Solid Sphere
+    </button>
+    <button id="btnGlobeShell" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10 whitespace-nowrap">
+      🌐 3D Spherical Shell
     </button>
     <button id="btnGlobeOrb" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10 whitespace-nowrap">
       🔮 Luxury Floating Orb
     </button>
     <div class="h-5 w-px bg-white/20 mx-1 flex-shrink-0"></div>
-    <button id="btnAutoRotate" class="p-2 rounded-xl text-xs font-bold transition text-amber-400 hover:bg-white/10 flex-shrink-0" title="Toggle Auto-Rotate">
+    <button id="btnAutoRotate" class="p-2 rounded-xl text-xs font-bold transition text-slate-400 hover:text-white hover:bg-white/10 flex-shrink-0" title="Toggle Auto-Rotate">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
     </button>
     <button id="btnResetView" class="p-2 rounded-xl text-xs font-bold transition text-slate-300 hover:bg-white/10 flex-shrink-0" title="Reset Camera">
@@ -106,7 +106,7 @@
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.autoRotate = true;
+    controls.autoRotate = false; // Start static so direct front view matches 2D logo identically
     controls.autoRotateSpeed = 2.0;
     controls.maxDistance = 12;
     controls.minDistance = 1.2;
@@ -127,33 +127,39 @@
     rimLight.position.set(0, 4, -4);
     scene.add(rimLight);
 
+    const innerLight = new THREE.PointLight(0xffd700, 1.2, 6); // Warm inner ambient fill for cutouts
+    innerLight.position.set(0, 0, 0);
+    scene.add(innerLight);
+
     // Models container
-    let currentModelType = 'shell';
+    let currentModelType = 'solid';
     let globeShellModel = null;
     let globeSolidModel = null;
     let globeOrbModel = null;
 
     const loader = new THREE.GLTFLoader();
 
-    // 1. Load 3D Spherical Shell Globe (Default Model)
-    loader.load('assets/3d/sinhala_kw_globe_shell.glb', (gltf) => {
-      globeShellModel = gltf.scene;
-      tuneMaterials(globeShellModel);
-      scene.add(globeShellModel);
+    const modelVersion = '?v=' + Date.now();
+    // 1. Load 3D Solid Sphere Globe (Default Model)
+    loader.load('assets/3d/sinhala_kw_globe_solid.glb' + modelVersion, (gltf) => {
+      globeSolidModel = gltf.scene;
+      tuneMaterials(globeSolidModel);
+      globeSolidModel.visible = true;
+      scene.add(globeSolidModel);
       loadingEl.style.opacity = '0';
       setTimeout(() => loadingEl.style.display = 'none', 500);
     });
 
-    // 2. Load 3D Solid Sphere Globe
-    loader.load('assets/3d/sinhala_kw_globe_solid.glb', (gltf) => {
-      globeSolidModel = gltf.scene;
-      tuneMaterials(globeSolidModel);
-      globeSolidModel.visible = false;
-      scene.add(globeSolidModel);
+    // 2. Load 3D Spherical Shell Globe
+    loader.load('assets/3d/sinhala_kw_globe_shell.glb' + modelVersion, (gltf) => {
+      globeShellModel = gltf.scene;
+      tuneMaterials(globeShellModel);
+      globeShellModel.visible = false;
+      scene.add(globeShellModel);
     });
 
     // 3. Load Luxury Floating Orb (Shell + Polished Core)
-    loader.load('assets/3d/sinhala_kw_globe_orb.glb', (gltf) => {
+    loader.load('assets/3d/sinhala_kw_globe_orb.glb' + modelVersion, (gltf) => {
       globeOrbModel = gltf.scene;
       tuneMaterials(globeOrbModel);
       globeOrbModel.visible = false;
@@ -163,11 +169,16 @@
     function tuneMaterials(obj) {
       obj.traverse((child) => {
         if (child.isMesh && child.material) {
+          console.log('Mesh found:', child.name, 'parent:', child.parent ? child.parent.name : '', 'mat:', child.material.name);
           const name = (child.name || '').toLowerCase();
-          if (name.includes('core') || name.includes('obsidian')) {
-            child.material.metalness = 0.25;
-            child.material.roughness = 0.08;
-            child.material.color = new THREE.Color(0x070c14);
+          const matName = (child.material.name || '').toLowerCase();
+          const parentName = (child.parent && child.parent.name || '').toLowerCase();
+          if (name.includes('core') || name.includes('obsidian') || matName.includes('obsidian') || parentName.includes('core')) {
+            child.material.metalness = 0.08;
+            child.material.roughness = 0.02;
+            child.material.clearcoat = 1.0;
+            child.material.clearcoatRoughness = 0.02;
+            child.material.color = new THREE.Color(0x020306);
           } else {
             child.material.metalness = 0.94;
             child.material.roughness = 0.16;
