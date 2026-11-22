@@ -1,1416 +1,552 @@
 <!DOCTYPE html>
-<html lang="si" class="scroll-smooth">
+<html lang="si">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sinhala KW | කෞෂල්‍යා වික්‍රමාරච්චි | සාමාන්‍ය පෙළ සිංහලෙන් A 2ක් සහතික කරන වැඩපිළිවෙළ</title>
-  <meta name="description" content="සාමාන්‍ය පෙළ සිංහල භාෂාව හා සාහිත්‍යය සහ සිංහල සාහිත්‍ය රසාස්වාදය විෂයන් දෙකටම A සාමාර්ථ 2ක් එකම ගුරුතුමියකගෙන්. කෞෂල්‍යා වික්‍රමාරච්චි, පේරාදෙණිය විශ්වවිද්‍යාලයේ ශාස්ත්‍රවේදී විශේෂ උපාධිධාරී.">
-  
-  <!-- Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sinhala KW | කෞෂල්‍යා වික්‍රමාරච්චි | සාමාන්‍ය පෙළ සිංහල</title>
+  <meta name="description" content="සාමාන්‍ය පෙළ සිංහල භාෂාව හා සාහිත්‍යය සහ සිංහල සාහිත්‍ය රසාස්වාදය විෂයන් දෙකටම A සාමාර්ථ 2ක්. කෞෂල්‍යා වික්‍රමාරච්චි, ශාස්ත්‍රවේදී විශේෂ උපාධිධාරී, පේරාදෙණිය විශ්වවිද්‍යාලය.">
+  <meta name="theme-color" content="#FFC20E">
+  <meta property="og:title" content="Sinhala KW | කෞෂල්‍යා වික්‍රමාරච්චි">
+  <meta property="og:description" content="සාමාන්‍ය පෙළ සිංහලෙන් A 2ක්, එකම ගුරුතුමියකගෙන්.">
+  <meta property="og:image" content="assets/optimized/teacher/teacher_award.webp">
   <link rel="icon" type="image/png" href="assets/logos/tight_logo_icon_b.png">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            kw: {
-              yellow: '#FFC20E',
-              yellowHover: '#EAA800',
-              yellowLight: '#FFF9E6',
-              navy: '#235E83',
-              navyDark: '#16405B',
-              navyLight: '#EEF6FA'
-            }
-          },
-          fontFamily: {
-            sinhala: ['"Noto Sans Sinhala"', 'sans-serif'],
-            sans: ['"Plus Jakarta Sans"', '"Noto Sans Sinhala"', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Custom Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/optimized/teacher/teacher_cutout.webp">
   <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
-<body class="font-sans antialiased text-slate-900 bg-white selection:bg-[#FFC20E] selection:text-black bg-mesh-pattern">
+<body>
 
-  <!-- Sleek Top Floating Announcement Ribbon -->
-  <div class="max-w-6xl mx-auto px-4 pt-3 hidden sm:block">
-    <div class="rounded-full bg-amber-50/80 border border-amber-200/60 px-5 py-2 flex items-center justify-between text-xs font-semibold text-amber-950 shadow-sm backdrop-blur-md">
-      <div class="flex items-center gap-2">
-        <span class="inline-flex h-2 w-2 rounded-full bg-[#FFC20E] animate-pulse"></span>
-        <span data-i18n="announcement">2026 සහ 2027 සාමාන්‍ය පෙළ සිංහල නව පන්ති සඳහා ලියාපදිංචිය දැන් ඇරඹුණා!</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" class="hover:text-amber-800 flex items-center gap-1.5 transition text-slate-700 hover:text-slate-900">
-          <svg class="w-3.5 h-3.5 text-[#25D366] fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
-          <span>Hotline සහ WhatsApp: 074 362 4117</span>
-        </a>
-      </div>
-    </div>
-  </div>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.13c-.24.68-1.42 1.3-1.95 1.34-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.92-4.66-4.1-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.28.25-.27.54-.34.72-.34h.52c.17 0 .4-.06.62.48.24.56.79 1.92.86 2.06.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33Z"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.07C24 5.45 18.63.07 12 .07S0 5.45 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.38C19.61 23.03 24 18.06 24 12.07Z"/></symbol>
+    <symbol id="i-tt" viewBox="0 0 24 24"><path fill="currentColor" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03a10.7 10.7 0 0 1-5.82-1.9c-.01 2.92.01 5.84-.02 8.75a7.64 7.64 0 0 1-1.35 3.94 7.45 7.45 0 0 1-5.91 3.21 7.29 7.29 0 0 1-4.08-1.03 7.55 7.55 0 0 1-3.65-5.71c-.02-.5-.03-1-.01-1.49a7.53 7.53 0 0 1 8.73-6.68c.02 1.48-.04 2.96-.04 4.44a3.43 3.43 0 0 0-4.38 2.12c-.21.51-.24 1.07-.14 1.61a3.44 3.44 0 0 0 6.27 1.26c.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07Z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.14v13.72a1 1 0 0 0 1.52.85l11.03-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m15 6-6 6 6 6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2M11 8.5v5M8.5 11h5"/></g></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></g></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></symbol>
+  </svg>
 
-  <!-- Modern Floating Pill Header -->
-  <header class="sticky top-4 z-40 max-w-6xl mx-auto px-4 mt-2">
-    <div class="floating-nav rounded-2xl px-5 sm:px-6 py-3.5 flex items-center justify-between">
-      
-      <!-- Brand Logo (Cropped & Crisp) -->
-      <a href="#home" class="flex items-center group">
-        <img src="assets/logos/tight_logo_b.png" alt="Sinhala KW Logo" class="h-9 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-102">
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="Sinhala KW home">
+        <img src="assets/logos/tight_logo_b.png" alt="Sinhala KW" width="140" height="40">
       </a>
 
-      <!-- Centered Navigation Links (Desktop lg: and up) -->
-      <nav class="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-700">
-        <a href="#about" class="hover:text-[#235E83] transition" data-i18n="navAbout">ගුරුතුමිය ගැන</a>
-        <a href="#process" class="hover:text-[#235E83] transition" data-i18n="navProcess">ක්‍රමවේදය</a>
-        <a href="#pillars" class="hover:text-[#235E83] transition" data-i18n="navPillars">සුවිශේෂතා</a>
-        <a href="#classes" class="hover:text-[#235E83] transition" data-i18n="navClasses">පන්ති විස්තර</a>
-        <a href="#results" class="hover:text-[#235E83] transition" data-i18n="navResults">ප්‍රතිඵල</a>
-        <a href="#faq" class="hover:text-[#235E83] transition" data-i18n="navFaq">ගැටලු</a>
+      <nav class="nav" aria-label="Main">
+        <a href="#about" data-i18n="navAbout">ගුරුතුමිය</a>
+        <a href="#results" data-i18n="navResults">ප්‍රතිඵල</a>
+        <a href="#process" data-i18n="navProcess">ක්‍රමවේදය</a>
+        <a href="#classes" data-i18n="navClasses">පන්ති</a>
+        <a href="#gallery" data-i18n="navGallery">ගැලරිය</a>
+        <a href="#faq" data-i18n="navFaq">ප්‍රශ්න</a>
       </nav>
 
-      <!-- Action Controls -->
-      <div class="hidden sm:flex items-center gap-3">
-        <!-- 3D Interactive Emblem Pill -->
-        <a href="3d-viewer.html" target="_blank" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-amber-300/80 bg-amber-50 hover:bg-amber-100/90 text-xs font-bold text-amber-900 transition shadow-xs group" title="Open 3D Model Interactive Viewer">
-          <svg class="w-3.5 h-3.5 text-amber-600 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          <span>3D Emblem</span>
-        </a>
-
-        <!-- Language Switcher Pill -->
-        <button id="langToggleBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 hover:border-[#235E83] text-xs font-semibold bg-slate-50 transition text-slate-700 hover:text-[#235E83]" title="Switch Language">
-          <svg class="w-3.5 h-3.5 text-[#235E83]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
-          <span id="langToggleText">English</span>
+      <div class="header-actions">
+        <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language"><span id="langLabel">EN</span></button>
+        <a href="#contact" class="btn btn-dark btn-sm hide-sm" data-i18n="navEnroll">ලියාපදිංචි වන්න</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
         </button>
-
-        <!-- Primary CTA -->
-        <a href="#contact" class="btn-primary text-xs uppercase tracking-wider py-2.5 px-5">
-          <span data-i18n="navEnroll">ලියාපදිංචිය</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </a>
-      </div>
-
-      <!-- Mobile & Tablet Hamburger Button -->
-      <div class="flex lg:hidden items-center gap-2">
-        <button id="mobileMenuBtn" class="p-2 rounded-xl border border-slate-200 text-slate-700 bg-slate-50">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Mobile & Tablet Navigation Dropdown -->
-    <div id="mobileNavMenu" class="hidden lg:hidden bg-white/95 backdrop-blur-xl border border-slate-200 mt-2 rounded-2xl p-5 shadow-xl">
-      <div class="flex flex-col space-y-3.5 text-sm font-semibold text-slate-700">
-        <a href="#about" class="hover:text-[#235E83]" data-i18n="navAbout">ගුරුතුමිය ගැන</a>
-        <a href="#process" class="hover:text-[#235E83]" data-i18n="navProcess">ක්‍රමවේදය</a>
-        <a href="#pillars" class="hover:text-[#235E83]" data-i18n="navPillars">සුවිශේෂතා</a>
-        <a href="#classes" class="hover:text-[#235E83]" data-i18n="navClasses">පන්ති විස්තර</a>
-        <a href="#results" class="hover:text-[#235E83]" data-i18n="navResults">ප්‍රතිඵල</a>
-        <a href="#faq" class="hover:text-[#235E83]" data-i18n="navFaq">ගැටලු සහ පිළිතුරු</a>
-        <a href="#contact" class="hover:text-[#235E83]" data-i18n="navContact">සම්බන්ධ වන්න</a>
-        <a href="3d-viewer.html" target="_blank" class="hover:text-amber-600 flex items-center gap-2 text-amber-700 font-bold">
-          <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          <span>3D Emblem Viewer (Interactive)</span>
-        </a>
-        
-        <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
-          <button id="mobileLangToggleBtn" class="flex-1 py-2 px-3 rounded-full border border-slate-200 text-xs font-semibold bg-slate-50 text-center text-slate-700">
-            Switch to English
-          </button>
-        </div>
-
-        <div class="pt-1">
-          <a href="#contact" class="btn-primary w-full text-center text-xs uppercase py-3">
-            <span data-i18n="navEnroll">ලියාපදිංචි වන්න</span>
-          </a>
-        </div>
       </div>
     </div>
   </header>
 
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-nav">
+      <a href="#about" data-i18n="navAbout">ගුරුතුමිය</a>
+      <a href="#results" data-i18n="navResults">ප්‍රතිඵල</a>
+      <a href="#process" data-i18n="navProcess">ක්‍රමවේදය</a>
+      <a href="#classes" data-i18n="navClasses">පන්ති</a>
+      <a href="#gallery" data-i18n="navGallery">ගැලරිය</a>
+      <a href="#faq" data-i18n="navFaq">ප්‍රශ්න</a>
+      <a href="#contact" data-i18n="navContact">සම්බන්ධ වන්න</a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+        <svg class="ic"><use href="#i-wa"/></svg><span>074 362 4117</span>
+      </a>
+    </div>
+  </div>
+
   <main>
-    <!-- HERO SECTION (EDITORIAL MAGAZINE STYLE) -->
-    <section id="home" class="pt-8 pb-16 md:pt-14 md:pb-24">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          <!-- Left Content Column (7 cols) -->
-          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-            
-            <!-- Authority Pill with Golden Sparkle -->
-            <div class="pill-badge-gold">
-              <svg class="w-4 h-4 text-amber-600 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span data-i18n="heroBadge">ශ්‍රී ලංකාවේ අංක 1 සාමාන්‍ය පෙළ සිංහල වැඩපිළිවෙළ</span>
-            </div>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <!-- decorative shapes -->
+      <div class="hero-deco" aria-hidden="true">
+        <span class="deco deco-ring" data-depth="0.4"></span>
+        <span class="deco deco-dots" data-depth="0.2"></span>
+        <span class="deco deco-half" data-depth="0.6"></span>
+        <span class="deco deco-plus" data-depth="0.8">+</span>
+        <span class="deco deco-spark" data-depth="0.5"><svg><use href="#i-spark"/></svg></span>
+        <span class="deco deco-arc" data-depth="0.3"></span>
+      </div>
 
-            <!-- Big Command Headline -->
-            <h1 class="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.2] sinhala-text">
-              <span data-i18n="heroTitle1">සාමාන්‍ය පෙළ සිංහලෙන්</span>
-              <span class="text-[#235E83] block font-black" data-i18n="heroTitleHighlight">A සාමාර්ථ 2ක්</span>
-              <span class="text-slate-900 block text-2xl sm:text-4xl lg:text-4xl font-extrabold mt-1" data-i18n="heroTitle2">එකම තැනකින් සහතිකයි</span>
-            </h1>
-
-            <!-- Editorial Lead Paragraph -->
-            <p class="text-slate-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed sinhala-text" data-i18n="heroDesc">
-              පේරාදෙණිය විශ්වවිද්‍යාලයේ ශාස්ත්‍රවේදී විශේෂ උපාධිධාරී කෞෂල්‍යා වික්‍රමාරච්චි ගුරුතුමියගේ පෞද්ගලික මඟපෙන්වීමෙන්, විෂය නිර්දේශය සිතුවම් සහ විශේෂ කෙටි ක්‍රම ඔස්සේ සරලව ජයගනිමු.
-            </p>
-
-            <!-- 3 Clean Academic Credential Badges (NO DASHES, MODERN ICONS) -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-              
-              <div class="bento-card p-3.5 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-sky-50 text-[#235E83] flex items-center justify-center shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
-                </div>
-                <div class="text-left">
-                  <div class="text-xs font-bold text-slate-900">පේරාදෙණිය විශ්වවිද්‍යාලය</div>
-                  <div class="text-[11px] text-slate-500 font-medium">ශාස්ත්‍රවේදී විශේෂ උපාධිය</div>
-                </div>
-              </div>
-
-              <div class="bento-card p-3.5 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                </div>
-                <div class="text-left">
-                  <div class="text-xs font-bold text-slate-900">උසස් පෙළ කලා අංශය</div>
-                  <div class="text-[11px] text-slate-500 font-medium">A සාමාර්ථ 3ක්</div>
-                </div>
-              </div>
-
-              <div class="bento-card p-3.5 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                </div>
-                <div class="text-left">
-                  <div class="text-xs font-bold text-slate-900">නිබන්ධන නිවසටම</div>
-                  <div class="text-[11px] text-slate-500 font-medium">දිවයින පුරා කුරියර් මඟින්</div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Action Buttons Group -->
-            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-3">
-              <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" class="btn-primary w-full sm:w-auto text-base">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
-                <span data-i18n="heroCtaWhatsapp">WhatsApp මඟින් සම්බන්ධ වන්න</span>
-              </a>
-
-              <a href="#process" class="btn-secondary w-full sm:w-auto text-base">
-                <span data-i18n="heroCtaProcess">ක්‍රමවේදය බලන්න</span>
-                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </a>
-            </div>
-
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow-pill reveal"><span class="pulse-dot"></span><span data-i18n="heroPill">2026 · 2027 නව පන්ති ලියාපදිංචිය ඇරඹේ</span></span>
+          <h1 class="hero-title reveal">
+            <span class="ht-line" data-i18n="heroT1">සාමාන්‍ය පෙළ සිංහලෙන්</span>
+            <span class="ht-big"><span class="hl">A</span> <span data-i18n="heroT2">2ක්</span></span>
+          </h1>
+          <p class="hero-sub reveal" data-i18n="heroSub">භාෂාව සහ සාහිත්‍ය රසාස්වාදය, එකම ගුරුතුමියකගෙන් සිතුවම් සහ විශේෂ ක්‍රම ඔස්සේ සරලව.</p>
+          <div class="hero-cta reveal">
+            <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="btn btn-primary">
+              <svg class="ic"><use href="#i-wa"/></svg><span data-i18n="heroCta">ලියාපදිංචි වන්න</span>
+            </a>
+            <a href="#process" class="link-arrow"><span data-i18n="heroCta2">ක්‍රමවේදය</span><svg class="ic"><use href="#i-arrow"/></svg></a>
           </div>
+        </div>
 
-          <!-- Right Showcase Card (5 cols) -->
-          <div class="lg:col-span-5">
-            <div class="bento-card bento-gold-accent p-3.5 max-w-md mx-auto shadow-2xl">
-              
-              <!-- Portrait Image Container -->
-              <div class="rounded-2xl overflow-hidden bg-slate-100 aspect-[3/4] relative">
-                <img src="assets/optimized/teacher/teacher_hero_card.webp" alt="Kaushalya Wicramarachchi" class="w-full h-full object-cover object-top">
-                
-                <!-- Modern Gradient Caption Overlay -->
-                <div class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent"></div>
-
-                <!-- Teacher Card Label -->
-                <div class="absolute bottom-4 left-4 right-4 text-white">
-                  <div class="text-[11px] font-bold uppercase tracking-wider text-[#FFC20E]">ඔබේ ගුරුතුමිය</div>
-                  <div class="text-xl font-extrabold">කෞෂල්‍යා වික්‍රමාරච්චි</div>
-                  <div class="text-xs text-slate-200 mt-0.5">BA Special Degree, University of Peradeniya</div>
-                </div>
-              </div>
-
-              <!-- Trust Proof Footer inside the Card -->
-              <div class="mt-3.5 p-3 rounded-xl bg-white border border-slate-100 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <div class="flex text-amber-400">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                  </div>
-                  <div class="text-xs font-bold text-slate-800">4.9/5 Rating</div>
-                </div>
-                <div class="text-[11px] font-bold text-[#235E83] bg-sky-50 px-2.5 py-1 rounded-full border border-sky-100">
-                  සිසුන් 1000+
-                </div>
-              </div>
-
-            </div>
+        <div class="hero-globe reveal">
+          <div class="globe-halo" aria-hidden="true"></div>
+          <div class="globe-stage" id="globeStage">
+            <img class="globe-fallback" src="assets/3d/render_globe_orb_front.png" alt="Sinhala KW 3D Globe">
           </div>
+          <div class="globe-hint" id="globeHint"><svg class="ic"><use href="#i-rotate"/></svg><span data-i18n="globeHint">කරකවා බලන්න</span></div>
+        </div>
 
+        <div class="hero-teacher reveal">
+          <div class="teacher-figure">
+            <span class="t-arch" aria-hidden="true"></span>
+            <span class="t-sun" aria-hidden="true"></span>
+            <span class="t-ring" aria-hidden="true"></span>
+            <img src="assets/optimized/teacher/teacher_cutout.webp" alt="කෞෂල්‍යා වික්‍රමාරච්චි" width="810" height="1400" fetchpriority="high">
+          </div>
+          <div class="name-chip">
+            <strong data-i18n="teacherName">කෞෂල්‍යා වික්‍රමාරච්චි</strong>
+            <span>BA Special · University of Peradeniya</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Theory Class</span><i>✦</i><span>Live Exam</span><i>✦</i><span>Revision</span><i>✦</i><span>Final Shot Paper</span><i>✦</i><span>Seminars</span><i>✦</i><span>Recorded Class</span><i>✦</i><span>Tutes නිවසටම</span><i>✦</i>
+        <span>Theory Class</span><i>✦</i><span>Live Exam</span><i>✦</i><span>Revision</span><i>✦</i><span>Final Shot Paper</span><i>✦</i><span>Seminars</span><i>✦</i><span>Recorded Class</span><i>✦</i><span>Tutes නිවසටම</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div class="about-media reveal">
+          <span class="about-block" aria-hidden="true"></span>
+          <span class="about-ring" aria-hidden="true"></span>
+          <img src="assets/optimized/teacher/teacher_friendly.webp" alt="කෞෂල්‍යා වික්‍රමාරච්චි" loading="lazy" width="1067" height="1600">
+          <div class="about-stamp">
+            <span class="stamp-big">3A</span>
+            <span class="stamp-small" data-i18n="stampAL">උසස් පෙළ කලා</span>
+          </div>
+        </div>
+
+        <div class="about-copy">
+          <span class="eyebrow reveal" data-i18n="aboutEyebrow">ඔබේ ගුරුතුමිය</span>
+          <h2 class="h2 reveal" data-i18n="teacherName">කෞෂල්‍යා වික්‍රමාරච්චි</h2>
+          <p class="about-degree reveal">Bachelor of Arts Special · University of Peradeniya</p>
+          <p class="lead reveal" data-i18n="aboutP1">අ.පො.ස උසස් පෙළ කලා අංශයෙන් A සාමාර්ථ 3ක් ලබා පේරාදෙණිය විශ්වවිද්‍යාලයේ ශාස්ත්‍ර පීඨයට ඇතුළත් වී, පන්ති සාමාර්ථ සහිතව විශේෂ උපාධිය ලබාගෙන ඇත.</p>
+          <p class="body reveal" data-i18n="aboutP2">සාමාන්‍ය පෙළ සිංහල භාෂාව හා සාහිත්‍යය සහ සිංහල සාහිත්‍ය රසාස්වාදය විෂයන් දෙකෙහි දේශිකාවක් ලෙස, ක්‍රමවත් වැඩපිළිවෙළක් තුළින් ලංකාව පුරා සිසුන් රාශියකට A සාමාර්ථ 2ක් ලබාගැනීමට මඟපෙන්වා ඇත.</p>
+
+          <ul class="facts reveal">
+            <li><strong>3A</strong><span data-i18n="fact1">උසස් පෙළ කලා අංශය</span></li>
+            <li><strong>BA</strong><span data-i18n="fact2">විශේෂ උපාධිය, පේරාදෙණිය</span></li>
+            <li><strong>2</strong><span data-i18n="fact3">විෂයන් එකම තැනින්</span></li>
+          </ul>
+
+          <a href="https://youtube.com/@kaushalyawicramarachchi" target="_blank" rel="noopener" class="yt-link reveal">
+            <span class="yt-ic"><svg class="ic"><use href="#i-yt"/></svg></span>
+            <span><small>YouTube</small><strong>Kaushalya Wicramarachchi</strong></span>
+            <svg class="ic arrow"><use href="#i-arrow"/></svg>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- LIVE IMPACT NUMBERS STRIP -->
-    <section class="py-8 bg-slate-50/80 border-y border-slate-200/80">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-          
-          <div class="p-3">
-            <div class="text-3xl sm:text-4xl font-black text-[#235E83]" data-i18n="stat1Number">100%</div>
-            <div class="text-xs sm:text-sm text-slate-600 font-semibold mt-1 sinhala-text" data-i18n="stat1Label">සම්පූර්ණ විෂය නිර්දේශය සිතුවම් මඟින්</div>
-          </div>
+    <!-- ============ RESULTS ============ -->
+    <section class="section results" id="results">
+      <div class="results-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow on-dark reveal" data-i18n="resEyebrow">ප්‍රතිඵල</span>
+          <h2 class="h2 on-dark reveal" data-i18n="resTitle">ප්‍රතිඵල කතා කරයි</h2>
+          <p class="sub on-dark reveal" data-i18n="resSub">2022 සාමාන්‍ය පෙළ විභාගයේ අපේ සිසුන් ලබාගත් සාමාර්ථ.</p>
+        </div>
 
-          <div class="p-3">
-            <div class="text-3xl sm:text-4xl font-black text-amber-500" data-i18n="stat2Number">A 2ක්</div>
-            <div class="text-xs sm:text-sm text-slate-600 font-semibold mt-1 sinhala-text" data-i18n="stat2Label">භාෂාව සහ සාහිත්‍ය රසාස්වාදය එකම තැනින්</div>
+        <div class="stats reveal">
+          <div class="stat">
+            <div class="stat-num"><span class="count" data-to="22">22</span><em>A</em></div>
+            <div class="stat-label" data-i18n="st1">සිංහල භාෂාව හා සාහිත්‍යය</div>
           </div>
-
-          <div class="p-3">
-            <div class="text-3xl sm:text-4xl font-black text-slate-900" data-i18n="stat3Number">මාස 4ක්</div>
-            <div class="text-xs sm:text-sm text-slate-600 font-semibold mt-1 sinhala-text" data-i18n="stat3Label">විභාගයට පෙර සීඝ්‍ර ආවරණය සහ පුනරීක්ෂණය</div>
+          <div class="stat">
+            <div class="stat-num"><span class="count" data-to="10">10</span><em>A</em></div>
+            <div class="stat-label" data-i18n="st2">සිංහල සාහිත්‍ය රසාස්වාදය</div>
           </div>
-
-          <div class="p-3">
-            <div class="text-3xl sm:text-4xl font-black text-emerald-600" data-i18n="stat4Number">දිවයින පුරා</div>
-            <div class="text-xs sm:text-sm text-slate-600 font-semibold mt-1 sinhala-text" data-i18n="stat4Label">නිබන්ධන කට්ටල නිවසටම බෙදාහැරීම</div>
+          <div class="stat">
+            <div class="stat-num"><span class="count" data-to="9">9</span><em class="b">B</em></div>
+            <div class="stat-label" data-i18n="st1">සිංහල භාෂාව හා සාහිත්‍යය</div>
           </div>
+          <div class="stat">
+            <div class="stat-num"><span class="count" data-to="4">4</span><em class="b">B</em></div>
+            <div class="stat-label" data-i18n="st2">සිංහල සාහිත්‍ය රසාස්වාදය</div>
+          </div>
+        </div>
 
+        <div class="sheets">
+          <button class="sheet reveal" type="button" data-lightbox="results" data-src="assets/optimized/results/result_sinhala_a.webp" data-caption="සිංහල භාෂාව · A 22">
+            <img src="assets/optimized/results/result_sinhala_a.webp" alt="2022 සිංහල A ප්‍රතිඵල" loading="lazy">
+            <span class="sheet-tag">සිංහල · A</span>
+          </button>
+          <button class="sheet reveal" type="button" data-lightbox="results" data-src="assets/optimized/results/result_sinhala_ab.webp" data-caption="සිංහල භාෂාව · A 22 · B 9">
+            <img src="assets/optimized/results/result_sinhala_ab.webp" alt="2022 සිංහල ප්‍රතිඵල" loading="lazy">
+            <span class="sheet-tag">සිංහල · A/B</span>
+          </button>
+          <button class="sheet reveal" type="button" data-lightbox="results" data-src="assets/optimized/results/result_rasawadaya_ab.webp" data-caption="සාහිත්‍ය රසාස්වාදය · A 10 · B 4">
+            <img src="assets/optimized/results/result_rasawadaya_ab.webp" alt="2022 රසාස්වාදය ප්‍රතිඵල" loading="lazy">
+            <span class="sheet-tag">රසාස්වාදය · A/B</span>
+          </button>
+          <button class="sheet reveal" type="button" data-lightbox="results" data-src="assets/optimized/results/result_sinhala_b.webp" data-caption="සිංහල භාෂාව · B 9">
+            <img src="assets/optimized/results/result_sinhala_b.webp" alt="2022 සිංහල B ප්‍රතිඵල" loading="lazy">
+            <span class="sheet-tag">සිංහල · B</span>
+          </button>
+        </div>
+        <p class="sheets-hint on-dark" data-i18n="resHint">ප්‍රතිඵල ලේඛනයක් මත ක්ලික් කර විශාල කර බලන්න</p>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow reveal" data-i18n="procEyebrow">අපේ ක්‍රමවේදය</span>
+            <h2 class="h2 reveal" data-i18n="procTitle">A දක්වා පියවර 6ක්</h2>
+          </div>
+          <p class="sub reveal" data-i18n="procSub">විෂය නිර්දේශයේ මුල සිට විභාග ශාලාව දක්වා ක්‍රමානුකූලව ඔබව රැගෙන යන වැඩපිළිවෙළ.</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-no">01</span>
+            <h3 data-i18n="s1t">Theory Class</h3>
+            <p data-i18n="s1d">සම්පූර්ණ විෂය නිර්දේශය සිතුවම් සහ විශේෂ ක්‍රම ඔස්සේ සරලව, ක්‍රමානුකූලව ඉගැන්වීම.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-no">02</span>
+            <h3 data-i18n="s2t">Live Exam</h3>
+            <p data-i18n="s2d">කාල කළමනාකරණයට විසඳුමක් ලෙස සජීවී විභාග, පරීක්ෂා කිරීම සහ Rank කිරීම.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-no">03</span>
+            <h3 data-i18n="s3t">Revision</h3>
+            <p data-i18n="s3d">විභාගයට මාස 4කට පමණ පෙර විෂය නිර්දේශය ආවරණය කර සම්පූර්ණ පුනරීක්ෂණය.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-no">04</span>
+            <h3 data-i18n="s4t">Final Shot Paper Class</h3>
+            <p data-i18n="s4d">විභාග රටාවටම සැකසූ ප්‍රශ්න පත්‍ර, සම්පූර්ණ සිද්ධාන්ත සාකච්ඡාව සහ පසුගිය ප්‍රශ්න පත්‍ර සාකච්ඡාව.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-no">05</span>
+            <h3 data-i18n="s5t">Seminars</h3>
+            <p data-i18n="s5d">Term Test Revise, MCQ සහ Final Seminar ඇතුළු අපටම ආවේණික සම්මන්ත්‍රණ මාලාව.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-no">06</span>
+            <h3 data-i18n="s6t">Recorded Class</h3>
+            <p data-i18n="s6d">සජීවීව සම්බන්ධ වීමට අපහසු සිසුන්ට පටිගත කිරීම් ඔස්සේ පන්ති, ගුරුතුමියගේ අවධානය සමඟම.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ SPECIALTIES ============ -->
+    <section class="section special" id="special">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow reveal" data-i18n="spEyebrow">සුවිශේෂතා</span>
+          <h2 class="h2 reveal" data-i18n="spTitle">ලංකාවේ හොඳම A හදන වැඩපිළිවෙළ</h2>
+        </div>
+
+        <div class="bento">
+          <article class="card card-yellow card-tall reveal">
+            <span class="card-no">01</span>
+            <h3 data-i18n="sp1t">Tutes නිවසටම</h3>
+            <p data-i18n="sp1d">ක්‍රමානුකූලව සිසුන්ව ගොඩනඟන වැඩපිළිවෙළට අදාළ නිබන්ධන කට්ටල ඔබේ නිවසටම.</p>
+            <ul class="chips">
+              <li>Theory Tute</li><li>Paper Tutes</li><li>Q Book</li><li>MCQ Tute</li><li>Final Guess Papers</li>
+            </ul>
+            <img class="card-emblem" src="assets/logos/tight_logo_icon_b.png" alt="" aria-hidden="true">
+          </article>
+          <article class="card reveal">
+            <span class="card-no">02</span>
+            <h3 data-i18n="sp2t">පන්තියේදීම විභාග හුරුව</h3>
+            <p data-i18n="sp2d">පන්තිය තුළදීම විචාර, රසවින්දන ඇතුළු සියලු ප්‍රශ්න නියමිත කාලයට ලියවීම.</p>
+          </article>
+          <article class="card card-navy reveal">
+            <span class="card-no">03</span>
+            <h3 data-i18n="sp3t">සිසුන්ගේ වැඩ පරීක්ෂා කිරීම</h3>
+            <p data-i18n="sp3d">ගුරුතුමිය විසින්ම පන්තියේදී සහ WhatsApp හරහා විචාර ඇතුළු වැඩ පරීක්ෂා කර ලකුණු ලබාදීම. පටිගත කිරීම් නරඹන සිසුන්ටද එසේමය.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- CLASS EXPERIENCE THEATER VIDEO -->
-    <section class="py-16 md:py-24 bg-white">
-      <div class="max-w-5xl mx-auto px-4">
-        
-        <div class="text-center max-w-2xl mx-auto mb-10">
-          <div class="pill-badge-gold mb-3">
-            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span>Class Experience Video</span>
+    <!-- ============ CLASSES ============ -->
+    <section class="section classes" id="classes">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow reveal" data-i18n="clEyebrow">පන්ති</span>
+            <h2 class="h2 reveal" data-i18n="clTitle">වැඩ කරන සිංහල පන්තිය</h2>
           </div>
-          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight sinhala-text">
-            ඉගැන්වීම් රටාවේ ජීවමාන අත්දැකීමක්
-          </h2>
-          <p class="text-slate-600 text-sm sm:text-base mt-2.5 sinhala-text">
-            සිංහල සාහිත්‍ය රසවින්දනය සහ භාෂා න්‍යායන් සරලව මනසේ සටහන් කරවන සුවිශේෂී ඉගැන්වීම් රටාව නරඹන්න.
-          </p>
+          <p class="sub reveal" data-i18n="clSub">නිවසේ සිට Online හෝ මතුගම සහ මීගහතැන්න පන්ති ශාලාවලදී.</p>
         </div>
 
-        <!-- Theater Video Wrapper -->
-        <div class="theater-container max-w-4xl mx-auto aspect-video relative group">
-          <video id="mainIntroVideo" playsinline preload="metadata" poster="assets/optimized/video/video_poster.webp">
+        <div class="venues">
+          <article class="venue reveal">
+            <div class="venue-img"><img src="assets/optimized/teacher/teacher_desk_16x9.webp" alt="Online class" loading="lazy"></div>
+            <div class="venue-body">
+              <span class="tag tag-navy">ONLINE</span>
+              <h3 data-i18n="v1t">දිවයින පුරා, නිවසේ සිට</h3>
+              <ul class="ticks">
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v1a">සජීවී Zoom පන්ති සහ Recordings</span></li>
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v1b">Tutes කුරියර් මඟින් නිවසටම</span></li>
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v1c">WhatsApp හරහා වැඩ පරීක්ෂාව</span></li>
+              </ul>
+            </div>
+          </article>
+          <article class="venue reveal">
+            <div class="venue-img"><img src="assets/optimized/seminars/seminar_crowd2.webp" alt="ZINERGY Mathugama" loading="lazy"></div>
+            <div class="venue-body">
+              <span class="tag">ZINERGY</span>
+              <h3 data-i18n="v2t">මතුගම</h3>
+              <ul class="ticks">
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v2a">භෞතික පන්ති ශාලාව</span></li>
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v2b">පන්තියේදීම ප්‍රශ්න පත්‍ර සහ ඇගයීම</span></li>
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v2c">Tutes පන්තියේදීම</span></li>
+              </ul>
+            </div>
+          </article>
+          <article class="venue reveal">
+            <div class="venue-img"><img src="assets/optimized/seminars/seminar_session.webp" alt="LAYARA Meegahathenna" loading="lazy"></div>
+            <div class="venue-body">
+              <span class="tag">LAYARA</span>
+              <h3 data-i18n="v3t">මීගහතැන්න</h3>
+              <ul class="ticks">
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v3a">භෞතික පන්ති ශාලාව</span></li>
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v3b">සෑම සිසුවෙකුටම පුද්ගලික අවධානය</span></li>
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v3c">Tutes පන්තියේදීම</span></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIDEO ============ -->
+    <section class="section video-sec">
+      <div class="container">
+        <div class="video-card reveal">
+          <video id="introVideo" playsinline preload="none" poster="assets/optimized/video/video_poster.webp">
             <source src="assets/video/intro.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
-
-          <!-- Play Button Overlay -->
-          <div id="videoPlayOverlay" class="theater-play-btn" title="Click to Play / Pause">
-            <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-
-          <!-- Video Bar -->
-          <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent flex items-center justify-between z-20">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-bold text-[#FFC20E] uppercase tracking-wider">Sinhala KW Official Preview</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <button id="videoSoundBtn" class="p-2 rounded-full bg-white/20 text-white hover:bg-white/40 transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ABOUT THE TEACHER SECTION (THE PERADENIYA HERITAGE) -->
-    <section id="about" class="py-16 md:py-24 bg-slate-50/70 border-t border-slate-200/80">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <!-- Teacher Portrait Composition (Left 5) -->
-          <div class="lg:col-span-5">
-            <div class="relative mx-auto max-w-md">
-              <div class="bento-card p-3 shadow-xl bg-white">
-                <img src="assets/optimized/teacher/teacher_about_card.webp" alt="Kaushalya Wicramarachchi portrait" class="w-full h-auto rounded-2xl object-cover object-top">
-              </div>
-            </div>
-          </div>
-
-          <!-- Teacher Details (Right 7) -->
-          <div class="lg:col-span-7 space-y-6">
-            
-            <div>
-              <div class="pill-badge-navy mb-2.5">
-                <svg class="w-4 h-4 text-[#235E83]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                <span data-i18n="aboutBadge">ඔබේ ගුරුතුමිය</span>
-              </div>
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" data-i18n="aboutName">
-                කෞෂල්‍යා වික්‍රමාරච්චි
-              </h2>
-              <div class="text-sm sm:text-base font-bold text-[#235E83] mt-1" data-i18n="aboutDegree">
-                Bachelor of Arts Special Degree, University of Peradeniya
-              </div>
-            </div>
-
-            <!-- Credentials Cards Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="bento-card p-4 flex items-start gap-3">
-                <div class="w-9 h-9 rounded-xl bg-sky-50 text-[#235E83] flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
-                </div>
-                <div>
-                  <div class="text-xs font-bold text-slate-900">පේරාදෙණිය විශ්වවිද්‍යාලය</div>
-                  <div class="text-xs text-slate-600 mt-0.5">ශාස්ත්‍ර පීඨයේ විශේෂ උපාධිය පන්ති සාමාර්ථ සහිතව</div>
-                </div>
-              </div>
-
-              <div class="bento-card p-4 flex items-start gap-3">
-                <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <div>
-                  <div class="text-xs font-bold text-slate-900">උසස් පෙළ කලා අංශය</div>
-                  <div class="text-xs text-slate-600 mt-0.5">A සාමාර්ථ 3ක් සහිතව දිවයිනේ ඉහළම ශ්‍රේණි</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed sinhala-text">
-              <p data-i18n="aboutDesc1">
-                අ.පො.ස උසස් පෙළ කලා අංශයෙන් A සාමාර්ථ 3 ක් ලබාගෙන පේරාදෙණිය විශ්වවිද්‍යාලයේ ශාස්ත්‍ර පීඨයට ඇතුළත් වී පන්ති සාමාර්ථ සහිතව විශේෂ උපාධිය ලබාගෙන ඇත.
-              </p>
-              <p data-i18n="aboutDesc2">
-                සාමාන්‍ය පෙළ සිංහල භාෂාව හා සාහිත්‍යය, සිංහල සාහිත්‍ය රසාස්වාදය විෂයන් දෙකෙහි දේශිකාවියක් ලෙස ඉතා සාර්ථක ඉගැන්වීම් රටාවක් සහ ක්‍රමවත් වැඩපිළිවෙළක් තුළින් කෙටි කාලයක් තුළ දී ලංකාව පුරා විහිදී සිටින සිසුන් රාශියකට සිය සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනයේ A සාමාර්ථ 2 ක් ලබාගැනීම සඳහා එක් ගුරුවරියක ලෙස මඟපෙන්වීමට සමත්ව ඇත.
-              </p>
-            </div>
-
-            <!-- YouTube Channel Link Card -->
-            <div class="pt-2">
-              <a href="https://youtube.com/@kaushalyawicramarachchi" target="_blank" class="bento-card p-4 flex items-center justify-between group max-w-lg transition hover:border-red-400">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center shrink-0">
-                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                  </div>
-                  <div>
-                    <div class="text-xs text-slate-500 font-medium">Official YouTube Channel</div>
-                    <div class="text-sm font-bold text-slate-900 group-hover:text-red-600 transition">Kaushalya Wicramarachchi Sinhala</div>
-                  </div>
-                </div>
-                <div class="text-slate-400 group-hover:text-red-500 group-hover:translate-x-1 transition-transform">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                </div>
-              </a>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 6-STEP LEARNING ROADMAP (CONNECTED DYNAMIC STEPS) -->
-    <section id="process" class="py-16 md:py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-3xl mx-auto mb-14">
-          <div class="pill-badge-gold mb-3">
-            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-            <span data-i18n="processBadge">අපගේ ක්‍රමවේදය</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight sinhala-text" data-i18n="processTitle">
-            A සාමාර්ථ 2ක් දක්වා ඔබව රැගෙන යන පියවර 6
-          </h2>
-          <p class="text-slate-600 text-sm sm:text-base mt-3 sinhala-text" data-i18n="processSubtitle">
-            විෂය නිර්දේශයේ ආරම්භයේ සිට අවසන් විභාග ශාලාව දක්වා ශිෂ්‍යයා ක්‍රමානුකූලව මෙහෙයවන පූර්ණ අධ්‍යාපනික වැඩපිළිවෙළ.
-          </p>
-        </div>
-
-        <!-- 6 Step Distinctive Roadmap Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Step 1 -->
-          <div class="bento-card bento-navy-accent p-6 flex flex-col justify-between roadmap-step">
-            <span class="step-num-watermark">01</span>
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-black px-2.5 py-1 rounded-md bg-sky-100 text-[#235E83]">පියවර 01</span>
-                <div class="w-10 h-10 rounded-xl bg-white shadow-sm text-[#235E83] flex items-center justify-center">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                </div>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="step1Title">සිද්ධාන්ත පන්තිය (Theory Class)</h3>
-              <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="step1Desc">
-                විෂය නිර්දේශයේ සියලු කොටස් සිතුවම් සහ විශේෂ ක්‍රම ඔස්සේ මුල සිට සරලව මනසේ තැන්පත් කරවීම.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="bento-card bento-gold-accent p-6 flex flex-col justify-between roadmap-step">
-            <span class="step-num-watermark">02</span>
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-black px-2.5 py-1 rounded-md bg-amber-100 text-amber-900">පියවර 02</span>
-                <div class="w-10 h-10 rounded-xl bg-white shadow-sm text-amber-700 flex items-center justify-center">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                </div>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="step2Title">සජීවී විභාග සහ ශ්‍රේණිගත කිරීම් (Live Exam)</h3>
-              <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="step2Desc">
-                පන්ති වේලාව තුළදීම ප්‍රශ්න පත්‍ර ලිවීම, ලකුණු ලබාදීම සහ දිවයිනේ ශ්‍රේණිගත කිරීම් මඟින් ශිෂ්‍යයා නිරන්තරයෙන් ඇගයීම.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="bento-card p-6 flex flex-col justify-between roadmap-step">
-            <span class="step-num-watermark">03</span>
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-black px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900">පියවර 03</span>
-                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="step3Title">මාස 4ක සීඝ්‍ර පුනරීක්ෂණය (Rapid Revision)</h3>
-              <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="step3Desc">
-                විභාගයට මාස 4කට පෙර සම්පූර්ණ විෂය නිර්දේශය නැවත ආවරණය කරමින් සියලු අංශ ශක්තිමත් කිරීම.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="bento-card p-6 flex flex-col justify-between roadmap-step">
-            <span class="step-num-watermark">04</span>
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-black px-2.5 py-1 rounded-md bg-rose-100 text-rose-900">පියවර 04</span>
-                <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                </div>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="step4Title">Final Shot ප්‍රශ්න පත්‍ර පන්තිය</h3>
-              <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="step4Desc">
-                විභාග රටාවටම අනුකූලව ගුරුතුමිය සකසන ලද විශේෂ ප්‍රශ්න පත්‍ර ලිවීම, සම්පූර්ණ සිද්ධාන්ත සාකච්ඡාව සහ ලකුණු ගැනීමේ රහස්.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 5 -->
-          <div class="bento-card p-6 flex flex-col justify-between roadmap-step">
-            <span class="step-num-watermark">05</span>
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-black px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-900">පියවර 05</span>
-                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                </div>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="step5Title">විශේෂ සම්මන්ත්‍රණ මාලාව (Seminars)</h3>
-              <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="step5Desc">
-                වාර විභාග සහ අවසන් විභාගයට සූදානම් කරවන Term Test Revise Seminar, MCQ Seminar සහ විශේෂ අවසන් සම්මන්ත්‍රණ.
-              </p>
-            </div>
-          </div>
-
-          <!-- Step 6 -->
-          <div class="bento-card p-6 flex flex-col justify-between roadmap-step">
-            <span class="step-num-watermark">06</span>
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-black px-2.5 py-1 rounded-md bg-violet-100 text-violet-900">පියවර 06</span>
-                <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-700 flex items-center justify-center">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                </div>
-              </div>
-              <h3 class="text-lg font-bold text-slate-900 mb-2" data-i18n="step6Title">පටිගත කළ පන්ති (Recorded Classes)</h3>
-              <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="step6Desc">
-                සජීවීව සම්බන්ධ වීමට නොහැකි සිසුන්ට විභාගය දක්වාම නැවත නැවත නැරඹීමේ පහසුකම සහ පුද්ගලික අධීක්ෂණය.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- KEY PILLARS (HIGH-END BENTO GRID) -->
-    <section id="pillars" class="py-16 md:py-24 bg-slate-50/70 border-t border-slate-200/80">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-3xl mx-auto mb-14">
-          <div class="pill-badge-navy mb-3">
-            <svg class="w-4 h-4 text-[#235E83]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-            <span data-i18n="pillarBadge">සුවිශේෂත්වයන්</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight sinhala-text" data-i18n="pillarTitle">
-            වැඩ කරන සිංහල පන්තියේ සුවිශේෂී කුලුනු 3
-          </h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          <!-- Pillar 1 -->
-          <div class="bento-card bento-gold-accent p-8 flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center mb-6 shadow-sm">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="pillar1Title">Tutes නිවසටම ගෙන්වා ගැනීම</h3>
-            <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="pillar1Desc">
-              ක්‍රමානුකූල වැඩපිළිවෙළට අදාළ සම්පූර්ණ මුද්‍රිත නිබන්ධන කට්ටල නිවසටම: Theory Tute, Paper Tutes, Q Book, MCQ Tute සහ Final Guess Papers.
-            </p>
-          </div>
-
-          <!-- Pillar 2 -->
-          <div class="bento-card bento-navy-accent p-8 flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-2xl bg-sky-100 text-[#235E83] flex items-center justify-center mb-6 shadow-sm">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="pillar2Title">පන්තියේදීම විභාග හුරුව</h3>
-            <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="pillar2Desc">
-              පන්තිය තුළදීම විචාර, රසවින්දන ඇතුළු සියලු ප්‍රශ්න නියමිත කාලයට ලිවීමේ කාල කළමනාකරණ අත්දැකීම ලබා දීම.
-            </p>
-          </div>
-
-          <!-- Pillar 3 -->
-          <div class="bento-card p-8 flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mb-6 shadow-sm">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-i18n="pillar3Title">සිසුන්ගේ වැඩ පෞද්ගලිකව පරීක්ෂා කිරීම</h3>
-            <p class="text-slate-600 text-sm leading-relaxed sinhala-text" data-i18n="pillar3Desc">
-              ගුරුතුමිය විසින්ම පන්තියේදී සහ WhatsApp හරහා සිසුන්ගේ විචාර ඇතුළු වැඩ පරීක්ෂා කිරීම, ලකුණු ලබාදීම සහ ශිෂ්‍යයා නිවැරදි දිශානතියට යොමු කිරීම.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CLASSES & VENUES (INTERACTIVE TABBED HUB) -->
-    <section id="classes" class="py-16 md:py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <div class="pill-badge-gold mb-3">
-            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-            <span data-i18n="classesBadge">පන්ති පැවැත්වෙන ස්ථාන සහ ක්‍රම</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight sinhala-text" data-i18n="classesTitle">
-            ඔබට පහසු ක්‍රමයකින් සම්බන්ධ වන්න
-          </h2>
-        </div>
-
-        <!-- Venue Switcher Tab Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
-          <button class="class-tab-btn active px-6 py-3 rounded-full font-bold text-sm border transition shadow-sm bg-[#FFC20E] text-slate-950 border-[#FFC20E]" data-target="panelOnline" data-i18n="tabOnline">
-            ONLINE (දිවයින පුරා)
+          <button class="video-play" id="videoPlay" type="button" aria-label="Play video">
+            <svg class="ic"><use href="#i-play"/></svg>
           </button>
-          <button class="class-tab-btn px-6 py-3 rounded-full font-bold text-sm border transition shadow-sm text-slate-600 border-slate-200 hover:border-slate-300 bg-white" data-target="panelMathugama" data-i18n="tabMathugama">
-            ZINERGY මතුගම
-          </button>
-          <button class="class-tab-btn px-6 py-3 rounded-full font-bold text-sm border transition shadow-sm text-slate-600 border-slate-200 hover:border-slate-300 bg-white" data-target="panelMeegahathenna" data-i18n="tabMeegahathenna">
-            LAYARA මීගහතැන්න
-          </button>
-        </div>
-
-        <!-- Tab Content Panes -->
-        <div class="max-w-4xl mx-auto">
-          
-          <!-- Pane 1: ONLINE -->
-          <div id="panelOnline" class="class-tab-pane block">
-            <div class="bento-card p-8 bg-slate-50 border border-slate-200/90">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-[#235E83] mb-3">Island-wide Portal</span>
-                  <h3 class="text-2xl font-bold text-slate-900 mb-4" data-i18n="onlineTitle">ONLINE පන්තිය ශ්‍රී ලංකාව පුරාම නිවසේ සිට</h3>
-                  <ul class="space-y-3 text-slate-700 text-sm font-medium">
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="onlinePoint1">HD තාක්ෂණයෙන් සජීවී Zoom දේශන සහ පටිගත කිරීම් (Recordings)</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="onlinePoint2">මුද්‍රිත නිබන්ධන කට්ටල කුරියර් මඟින් නිවසටම ප්‍රවාහනය</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="onlinePoint3">WhatsApp හරහා ගුරුතුමිය විසින්ම පෞද්ගලිකව වැඩ පරීක්ෂා කිරීම</span>
-                    </li>
-                  </ul>
-                  <div class="mt-6">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" class="btn-primary text-sm">
-                      <span>Online ලියාපදිංචි වන්න</span>
-                    </a>
-                  </div>
-                </div>
-
-                <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="assets/optimized/teacher/teacher_desk_16x9.webp" alt="Online class setup" class="w-full h-auto object-cover object-top">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pane 2: ZINERGY Mathugama -->
-          <div id="panelMathugama" class="class-tab-pane hidden">
-            <div class="bento-card p-8 bg-slate-50 border border-slate-200/90">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 mb-3">Physical Classroom</span>
-                  <h3 class="text-2xl font-bold text-slate-900 mb-4" data-i18n="mathugamaTitle">ZINERGY මතුගම භෞතික පන්තිය</h3>
-                  <ul class="space-y-3 text-slate-700 text-sm font-medium">
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="mathugamaPoint1">සම්පූර්ණ වායුසමනය කළ නවීන දේශන ශාලා පහසුකම්</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="mathugamaPoint2">පන්තිය තුළදීම විභාග ප්‍රශ්න පත්‍ර ලිවීම සහ ගුරුතුමිය අතින්ම ඇගයීම</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="mathugamaPoint3">මුද්‍රිත සම්පූර්ණ නිබන්ධන කට්ටල පන්තියේදීම ලබාදීම</span>
-                    </li>
-                  </ul>
-                  <div class="mt-6">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" class="btn-primary text-sm">
-                      <span>මතුගම පන්තියට ලියාපදිංචි වන්න</span>
-                    </a>
-                  </div>
-                </div>
-
-                <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="assets/optimized/seminars/seminar_hall.webp" alt="Mathugama Hall" class="w-full h-auto object-cover">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pane 3: LAYARA Meegahathenna -->
-          <div id="panelMeegahathenna" class="class-tab-pane hidden">
-            <div class="bento-card p-8 bg-slate-50 border border-slate-200/90">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 mb-3">Physical Classroom</span>
-                  <h3 class="text-2xl font-bold text-slate-900 mb-4" data-i18n="meegahathennaTitle">LAYARA මීගහතැන්න භෞතික පන්තිය</h3>
-                  <ul class="space-y-3 text-slate-700 text-sm font-medium">
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="meegahathennaPoint1">පුළුල් ඉඩකඩ සහිත සුවපහසු ඉගෙනුම් පරිසරය</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="meegahathennaPoint2">සතිපතා ප්‍රශ්න පත්‍ර ලිවීම සහ එක් එක් ශිෂ්‍යයාට පුද්ගලික අවධානය</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span data-i18n="meegahathennaPoint3">සියලු සිද්ධාන්ත නිබන්ධන සහ ප්‍රශ්න පත්‍ර කට්ටල පන්තියේදීම</span>
-                    </li>
-                  </ul>
-                  <div class="mt-6">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" class="btn-primary text-sm">
-                      <span>මීගහතැන්න පන්තියට ලියාපදිංචි වන්න</span>
-                    </a>
-                  </div>
-                </div>
-
-                <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img src="assets/optimized/seminars/seminar_crowd1.webp" alt="Meegahathenna Hall" class="w-full h-auto object-cover">
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- RESPONSIVE CLASS TIMETABLE (WEEKLY SCHEDULE) -->
-        <div class="mt-14 max-w-5xl mx-auto">
-          <div class="text-center mb-8">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200/80 mb-2">
-              <svg class="w-3.5 h-3.5 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              <span>පන්ති කාලසටහන</span>
-            </span>
-            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight sinhala-text">
-              2026 සහ 2027 සාමාන්‍ය පෙළ සතිපතා කාලසටහන
-            </h3>
-            <p class="text-slate-600 text-sm mt-1 max-w-xl mx-auto">
-              ඔබට වඩාත් පහසු දිනය සහ වේලාව තෝරාගෙන සජීවීව හෝ Online ඔස්සේ පන්තියට සම්බන්ධ වන්න.
-            </p>
-          </div>
-
-          <!-- Desktop / Tablet Responsive Table View (Visible md: and up) -->
-          <div class="hidden md:block overflow-x-auto rounded-2xl border border-slate-200/90 shadow-sm bg-white">
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="bg-slate-50/80 border-b border-slate-200/80 text-xs font-bold text-slate-600 uppercase tracking-wider">
-                  <th class="py-4 px-5">ශ්‍රේණිය / විභාගය</th>
-                  <th class="py-4 px-5">ස්ථානය / මාදිලිය</th>
-                  <th class="py-4 px-5">දිනය සහ වේලාව</th>
-                  <th class="py-4 px-5">විෂය කොටස් / අන්තර්ගතය</th>
-                  <th class="py-4 px-5 text-right">සම්බන්ධ වීම</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 text-sm">
-                <!-- Row 1: Online 2026 -->
-                <tr class="hover:bg-slate-50/60 transition">
-                  <td class="py-4 px-5">
-                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
-                  </td>
-                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
-                    ONLINE (දිවයින පුරා)
-                  </td>
-                  <td class="py-4 px-5 text-slate-700">
-                    <div class="font-semibold text-slate-900">බ්‍රහස්පතින්දා</div>
-                    <div class="text-xs text-slate-500 font-mono">ප.ව. 3:00 - 6:30</div>
-                  </td>
-                  <td class="py-4 px-5 text-xs text-slate-600">
-                    සිද්ධාන්ත + විභාග ප්‍රශ්න පත්‍ර + Recordings
-                  </td>
-                  <td class="py-4 px-5 text-right">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%202026%20Online%20Class" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
-                      ලියාපදිංචිය
-                    </a>
-                  </td>
-                </tr>
-
-                <!-- Row 2: Online 2027 -->
-                <tr class="hover:bg-slate-50/60 transition">
-                  <td class="py-4 px-5">
-                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
-                  </td>
-                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
-                    ONLINE (දිවයින පුරා)
-                  </td>
-                  <td class="py-4 px-5 text-slate-700">
-                    <div class="font-semibold text-slate-900">අඟහරුවාදා</div>
-                    <div class="text-xs text-slate-500 font-mono">ප.ව. 3:30 - 6:00</div>
-                  </td>
-                  <td class="py-4 px-5 text-xs text-slate-600">
-                    මූලික සිද්ධාන්ත + රචනා හා ව්‍යාකරණ හුරුව
-                  </td>
-                  <td class="py-4 px-5 text-right">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%202027%20Online%20Class" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
-                      ලියාපදිංචිය
-                    </a>
-                  </td>
-                </tr>
-
-                <!-- Row 3: Mathugama 2026 -->
-                <tr class="hover:bg-slate-50/60 transition">
-                  <td class="py-4 px-5">
-                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
-                  </td>
-                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
-                    ZINERGY මතුගම
-                  </td>
-                  <td class="py-4 px-5 text-slate-700">
-                    <div class="font-semibold text-slate-900">සෙනසුරාදා</div>
-                    <div class="text-xs text-slate-500 font-mono">පෙ.ව. 8:00 - 12:30</div>
-                  </td>
-                  <td class="py-4 px-5 text-xs text-slate-600">
-                    සම්පූර්ණ සිද්ධාන්ත + පන්තියේදීම ප්‍රශ්න පත්‍ර ලියවීම
-                  </td>
-                  <td class="py-4 px-5 text-right">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Zinergy%20Matugama%202026" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
-                      ලියාපදිංචිය
-                    </a>
-                  </td>
-                </tr>
-
-                <!-- Row 4: Mathugama 2027 -->
-                <tr class="hover:bg-slate-50/60 transition">
-                  <td class="py-4 px-5">
-                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
-                  </td>
-                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
-                    ZINERGY මතුගම
-                  </td>
-                  <td class="py-4 px-5 text-slate-700">
-                    <div class="font-semibold text-slate-900">සෙනසුරාදා</div>
-                    <div class="text-xs text-slate-500 font-mono">ප.ව. 1:00 - 4:00</div>
-                  </td>
-                  <td class="py-4 px-5 text-xs text-slate-600">
-                    10 වසර විෂය නිර්දේශය + සාහිත්‍ය රසවින්දන පදනම
-                  </td>
-                  <td class="py-4 px-5 text-right">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Zinergy%20Matugama%202027" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
-                      ලියාපදිංචිය
-                    </a>
-                  </td>
-                </tr>
-
-                <!-- Row 5: Meegahathenna 2026 -->
-                <tr class="hover:bg-slate-50/60 transition">
-                  <td class="py-4 px-5">
-                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
-                  </td>
-                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span>
-                    LAYARA මීගහතැන්න
-                  </td>
-                  <td class="py-4 px-5 text-slate-700">
-                    <div class="font-semibold text-slate-900">ඉරිදා</div>
-                    <div class="text-xs text-slate-500 font-mono">පෙ.ව. 8:00 - 12:30</div>
-                  </td>
-                  <td class="py-4 px-5 text-xs text-slate-600">
-                    සිද්ධාන්ත + සතිපතා ඇගයීම් + පෞද්ගලික අවධානය
-                  </td>
-                  <td class="py-4 px-5 text-right">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Layara%202026" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
-                      ලියාපදිංචිය
-                    </a>
-                  </td>
-                </tr>
-
-                <!-- Row 6: Meegahathenna 2027 -->
-                <tr class="hover:bg-slate-50/60 transition">
-                  <td class="py-4 px-5">
-                    <span class="inline-block px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
-                  </td>
-                  <td class="py-4 px-5 font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span>
-                    LAYARA මීගහතැන්න
-                  </td>
-                  <td class="py-4 px-5 text-slate-700">
-                    <div class="font-semibold text-slate-900">ඉරිදා</div>
-                    <div class="text-xs text-slate-500 font-mono">ප.ව. 1:00 - 4:00</div>
-                  </td>
-                  <td class="py-4 px-5 text-xs text-slate-600">
-                    මූලික සිද්ධාන්ත + විචාර ලියවීමේ විශේෂ වැඩපිළිවෙළ
-                  </td>
-                  <td class="py-4 px-5 text-right">
-                    <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Layara%202027" target="_blank" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#FFC20E] text-slate-950 hover:brightness-105 transition shadow-sm">
-                      ලියාපදිංචිය
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Mobile Card Fallback (Visible < md: / on mobile screens) -->
-          <div class="block md:hidden space-y-3.5">
-            <!-- Mobile Schedule Card 1 -->
-            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
-                <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
-                  ONLINE
-                </span>
-              </div>
-              <div class="flex items-baseline justify-between">
-                <div class="text-sm font-bold text-slate-900">බ්‍රහස්පතින්දා</div>
-                <div class="text-xs font-mono font-semibold text-slate-600">ප.ව. 3:00 - 6:30</div>
-              </div>
-              <div class="text-xs text-slate-500">සජීවී Zoom දේශන + Recordings + Tutes නිවසටම</div>
-              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%202026%20Online%20Class" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
-                WhatsApp මඟින් ලියාපදිංචි වන්න
-              </a>
-            </div>
-
-            <!-- Mobile Schedule Card 2 -->
-            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
-                <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
-                  ONLINE
-                </span>
-              </div>
-              <div class="flex items-baseline justify-between">
-                <div class="text-sm font-bold text-slate-900">අඟහරුවාදා</div>
-                <div class="text-xs font-mono font-semibold text-slate-600">ප.ව. 3:30 - 6:00</div>
-              </div>
-              <div class="text-xs text-slate-500">මූලික සිද්ධාන්ත + රචනා හා ව්‍යාකරණ හුරුව</div>
-              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%202027%20Online%20Class" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
-                WhatsApp මඟින් ලියාපදිංචි වන්න
-              </a>
-            </div>
-
-            <!-- Mobile Schedule Card 3 -->
-            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
-                <span class="text-xs font-bold text-blue-600 flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
-                  ZINERGY මතුගම
-                </span>
-              </div>
-              <div class="flex items-baseline justify-between">
-                <div class="text-sm font-bold text-slate-900">සෙනසුරාදා</div>
-                <div class="text-xs font-mono font-semibold text-slate-600">පෙ.ව. 8:00 - 12:30</div>
-              </div>
-              <div class="text-xs text-slate-500">පන්තිය තුළදීම ප්‍රශ්න පත්‍ර ලිවීම හා ඇගයීම</div>
-              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Zinergy%20Matugama%202026" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
-                WhatsApp මඟින් ලියාපදිංචි වන්න
-              </a>
-            </div>
-
-            <!-- Mobile Schedule Card 4 -->
-            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
-                <span class="text-xs font-bold text-blue-600 flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
-                  ZINERGY මතුගම
-                </span>
-              </div>
-              <div class="flex items-baseline justify-between">
-                <div class="text-sm font-bold text-slate-900">සෙනසුරාදා</div>
-                <div class="text-xs font-mono font-semibold text-slate-600">ප.ව. 1:00 - 4:00</div>
-              </div>
-              <div class="text-xs text-slate-500">10 වසර විෂය නිර්දේශය + සාහිත්‍ය රසවින්දන පදනම</div>
-              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Zinergy%20Matugama%202027" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
-                WhatsApp මඟින් ලියාපදිංචි වන්න
-              </a>
-            </div>
-
-            <!-- Mobile Schedule Card 5 -->
-            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-sky-100 text-[#235E83]">2026 O/L (11 ශ්‍රේණිය)</span>
-                <span class="text-xs font-bold text-purple-600 flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block"></span>
-                  LAYARA මීගහතැන්න
-                </span>
-              </div>
-              <div class="flex items-baseline justify-between">
-                <div class="text-sm font-bold text-slate-900">ඉරිදා</div>
-                <div class="text-xs font-mono font-semibold text-slate-600">පෙ.ව. 8:00 - 12:30</div>
-              </div>
-              <div class="text-xs text-slate-500">සිද්ධාන්ත + සතිපතා ඇගයීම් + පෞද්ගලික අවධානය</div>
-              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Layara%202026" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
-                WhatsApp මඟින් ලියාපදිංචි වන්න
-              </a>
-            </div>
-
-            <!-- Mobile Schedule Card 6 -->
-            <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-2.5">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-100 text-amber-900">2027 O/L (10 ශ්‍රේණිය)</span>
-                <span class="text-xs font-bold text-purple-600 flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block"></span>
-                  LAYARA මීගහතැන්න
-                </span>
-              </div>
-              <div class="flex items-baseline justify-between">
-                <div class="text-sm font-bold text-slate-900">ඉරිදා</div>
-                <div class="text-xs font-mono font-semibold text-slate-600">ප.ව. 1:00 - 4:00</div>
-              </div>
-              <div class="text-xs text-slate-500">මූලික සිද්ධාන්ත + විචාර ලියවීමේ විශේෂ වැඩපිළිවෙළ</div>
-              <a href="https://wa.me/message/GLVS7R45XIDAG1?text=Hi%2C%20I%20want%20to%20register%20for%20Layara%202027" target="_blank" class="btn-primary text-xs py-2 w-full text-center mt-1">
-                WhatsApp මඟින් ලියාපදිංචි වන්න
-              </a>
-            </div>
+          <div class="video-caption" id="videoCaption">
+            <span class="eyebrow on-dark" data-i18n="vidEyebrow">පන්තියේ අත්දැකීම</span>
+            <h2 class="h3 on-dark" data-i18n="vidTitle">ඉගැන්වීම් රටාව නරඹන්න</h2>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- VERIFIED STUDENT RESULTS PROOFS -->
-    <section id="results" class="py-16 md:py-24 bg-slate-50/70 border-t border-slate-200/80">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-3xl mx-auto mb-14">
-          <div class="pill-badge-gold mb-3">
-            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-            <span data-i18n="resultsBadge">සාක්ෂි සහිත විශිෂ්ට ප්‍රතිඵල</span>
+    <!-- ============ GALLERY ============ -->
+    <section class="section gallery" id="gallery">
+      <div class="container">
+        <div class="section-head split">
+          <div>
+            <span class="eyebrow reveal" data-i18n="galEyebrow">ගැලරිය</span>
+            <h2 class="h2 reveal" data-i18n="galTitle">පන්ති සහ සම්මන්ත්‍රණ මතක</h2>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight sinhala-text" data-i18n="resultsTitle">
-            සිසුන්ගේ සැබෑ විභාග ප්‍රතිඵල ලේඛන
-          </h2>
-          <p class="text-slate-600 text-sm sm:text-base mt-3 sinhala-text" data-i18n="resultsSubtitle">
-            සාමාන්‍ය පෙළ විභාග දෙපාර්තමේන්තුවේ නිල ප්‍රතිඵල පත්‍රිකා මඟින් තහවුරු වූ ද්විත්ව A සහ B සාමාර්ථ.
-          </p>
+          <div class="filters reveal" role="tablist">
+            <button class="filter is-active" data-filter="all" type="button" data-i18n="fAll">සියල්ල</button>
+            <button class="filter" data-filter="seminar" type="button" data-i18n="fSem">සම්මන්ත්‍රණ</button>
+            <button class="filter" data-filter="finalday" type="button">Final Day</button>
+            <button class="filter" data-filter="class" type="button" data-i18n="fClass">පන්ති</button>
+          </div>
         </div>
 
-        <!-- 4 Authentic Result Sheet Cards with Zoom Lightbox -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          
-          <!-- Result Card 1 -->
-          <div class="bento-card p-4 cursor-pointer group result-card-trigger" data-img="assets/optimized/results/result_sinhala_ab.webp" data-title="Verified Result: Sinhala Language A, Literature B">
-            <div class="aspect-[4/5] rounded-xl overflow-hidden bg-slate-100 relative mb-3 border border-slate-100">
-              <img src="assets/optimized/results/result_sinhala_ab.webp" alt="O/L Sinhala Result 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md flex items-center gap-1.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                  <span>විශාල කර බලන්න</span>
-                </span>
-              </div>
-            </div>
-            <div class="text-xs font-bold text-slate-900">සාමාන්‍ය පෙළ නිල ප්‍රතිඵල ලේඛනය</div>
-            <div class="text-[11px] text-[#235E83] font-semibold">සිංහල භාෂාව A සාමාර්ථය</div>
-          </div>
-
-          <!-- Result Card 2 -->
-          <div class="bento-card p-4 cursor-pointer group result-card-trigger" data-img="assets/optimized/results/result_rasawadaya_ab.webp" data-title="Verified Result: Sinhala Literature A, Sinhala Language B">
-            <div class="aspect-[4/5] rounded-xl overflow-hidden bg-slate-100 relative mb-3 border border-slate-100">
-              <img src="assets/optimized/results/result_rasawadaya_ab.webp" alt="O/L Sinhala Result 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md flex items-center gap-1.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                  <span>විශාල කර බලන්න</span>
-                </span>
-              </div>
-            </div>
-            <div class="text-xs font-bold text-slate-900">සාමාන්‍ය පෙළ නිල ප්‍රතිඵල ලේඛනය</div>
-            <div class="text-[11px] text-[#235E83] font-semibold">සාහිත්‍ය රසාස්වාදය A සාමාර්ථය</div>
-          </div>
-
-          <!-- Result Card 3 -->
-          <div class="bento-card p-4 cursor-pointer group result-card-trigger" data-img="assets/optimized/results/result_sinhala_b.webp" data-title="Verified Result: Sinhala Language Distinction">
-            <div class="aspect-[4/5] rounded-xl overflow-hidden bg-slate-100 relative mb-3 border border-slate-100">
-              <img src="assets/optimized/results/result_sinhala_b.webp" alt="O/L Sinhala Result 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md flex items-center gap-1.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                  <span>විශාල කර බලන්න</span>
-                </span>
-              </div>
-            </div>
-            <div class="text-xs font-bold text-slate-900">සාමාන්‍ය පෙළ නිල ප්‍රතිඵල ලේඛනය</div>
-            <div class="text-[11px] text-[#235E83] font-semibold">විශිෂ්ට සාමාර්ථ සහිත ප්‍රතිඵල</div>
-          </div>
-
-          <!-- Result Card 4 -->
-          <div class="bento-card p-4 cursor-pointer group result-card-trigger" data-img="assets/optimized/results/result_sinhala_a.webp" data-title="Verified Result: Double Distinction">
-            <div class="aspect-[4/5] rounded-xl overflow-hidden bg-slate-100 relative mb-3 border border-slate-100">
-              <img src="assets/optimized/results/result_sinhala_a.webp" alt="O/L Sinhala Result 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                <span class="text-xs font-bold px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md flex items-center gap-1.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                  <span>විශාල කර බලන්න</span>
-                </span>
-              </div>
-            </div>
-            <div class="text-xs font-bold text-slate-900">සාමාන්‍ය පෙළ නිල ප්‍රතිඵල ලේඛනය</div>
-            <div class="text-[11px] text-[#235E83] font-semibold">ද්විත්ව A සාමාර්ථ සාක්ෂි</div>
-          </div>
-
+        <div class="masonry" id="masonry">
+          <figure class="m-item" data-cat="seminar"><button type="button" data-lightbox="gallery" data-src="assets/optimized/seminars/seminar_crowd1.webp" data-caption="Seminar"><img src="assets/optimized/seminars/seminar_crowd1.webp" alt="Seminar" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="finalday"><button type="button" data-lightbox="gallery" data-src="assets/optimized/finalday/finalday_teacher.webp" data-caption="Final Day"><img src="assets/optimized/finalday/finalday_teacher.webp" alt="Final Day" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="seminar"><button type="button" data-lightbox="gallery" data-src="assets/optimized/seminars/seminar_stage.webp" data-caption="Seminar"><img src="assets/optimized/seminars/seminar_stage.webp" alt="Seminar stage" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="finalday"><button type="button" data-lightbox="gallery" data-src="assets/optimized/finalday/finalday_cheering.webp" data-caption="Final Day"><img src="assets/optimized/finalday/finalday_cheering.webp" alt="Final Day" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="class"><button type="button" data-lightbox="gallery" data-src="assets/optimized/teacher/teacher_teaching.webp" data-caption="Class"><img src="assets/optimized/teacher/teacher_teaching.webp" alt="Teaching" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="seminar"><button type="button" data-lightbox="gallery" data-src="assets/optimized/seminars/seminar_hall.webp" data-caption="Seminar"><img src="assets/optimized/seminars/seminar_hall.webp" alt="Seminar hall" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="finalday"><button type="button" data-lightbox="gallery" data-src="assets/optimized/finalday/finalday_students.webp" data-caption="Final Day"><img src="assets/optimized/finalday/finalday_students.webp" alt="Final Day students" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="finalday"><button type="button" data-lightbox="gallery" data-src="assets/optimized/finalday/finalday_group1.webp" data-caption="Final Day"><img src="assets/optimized/finalday/finalday_group1.webp" alt="Final Day" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="class"><button type="button" data-lightbox="gallery" data-src="assets/optimized/teacher/teacher_class.webp" data-caption="Class"><img src="assets/optimized/teacher/teacher_class.webp" alt="Class" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="seminar"><button type="button" data-lightbox="gallery" data-src="assets/optimized/seminars/seminar_session.webp" data-caption="Seminar"><img src="assets/optimized/seminars/seminar_session.webp" alt="Seminar session" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="finalday"><button type="button" data-lightbox="gallery" data-src="assets/optimized/finalday/finalday_moments.webp" data-caption="Final Day"><img src="assets/optimized/finalday/finalday_moments.webp" alt="Final Day" loading="lazy"></button></figure>
+          <figure class="m-item" data-cat="finalday"><button type="button" data-lightbox="gallery" data-src="assets/optimized/finalday/finalday_celebration.webp" data-caption="Final Day"><img src="assets/optimized/finalday/finalday_celebration.webp" alt="Final Day" loading="lazy"></button></figure>
         </div>
-
       </div>
     </section>
 
-    <!-- PHOTO GALLERY SECTION -->
-    <section id="gallery" class="py-16 md:py-24 bg-white">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <div class="pill-badge-navy mb-3">
-            <svg class="w-4 h-4 text-[#235E83]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            <span data-i18n="galleryBadge">ඡායාරූප ගැලරිය</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight sinhala-text" data-i18n="galleryTitle">
-            පන්ති කාමර සහ සම්මන්ත්‍රණ මතක
-          </h2>
+    <!-- ============ FAQ ============ -->
+    <section class="section faq" id="faq">
+      <div class="container faq-grid">
+        <div class="faq-head">
+          <span class="eyebrow reveal" data-i18n="faqEyebrow">ප්‍රශ්න</span>
+          <h2 class="h2 reveal" data-i18n="faqTitle">නිතර අසන ප්‍රශ්න</h2>
+          <p class="sub reveal" data-i18n="faqSub">තවත් ප්‍රශ්න තිබේද? WhatsApp හරහා අපෙන් අසන්න.</p>
+          <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="link-arrow reveal"><span>074 362 4117</span><svg class="ic"><use href="#i-arrow"/></svg></a>
         </div>
-
-        <!-- Filter Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
-          <button class="gallery-filter-btn active px-4 py-2 rounded-full text-xs font-bold bg-[#235E83] text-white" data-filter="all">සියල්ල</button>
-          <button class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="seminars">සම්මන්ත්‍රණ</button>
-          <button class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="finalday">Final Day සැමරුම්</button>
-          <button class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200" data-filter="classroom">පන්ති කාමර</button>
+        <div class="faq-list">
+          <details class="qa reveal" open>
+            <summary><span data-i18n="q1">Online සිසුන්ට Tutes ලැබෙන්නේ කෙසේද?</span><i></i></summary>
+            <p data-i18n="a1">ලියාපදිංචි වූ පසු Theory Tute, Paper Tutes, Q Book ඇතුළු නිබන්ධන කට්ටල කුරියර් මඟින් ඔබේ නිවසටම එවනු ලැබේ.</p>
+          </details>
+          <details class="qa reveal">
+            <summary><span data-i18n="q2">සජීවී පන්තිය මඟහැරුණොත්?</span><i></i></summary>
+            <p data-i18n="a2">සෑම පන්තියකම පටිගත කිරීම් (Recordings) ලබාදෙන අතර, ඒවා නරඹන සිසුන්ගේ වැඩද ගුරුතුමිය පරීක්ෂා කරයි.</p>
+          </details>
+          <details class="qa reveal">
+            <summary><span data-i18n="q3">ලියන පිළිතුරු ගුරුතුමියම පරීක්ෂා කරනවාද?</span><i></i></summary>
+            <p data-i18n="a3">ඔව්. පන්තියේදී සහ WhatsApp හරහා විචාර ඇතුළු සියලු වැඩ ගුරුතුමිය විසින්ම පරීක්ෂා කර ලකුණු ලබාදේ.</p>
+          </details>
+          <details class="qa reveal">
+            <summary><span data-i18n="q4">ලියාපදිංචි වන්නේ කෙසේද?</span><i></i></summary>
+            <p data-i18n="a4">074 362 4117 අංකයට WhatsApp පණිවිඩයක් එවන්න, නැතහොත් පහත පෝරමය පුරවන්න.</p>
+          </details>
         </div>
-
-        <!-- Staggered Gallery Grid -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="gallery-item seminars rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
-            <img src="assets/optimized/seminars/seminar_crowd1.webp" alt="Seminar Crowd" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-          </div>
-          <div class="gallery-item finalday rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
-            <img src="assets/optimized/finalday/finalday_celebration_16x9.webp" alt="Final Day Celebration" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-          </div>
-          <div class="gallery-item classroom rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
-            <img src="assets/optimized/teacher/teacher_class_16x9.webp" alt="Classroom" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-          </div>
-          <div class="gallery-item seminars rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
-            <img src="assets/optimized/seminars/seminar_crowd2.webp" alt="Seminar Crowd 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-          </div>
-          <div class="gallery-item finalday rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
-            <img src="assets/optimized/finalday/finalday_teacher_16x9.webp" alt="Final Day Teacher" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-          </div>
-          <div class="gallery-item classroom rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
-            <img src="assets/optimized/teacher/teacher_desk_16x9.webp" alt="Teaching Desk" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-          </div>
-          <div class="gallery-item finalday rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
-            <img src="assets/optimized/finalday/finalday_cheering.webp" alt="Final Day Cheering" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-          </div>
-          <div class="gallery-item finalday rounded-2xl overflow-hidden aspect-video bg-slate-100 border border-slate-200">
-            <img src="assets/optimized/finalday/finalday_group1_16x9.webp" alt="Final Day Blessings" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION) -->
-    <section id="faq" class="py-16 md:py-24 bg-slate-50/70 border-t border-slate-200/80">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
-        
-        <div class="text-center max-w-2xl mx-auto mb-14">
-          <div class="pill-badge-gold mb-3">
-            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span data-i18n="faqBadge">නිතර අසන ගැටලු</span>
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <span class="contact-deco" aria-hidden="true"></span>
+          <div class="contact-info">
+            <span class="eyebrow reveal" data-i18n="ctEyebrow">සම්බන්ධ වන්න</span>
+            <h2 class="h2 reveal" data-i18n="ctTitle">ඔබේ A ගමන අදම අරඹන්න</h2>
+            <ul class="contact-list reveal">
+              <li><a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener"><span class="c-ic"><svg class="ic"><use href="#i-wa"/></svg></span><span><small>WhatsApp</small>074 362 4117</span></a></li>
+              <li><a href="mailto:kwsinhala@gmail.com"><span class="c-ic"><svg class="ic"><use href="#i-mail"/></svg></span><span><small>Email</small>kwsinhala@gmail.com</span></a></li>
+              <li><div><span class="c-ic"><svg class="ic"><use href="#i-pin"/></svg></span><span><small data-i18n="ctPlace">ස්ථානය</small><span data-i18n="ctPlaceV">මීගහතැන්න, ශ්‍රී ලංකාව</span></span></div></li>
+            </ul>
+            <div class="socials reveal">
+              <a href="https://whatsapp.com/channel/0029VajTCfCADTOA3ZcOol3W" target="_blank" rel="noopener" aria-label="WhatsApp Channel"><svg class="ic"><use href="#i-wa"/></svg></a>
+              <a href="https://youtube.com/@kaushalyawicramarachchi" target="_blank" rel="noopener" aria-label="YouTube"><svg class="ic"><use href="#i-yt"/></svg></a>
+              <a href="https://www.facebook.com/kaushalyawicramarachchisinhala" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+              <a href="https://www.tiktok.com/@kw_sinhala" target="_blank" rel="noopener" aria-label="TikTok"><svg class="ic"><use href="#i-tt"/></svg></a>
+              <a href="https://www.instagram.com/kaushalya_wicramarachchi_sin" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic"><use href="#i-ig"/></svg></a>
+            </div>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight sinhala-text" data-i18n="faqTitle">
-            ඔබට දැනගැනීමට අවශ්‍ය සියල්ල
-          </h2>
+
+          <form class="form reveal" id="regForm" novalidate>
+            <h3 data-i18n="fmTitle">ලියාපදිංචි වීම</h3>
+            <label class="field">
+              <span data-i18n="fmName">ශිෂ්‍යයාගේ නම</span>
+              <input type="text" id="fName" required autocomplete="name">
+            </label>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="fmPhone">WhatsApp අංකය</span>
+                <input type="tel" id="fPhone" required placeholder="07X XXX XXXX" autocomplete="tel" inputmode="tel">
+              </label>
+              <label class="field">
+                <span data-i18n="fmSchool">පාසල</span>
+                <input type="text" id="fSchool" required>
+              </label>
+            </div>
+            <div class="field-row">
+              <label class="field">
+                <span data-i18n="fmGrade">විභාග වර්ෂය</span>
+                <select id="fGrade">
+                  <option>2026 O/L</option>
+                  <option>2027 O/L</option>
+                  <option>Revision</option>
+                </select>
+              </label>
+              <label class="field">
+                <span data-i18n="fmMode">පන්තිය</span>
+                <select id="fMode">
+                  <option>ONLINE</option>
+                  <option>ZINERGY මතුගම</option>
+                  <option>LAYARA මීගහතැන්න</option>
+                </select>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block"><svg class="ic"><use href="#i-wa"/></svg><span data-i18n="fmBtn">WhatsApp හරහා යවන්න</span></button>
+            <p class="form-note" id="formNote" role="status"></p>
+          </form>
         </div>
-
-        <!-- Accordion Cards -->
-        <div class="space-y-4">
-          
-          <div class="bento-card overflow-hidden">
-            <button class="faq-accordion-btn w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#235E83] transition">
-              <span class="text-base sm:text-lg" data-i18n="faq1Q">ONLINE සිසුන්ට නිබන්ධන ලැබෙන්නේ කෙසේද?</span>
-              <svg class="faq-arrow w-5 h-5 text-[#235E83] rotate-180 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="faq-content px-6 pb-6 text-slate-600 text-sm leading-relaxed" data-i18n="faq1A">
-              ලියාපදිංචි වූ පසු අදාළ මාසයේ සියලුම මුද්‍රිත නිබන්ධන කට්ටල (Theory, Paper Tutes, Q Books) කුරියර් සේවාව මඟින් ආරක්ෂිතව ඔබේ නිවසටම ගෙන්වා දෙනු ලැබේ.
-            </div>
-          </div>
-
-          <div class="bento-card overflow-hidden">
-            <button class="faq-accordion-btn w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#235E83] transition">
-              <span class="text-base sm:text-lg" data-i18n="faq2Q">සජීවී පන්තිය මඟහැරුණහොත් නැවත නැරඹිය හැකිද?</span>
-              <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed" data-i18n="faq2A">
-              ඔව්. සෑම සජීවී පන්තියකම උසස් තාක්ෂණික පටිගත කිරීම් (Recordings) අපගේ ශිෂ්‍ය පද්ධතිය තුළින් විභාගය අවසන් වන තෙක් ඕනෑම වේලාවක නැවත නැරඹිය හැක.
-            </div>
-          </div>
-
-          <div class="bento-card overflow-hidden">
-            <button class="faq-accordion-btn w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#235E83] transition">
-              <span class="text-base sm:text-lg" data-i18n="faq3Q">ලිඛිත පිළිතුරු ගුරුතුමිය පෞද්ගලිකව පරීක්ෂා කරනවාද?</span>
-              <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed" data-i18n="faq3A">
-              නියත වශයෙන්ම. භෞතික සහ ඔන්ලයින් පන්ති දෙකෙහිම සිසුන් ලියන විචාර, රසවින්දන සහ ප්‍රශ්න පත්‍ර ගුරුතුමිය විසින්ම පෞද්ගලිකව පරීක්ෂා කර ලකුණු සහ උපදෙස් ලබා දේ.
-            </div>
-          </div>
-
-          <div class="bento-card overflow-hidden">
-            <button class="faq-accordion-btn w-full p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#235E83] transition">
-              <span class="text-base sm:text-lg" data-i18n="faq4Q">නව පන්ති සඳහා ලියාපදිංචි වන්නේ කෙසේද?</span>
-              <svg class="faq-arrow w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <div class="faq-content hidden px-6 pb-6 text-slate-600 text-sm leading-relaxed" data-i18n="faq4A">
-              අපගේ නිල WhatsApp අංකය වන 074 362 4117 වෙත පණිවිඩයක් එවන්න. නැතහොත් පහත පෝරමය පුරවා ක්ෂණිකව ලියාපදිංචි වන්න.
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- REGISTRATION ENGINE -->
-    <section id="contact" class="py-16 md:py-24 bg-white border-t border-slate-200/80">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
-          <!-- Contact Channels (Left 5) -->
-          <div class="lg:col-span-5 space-y-6">
-            <div>
-              <div class="pill-badge-gold mb-3">
-                <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                <span data-i18n="contactBadge">සම්බන්ධ වන්න</span>
-              </div>
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight sinhala-text" data-i18n="contactTitle">
-                ඔබේ A සාමාර්ථයේ ගමන අදම අරඹන්න
-              </h2>
-            </div>
-
-            <!-- Contact Cards -->
-            <div class="space-y-4">
-              
-              <!-- WhatsApp Card -->
-              <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" class="bento-card p-4 flex items-center gap-4 group hover:border-emerald-500 transition">
-                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-[#25D366] flex items-center justify-center shrink-0">
-                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
-                </div>
-                <div>
-                  <div class="text-xs text-slate-500 font-medium">Hotline සහ WhatsApp</div>
-                  <div class="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition">074 362 4117</div>
-                </div>
-              </a>
-
-              <!-- Email Card -->
-              <a href="mailto:kwsinhala@gmail.com" class="bento-card p-4 flex items-center gap-4 group hover:border-[#235E83] transition">
-                <div class="w-12 h-12 rounded-xl bg-sky-100 text-[#235E83] flex items-center justify-center shrink-0">
-                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                </div>
-                <div>
-                  <div class="text-xs text-slate-500 font-medium">Email ලිපිනය</div>
-                  <div class="text-base font-bold text-slate-900 group-hover:text-[#235E83] transition">kwsinhala@gmail.com</div>
-                </div>
-              </a>
-
-              <!-- Physical Centers Card -->
-              <div class="bento-card p-4 flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
-                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                </div>
-                <div>
-                  <div class="text-xs text-slate-500 font-medium">භෞතික මධ්‍යස්ථාන</div>
-                  <div class="text-base font-bold text-slate-900">මතුගම සහ මීගහතැන්න</div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Social Media Channels -->
-            <div>
-              <div class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">අපගේ සමාජ මාධ්‍ය ජාලයන්</div>
-              <div class="flex items-center gap-3">
-                <a href="https://whatsapp.com/channel/0029VajTCfCADTOA3ZcOol3W" target="_blank" class="p-3 rounded-xl bg-slate-100 text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 transition" title="WhatsApp Channel">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
-                </a>
-                <a href="https://youtube.com/@kaushalyawicramarachchi" target="_blank" class="p-3 rounded-xl bg-slate-100 text-slate-700 hover:text-red-600 hover:bg-red-50 transition" title="YouTube">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.facebook.com/kaushalyawicramarachchisinhala" target="_blank" class="p-3 rounded-xl bg-slate-100 text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition" title="Facebook">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@kw_sinhala" target="_blank" class="p-3 rounded-xl bg-slate-100 text-slate-700 hover:text-slate-950 hover:bg-slate-200 transition" title="TikTok">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Quick WhatsApp Registration Form (Right 7) -->
-          <div class="lg:col-span-7">
-            <div class="bento-card bento-gold-accent p-8 shadow-2xl">
-              <h3 class="text-2xl font-bold text-slate-900 mb-2" data-i18n="formTitle">ක්ෂණික ලියාපදිංචි වීමේ පෝරමය</h3>
-              <p class="text-slate-600 text-sm mb-6 sinhala-text">පහත තොරතුරු සම්පූර්ණ කර සෘජුවම WhatsApp හරහා ගුරුතුමියගේ කාර්ය මණ්ඩලය අමතන්න.</p>
-
-              <form id="quickRegisterForm" class="space-y-4">
-                
-                <div>
-                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5" data-i18n="formName">ශිෂ්‍යයාගේ නම</label>
-                  <input type="text" id="regName" required placeholder="සම්පූර්ණ නම ඇතුළත් කරන්න" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FFC20E] focus:ring-2 focus:ring-[#FFC20E]/20 text-slate-900 bg-white text-sm outline-none transition shadow-sm">
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5" data-i18n="formPhone">WhatsApp දුරකථන අංකය</label>
-                    <input type="tel" id="regPhone" required placeholder="07X XXXXXXX" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FFC20E] focus:ring-2 focus:ring-[#FFC20E]/20 text-slate-900 bg-white text-sm outline-none transition shadow-sm">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5" data-i18n="formSchool">පාසල</label>
-                    <input type="text" id="regSchool" required placeholder="පාසලේ නම" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FFC20E] focus:ring-2 focus:ring-[#FFC20E]/20 text-slate-900 bg-white text-sm outline-none transition shadow-sm">
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5" data-i18n="formGrade">ශ්‍රේණිය</label>
-                    <select id="regGrade" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FFC20E] focus:ring-2 focus:ring-[#FFC20E]/20 text-slate-900 bg-white text-sm outline-none transition shadow-sm">
-                      <option value="Grade 11 (2026 O/L)">Grade 11 (2026 O/L)</option>
-                      <option value="Grade 10 (2027 O/L)">Grade 10 (2027 O/L)</option>
-                      <option value="Revision Batch">Revision Batch</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5" data-i18n="formMode">පන්ති මාදිලිය</label>
-                    <select id="regMode" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#FFC20E] focus:ring-2 focus:ring-[#FFC20E]/20 text-slate-900 bg-white text-sm outline-none transition shadow-sm">
-                      <option value="ONLINE (දිවයින පුරා)">ONLINE (දිවයින පුරා)</option>
-                      <option value="ZINERGY මතුගම (භෞතික)">ZINERGY මතුගම (භෞතික)</option>
-                      <option value="LAYARA මීගහතැන්න (භෞතික)">LAYARA මීගහතැන්න (භෞතික)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="pt-3">
-                  <button type="submit" class="btn-primary w-full py-3.5 text-base shadow-xl">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
-                    <span data-i18n="formBtn">WhatsApp මඟින් ලියාපදිංචි වන්න</span>
-                  </button>
-                </div>
-
-              </form>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </section>
   </main>
 
-  <!-- MODERN DARK SLATE FOOTER -->
-  <footer class="bg-slate-950 text-slate-400 py-12 pb-20 sm:pb-12 border-t border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        
-        <div class="flex items-center gap-3 text-center md:text-left">
-          <img src="assets/logos/tight_logo_w.png" alt="Sinhala KW" class="h-9 w-auto object-contain">
-          <div class="text-xs text-slate-400">
-            © 2026 Sinhala KW. කෞෂල්‍යා වික්‍රමාරච්චි. All Rights Reserved.
-          </div>
-        </div>
-
-        <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-xs font-semibold text-slate-400 text-center">
-          <a href="#about" class="hover:text-white transition py-1">ගුරුතුමිය ගැන</a>
-          <a href="#process" class="hover:text-white transition py-1">ක්‍රමවේදය</a>
-          <a href="#pillars" class="hover:text-white transition py-1">සුවිශේෂතා</a>
-          <a href="#classes" class="hover:text-white transition py-1">පන්ති විස්තර</a>
-          <a href="#results" class="hover:text-white transition py-1">ප්‍රතිඵල</a>
-          <a href="#contact" class="hover:text-white transition py-1">සම්බන්ධ වන්න</a>
-          <a href="3d-viewer.html" target="_blank" class="hover:text-amber-400 text-amber-300 font-bold transition py-1 flex items-center gap-1.5">
-            <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-            <span>3D Model</span>
-          </a>
-        </div>
-
-      </div>
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="assets/logos/tight_logo_w.png" alt="Sinhala KW" class="footer-logo" loading="lazy">
+      <nav class="footer-nav">
+        <a href="#about" data-i18n="navAbout">ගුරුතුමිය</a>
+        <a href="#results" data-i18n="navResults">ප්‍රතිඵල</a>
+        <a href="#process" data-i18n="navProcess">ක්‍රමවේදය</a>
+        <a href="#classes" data-i18n="navClasses">පන්ති</a>
+        <a href="#gallery" data-i18n="navGallery">ගැලරිය</a>
+        <a href="3d-viewer.html">3D Globe</a>
+      </nav>
+      <p class="copy">© <span id="year">2026</span> Sinhala KW · කෞෂල්‍යා වික්‍රමාරච්චි</p>
     </div>
   </footer>
 
-  <!-- LIGHTBOX MODAL FOR RESULT INSPECTION -->
-  <div id="resultModal" class="modal-overlay">
-    <div class="modal-content p-6">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-        <h3 id="modalTitle" class="text-lg font-bold text-slate-900">ප්‍රතිඵල ලේඛනය</h3>
-        <button id="modalCloseBtn" class="p-2 rounded-full hover:bg-slate-100 text-slate-500 hover:text-slate-800 transition">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div class="py-4 flex justify-center bg-slate-50 rounded-xl mt-4">
-        <img id="modalImg" src="" alt="Verified Result" class="max-h-[75vh] w-auto rounded-lg object-contain shadow-sm">
-      </div>
-    </div>
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="fab" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+    <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous"><svg class="ic"><use href="#i-left"/></svg></button>
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Next"><svg class="ic"><use href="#i-right"/></svg></button>
   </div>
 
-  <!-- FLOATING ACTION BUTTON (ALWAYS ACCESSIBLE) -->
-  <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" class="floating-action-whatsapp" title="Chat on WhatsApp">
-    <svg class="w-6 h-6 sm:w-7 sm:h-7 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
-  </a>
-
-  <!-- JavaScript Interaction Engine -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
+  <script type="module" src="js/hero3d.js"></script>
 </body>
 </html>

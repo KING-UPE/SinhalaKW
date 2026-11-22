@@ -38,8 +38,8 @@
     <div class="glass-panel px-4 py-2.5 rounded-2xl flex items-center gap-3 pointer-events-auto shadow-2xl">
       <img src="assets/logos/tight_logo_w.png" alt="Sinhala KW" class="h-8 w-auto object-contain">
       <div class="border-l border-white/20 pl-3">
-        <div class="text-xs font-bold text-amber-400 uppercase tracking-wider">3D Interactive Asset</div>
-        <div class="text-sm font-extrabold text-white">සිංහල KW Official Emblem</div>
+        <div class="text-xs font-bold text-amber-400 uppercase tracking-wider">3D Interactive Experience</div>
+        <div class="text-sm font-extrabold text-white">සිංහල KW Official 3D Globe</div>
       </div>
     </div>
 
@@ -61,18 +61,21 @@
   </div>
 
   <!-- Bottom Floating Control Bar -->
-  <footer class="fixed bottom-6 left-1/2 -translate-x-1/2 z-20 glass-panel rounded-2xl p-2 sm:p-2.5 flex items-center gap-2 shadow-2xl">
-    <button id="btnStandalone" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-[#FFC20E] text-slate-950 shadow-md">
-      Standalone Emblem
+  <footer class="fixed bottom-6 left-1/2 -translate-x-1/2 z-20 glass-panel rounded-2xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xl max-w-[95vw] overflow-x-auto">
+    <button id="btnGlobeOrb" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition bg-[#FFC20E] text-slate-950 shadow-md whitespace-nowrap">
+      🌐 Spherical Globe Orb
     </button>
-    <button id="btnMedallion" class="px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10">
-      Medallion Coin
+    <button id="btnWorldGlobe" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10 whitespace-nowrap">
+      🏆 Academic World Globe
     </button>
-    <div class="h-5 w-px bg-white/20 mx-1"></div>
-    <button id="btnAutoRotate" class="p-2 rounded-xl text-xs font-bold transition text-amber-400 hover:bg-white/10" title="Toggle Auto-Rotate">
+    <button id="btnMedallion" class="px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10 whitespace-nowrap">
+      🥇 Emblem Medallion
+    </button>
+    <div class="h-5 w-px bg-white/20 mx-1 flex-shrink-0"></div>
+    <button id="btnAutoRotate" class="p-2 rounded-xl text-xs font-bold transition text-amber-400 hover:bg-white/10 flex-shrink-0" title="Toggle Auto-Rotate">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
     </button>
-    <button id="btnResetView" class="p-2 rounded-xl text-xs font-bold transition text-slate-300 hover:bg-white/10" title="Reset Camera">
+    <button id="btnResetView" class="p-2 rounded-xl text-xs font-bold transition text-slate-300 hover:bg-white/10 flex-shrink-0" title="Reset Camera">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
     </button>
   </footer>
@@ -87,7 +90,7 @@
 
     // Camera
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-    camera.position.set(2.5, 1.2, 3.5);
+    camera.position.set(2.4, 1.2, 3.2);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -105,88 +108,114 @@
     controls.dampingFactor = 0.05;
     controls.autoRotate = true;
     controls.autoRotateSpeed = 2.0;
-    controls.maxDistance = 10;
-    controls.minDistance = 1.5;
+    controls.maxDistance = 12;
+    controls.minDistance = 1.2;
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
     scene.add(ambientLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0xfff5e6, 2.5); // Key warm light
+    const dirLight1 = new THREE.DirectionalLight(0xfff5e6, 2.6); // Warm key light
     dirLight1.position.set(5, 5, 5);
     scene.add(dirLight1);
 
-    const dirLight2 = new THREE.DirectionalLight(0x99ccff, 1.8); // Cool rim light
+    const dirLight2 = new THREE.DirectionalLight(0x99ccff, 1.8); // Cool fill light
     dirLight2.position.set(-5, 3, -5);
     scene.add(dirLight2);
 
     const pointLight = new THREE.PointLight(0xffd700, 3, 10);
-    pointLight.position.set(0, 0, 3);
+    pointLight.position.set(0, 0, 3.5);
     scene.add(pointLight);
 
     // Models container
-    let currentModel = null;
-    let standaloneModel = null;
+    let currentModelType = 'globeOrb';
+    let globeOrbModel = null;
+    let worldGlobeModel = null;
     let medallionModel = null;
 
     const loader = new THREE.GLTFLoader();
 
-    // Load Standalone
-    loader.load('assets/3d/sinhala_kw_emblem_standalone.glb', (gltf) => {
-      standaloneModel = gltf.scene;
-      tuneMaterials(standaloneModel, true);
-      scene.add(standaloneModel);
-      currentModel = standaloneModel;
+    // 1. Load Globe Orb (Default Model)
+    loader.load('assets/3d/sinhala_kw_globe_orb.glb', (gltf) => {
+      globeOrbModel = gltf.scene;
+      tuneMaterials(globeOrbModel);
+      scene.add(globeOrbModel);
       loadingEl.style.opacity = '0';
       setTimeout(() => loadingEl.style.display = 'none', 500);
     });
 
-    // Load Medallion
+    // 2. Load Academic World Globe (With Stand)
+    loader.load('assets/3d/sinhala_kw_world_globe.glb', (gltf) => {
+      worldGlobeModel = gltf.scene;
+      tuneMaterials(worldGlobeModel);
+      worldGlobeModel.visible = false;
+      scene.add(worldGlobeModel);
+    });
+
+    // 3. Load Medallion Coin
     loader.load('assets/3d/sinhala_kw_medallion.glb', (gltf) => {
       medallionModel = gltf.scene;
-      tuneMaterials(medallionModel, false);
+      medallionModel.scale.y *= -1;
+      tuneMaterials(medallionModel);
       medallionModel.visible = false;
       scene.add(medallionModel);
     });
 
-    function tuneMaterials(obj, isStandalone) {
+    function tuneMaterials(obj) {
       obj.traverse((child) => {
         if (child.isMesh && child.material) {
-          // Boost luxury gold look
-          if (child.name.includes('Emblem') || child.name.includes('Rim') || isStandalone) {
-            child.material.metalness = 0.95;
-            child.material.roughness = 0.18;
+          const name = child.name.toLowerCase();
+          if (name.includes('ribbon') || name.includes('relief') || name.includes('equator') || name.includes('tropic') || name.includes('emblem')) {
+            child.material.metalness = 0.92;
+            child.material.roughness = 0.16;
             child.material.color = new THREE.Color(0xFFC20E);
+          } else if (name.includes('core') || name.includes('obsidian')) {
+            child.material.metalness = 0.85;
+            child.material.roughness = 0.12;
+            child.material.color = new THREE.Color(0x0a1424);
+          } else if (name.includes('stem') || name.includes('pin') || name.includes('arm') || name.includes('base')) {
+            child.material.metalness = 0.95;
+            child.material.roughness = 0.20;
+            child.material.color = new THREE.Color(0xE5A91A);
           }
         }
       });
     }
 
     // UI Buttons
-    const btnStandalone = document.getElementById('btnStandalone');
+    const btnGlobeOrb = document.getElementById('btnGlobeOrb');
+    const btnWorldGlobe = document.getElementById('btnWorldGlobe');
     const btnMedallion = document.getElementById('btnMedallion');
     const btnAutoRotate = document.getElementById('btnAutoRotate');
     const btnResetView = document.getElementById('btnResetView');
 
-    btnStandalone.addEventListener('click', () => {
-      if (standaloneModel && medallionModel) {
-        standaloneModel.visible = true;
-        medallionModel.visible = false;
-        currentModel = standaloneModel;
-        btnStandalone.className = 'px-4 py-2 rounded-xl text-xs font-bold transition bg-[#FFC20E] text-slate-950 shadow-md';
-        btnMedallion.className = 'px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10';
-      }
-    });
+    function selectModel(type) {
+      currentModelType = type;
+      if (globeOrbModel) globeOrbModel.visible = (type === 'globeOrb');
+      if (worldGlobeModel) worldGlobeModel.visible = (type === 'worldGlobe');
+      if (medallionModel) medallionModel.visible = (type === 'medallion');
 
-    btnMedallion.addEventListener('click', () => {
-      if (standaloneModel && medallionModel) {
-        standaloneModel.visible = false;
-        medallionModel.visible = true;
-        currentModel = medallionModel;
-        btnMedallion.className = 'px-4 py-2 rounded-xl text-xs font-bold transition bg-[#FFC20E] text-slate-950 shadow-md';
-        btnStandalone.className = 'px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10';
+      const activeClasses = 'px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition bg-[#FFC20E] text-slate-950 shadow-md whitespace-nowrap';
+      const inactiveClasses = 'px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition text-slate-300 hover:text-white hover:bg-white/10 whitespace-nowrap';
+
+      btnGlobeOrb.className = (type === 'globeOrb') ? activeClasses : inactiveClasses;
+      btnWorldGlobe.className = (type === 'worldGlobe') ? activeClasses : inactiveClasses;
+      btnMedallion.className = (type === 'medallion') ? activeClasses : inactiveClasses;
+
+      // Adjust camera target
+      if (type === 'worldGlobe') {
+        camera.position.set(3.2, 1.4, 4.2);
+        controls.target.set(0, -0.3, 0);
+      } else {
+        camera.position.set(2.4, 1.2, 3.2);
+        controls.target.set(0, 0, 0);
       }
-    });
+      controls.update();
+    }
+
+    btnGlobeOrb.addEventListener('click', () => selectModel('globeOrb'));
+    btnWorldGlobe.addEventListener('click', () => selectModel('worldGlobe'));
+    btnMedallion.addEventListener('click', () => selectModel('medallion'));
 
     btnAutoRotate.addEventListener('click', () => {
       controls.autoRotate = !controls.autoRotate;
@@ -194,8 +223,13 @@
     });
 
     btnResetView.addEventListener('click', () => {
-      camera.position.set(2.5, 1.2, 3.5);
-      controls.target.set(0, 0, 0);
+      if (currentModelType === 'worldGlobe') {
+        camera.position.set(3.2, 1.4, 4.2);
+        controls.target.set(0, -0.3, 0);
+      } else {
+        camera.position.set(2.4, 1.2, 3.2);
+        controls.target.set(0, 0, 0);
+      }
       controls.update();
     });
 

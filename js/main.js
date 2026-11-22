@@ -1,442 +1,267 @@
-// Sinhala KW | Kaushalya Wicramarachchi Official Script (Clean & Minimalist)
+// Sinhala KW · site interactions
+(() => {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Language Dictionary (NO DASHES, PURE PROFESSIONAL COPY)
-  const translations = {
-    si: {
-      navAbout: 'ගුරුතුමිය ගැන',
-      navProcess: 'ක්‍රමවේදය',
-      navPillars: 'සුවිශේෂතා',
-      navClasses: 'පන්ති විස්තර',
-      navResults: 'ප්‍රතිඵල',
-      navFaq: 'ගැටලු',
-      navContact: 'සම්බන්ධ වන්න',
-      navEnroll: 'ලියාපදිංචිය',
-      
-      announcement: '2026 සහ 2027 සාමාන්‍ය පෙළ සිංහල නව පන්ති සඳහා ලියාපදිංචිය දැන් ඇරඹුණා!',
-      
-      heroBadge: 'ලංකාවේ අංක 1 සාමාන්‍ය පෙළ සිංහල වැඩපිළිවෙළ',
-      heroTitle1: 'සාමාන්‍ය පෙළ සිංහලෙන්',
-      heroTitleHighlight: 'A සාමාර්ථ 2ක්',
-      heroTitle2: 'එකම තැනකින් සහතික කරන ක්‍රමවේදය',
-      heroDesc: 'පේරාදෙණිය විශ්වවිද්‍යාලයේ ශාස්ත්‍රවේදී විශේෂ උපාධිධාරී කෞෂල්‍යා වික්‍රමාරච්චි ගුරුතුමියගේ පෞද්ගලික මඟපෙන්වීමෙන්, විෂය නිර්දේශය සිතුවම් සහ විශේෂ ක්‍රම ඔස්සේ සරලව ඉගෙන ගනිමු.',
-      heroCtaWhatsapp: 'WhatsApp මඟින් සම්බන්ධ වන්න',
-      heroCtaProcess: 'වැඩපිළිවෙළ බලන්න',
-      
-      stat1Number: '100%',
-      stat1Label: 'සම්පූර්ණ විෂය නිර්දේශය සිතුවම් මඟින්',
-      stat2Number: 'A 2ක්',
-      stat2Label: 'භාෂාව සහ සාහිත්‍ය රසාස්වාදය එකම තැනින්',
-      stat3Number: 'මාස 4ක්',
-      stat3Label: 'විභාගයට පෙර සීඝ්‍ර ආවරණය සහ පුනරීක්ෂණය',
-      stat4Number: 'දිවයින පුරා',
-      stat4Label: 'නිබන්ධන කට්ටල නිවසටම බෙදාහැරීම',
-
-      aboutBadge: 'ඔබේ ගුරුතුමිය',
-      aboutName: 'කෞෂල්‍යා වික්‍රමාරච්චි',
-      aboutDegree: 'Bachelor of Arts Special Degree, University of Peradeniya',
-      aboutDesc1: 'අ.පො.ස උසස් පෙළ කලා අංශයෙන් A සාමාර්ථ 3 ක් ලබාගෙන පේරාදෙණිය විශ්වවිද්‍යාලයේ ශාස්ත්‍ර පීඨයට ඇතුළත් වී පන්ති සාමාර්ථ සහිතව විශේෂ උපාධිය ලබාගෙන ඇත.',
-      aboutDesc2: 'සාමාන්‍ය පෙළ සිංහල භාෂාව හා සාහිත්‍යය, සිංහල සාහිත්‍ය රසාස්වාදය විෂයන් දෙකෙහි දේශිකාවියක් ලෙස ඉතා සාර්ථක ඉගැන්වීම් රටාවක් සහ ක්‍රමවත් වැඩපිළිවෙළක් තුළින් කෙටි කාලයක් තුළ දී ලංකාව පුරා විහිදී සිටින සිසුන් රාශියකට සිය සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනයේ A සාමාර්ථ 2 ක් ලබාගැනීම සඳහා එක් ගුරුවරියක ලෙස මඟපෙන්වීමට සමත්ව ඇත.',
-
-      processBadge: 'අපගේ ක්‍රමවේදය',
-      processTitle: 'A සාමාර්ථ 2ක් දක්වා ඔබව රැගෙන යන පියවර 6',
-      processSubtitle: 'විෂය නිර්දේශයේ ආරම්භයේ සිට අවසන් විභාග ශාලාව දක්වා ශිෂ්‍යයා ක්‍රමානුකූලව මෙහෙයවන පූර්ණ අධ්‍යාපනික වැඩපිළිවෙළ.',
-      step1Title: 'සිද්ධාන්ත පන්තිය (Theory Class)',
-      step1Desc: 'විෂය නිර්දේශයේ සියලු කොටස් සිතුවම් සහ විශේෂ ක්‍රම ඔස්සේ මුල සිට සරලව මනසේ තැන්පත් කරවීම.',
-      step2Title: 'සජීවී විභාග සහ ශ්‍රේණිගත කිරීම් (Live Exam)',
-      step2Desc: 'පන්ති වේලාව තුළදීම ප්‍රශ්න පත්‍ර ලිවීම, ලකුණු ලබාදීම සහ දිවයිනේ ශ්‍රේණිගත කිරීම් මඟින් ශිෂ්‍යයා නිරන්තරයෙන් ඇගයීම.',
-      step3Title: 'මාස 4ක සීඝ්‍ර පුනරීක්ෂණය (Rapid Revision)',
-      step3Desc: 'විභාගයට මාස 4කට පෙර සම්පූර්ණ විෂය නිර්දේශය නැවත ආවරණය කරමින් සියලු අංශ ශක්තිමත් කිරීම.',
-      step4Title: 'Final Shot ප්‍රශ්න පත්‍ර පන්තිය',
-      step4Desc: 'විභාග රටාවටම අනුකූලව ගුරුතුමිය සකසන ලද විශේෂ ප්‍රශ්න පත්‍ර ලිවීම, සම්පූර්ණ සිද්ධාන්ත සාකච්ඡාව සහ ලකුණු ගැනීමේ රහස්.',
-      step5Title: 'විශේෂ සම්මන්ත්‍රණ මාලාව (Seminars)',
-      step5Desc: 'වාර විභාග සහ අවසන් විභාගයට සූදානම් කරවන Term Test Revise Seminar, MCQ Seminar සහ විශේෂ අවසන් සම්මන්ත්‍රණ.',
-      step6Title: 'පටිගත කළ පන්ති (Recorded Classes)',
-      step6Desc: 'සජීවීව සම්බන්ධ වීමට නොහැකි සිසුන්ට විභාගය දක්වාම නැවත නැවත නැරඹීමේ පහසුකම සහ පුද්ගලික අධීක්ෂණය.',
-
-      pillarBadge: 'සුවිශේෂත්වයන්',
-      pillarTitle: 'වැඩ කරන සිංහල පන්තියේ සුවිශේෂී කුලුනු 3',
-      pillar1Title: 'Tutes නිවසටම ගෙන්වා ගැනීම',
-      pillar1Desc: 'ක්‍රමානුකූල වැඩපිළිවෙළට අදාළ සම්පූර්ණ මුද්‍රිත නිබන්ධන කට්ටල නිවසටම: Theory Tute, Paper Tutes, Q Book, MCQ Tute සහ Final Guess Papers.',
-      pillar2Title: 'පන්තියේදීම විභාග හුරුව',
-      pillar2Desc: 'පන්තිය තුළදීම විචාර, රසවින්දන ඇතුළු සියලු ප්‍රශ්න නියමිත කාලයට ලිවීමේ කාල කළමනාකරණ අත්දැකීම ලබා දීම.',
-      pillar3Title: 'සිසුන්ගේ වැඩ පෞද්ගලිකව පරීක්ෂා කිරීම',
-      pillar3Desc: 'ගුරුතුමිය විසින්ම පන්තියේදී සහ WhatsApp හරහා සිසුන්ගේ විචාර ඇතුළු වැඩ පරීක්ෂා කිරීම, ලකුණු ලබාදීම සහ ශිෂ්‍යයා නිවැරදි දිශානතියට යොමු කිරීම.',
-
-      classesBadge: 'පන්ති පැවැත්වෙන ස්ථාන සහ ක්‍රම',
-      classesTitle: 'ඔබට පහසු ක්‍රමයකින් සම්බන්ධ වන්න',
-      tabOnline: 'ONLINE (දිවයින පුරා)',
-      tabMathugama: 'ZINERGY මතුගම',
-      tabMeegahathenna: 'LAYARA මීගහතැන්න',
-      
-      onlineTitle: 'ONLINE පන්තිය ශ්‍රී ලංකාව පුරාම නිවසේ සිට',
-      onlinePoint1: 'HD තාක්ෂණයෙන් සජීවී Zoom දේශන සහ පටිගත කිරීම් (Recordings)',
-      onlinePoint2: 'මුද්‍රිත නිබන්ධන කට්ටල කුරියර් මඟින් නිවසටම ප්‍රවාහනය',
-      onlinePoint3: 'WhatsApp හරහා ගුරුතුමිය විසින්ම පෞද්ගලිකව වැඩ පරීක්ෂා කිරීම',
-
-      mathugamaTitle: 'ZINERGY මතුගම භෞතික පන්තිය',
-      mathugamaPoint1: 'සම්පූර්ණ වායුසමනය කළ නවීන දේශන ශාලා පහසුකම්',
-      mathugamaPoint2: 'පන්තිය තුළදීම විභාග ප්‍රශ්න පත්‍ර ලිවීම සහ ගුරුතුමිය අතින්ම ඇගයීම',
-      mathugamaPoint3: 'මුද්‍රිත සම්පූර්ණ නිබන්ධන කට්ටල පන්තියේදීම ලබාදීම',
-
-      meegahathennaTitle: 'LAYARA මීගහතැන්න භෞතික පන්තිය',
-      meegahathennaPoint1: 'පුළුල් ඉඩකඩ සහිත සුවපහසු ඉගෙනුම් පරිසරය',
-      meegahathennaPoint2: 'සතිපතා ප්‍රශ්න පත්‍ර ලිවීම සහ එක් එක් ශිෂ්‍යයාට පුද්ගලික අවධානය',
-      meegahathennaPoint3: 'සියලු සිද්ධාන්ත නිබන්ධන සහ ප්‍රශ්න පත්‍ර කට්ටල පන්තියේදීම',
-
-      resultsBadge: 'සාක්ෂි සහිත විශිෂ්ට ප්‍රතිඵල',
-      resultsTitle: 'සිසුන්ගේ සැබෑ විභාග ප්‍රතිඵල ලේඛන',
-      resultsSubtitle: 'සාමාන්‍ය පෙළ විභාග දෙපාර්තමේන්තුවේ නිල ප්‍රතිඵල පත්‍රිකා මඟින් තහවුරු වූ ද්විත්ව A සහ B සාමාර්ථ.',
-
-      galleryBadge: 'ඡායාරූප ගැලරිය',
-      galleryTitle: 'පන්ති කාමර සහ සම්මන්ත්‍රණ මතක',
-
-      faqBadge: 'නිතර අසන ගැටලු',
-      faqTitle: 'ඔබට දැනගැනීමට අවශ්‍ය සියල්ල',
-      faq1Q: 'ONLINE සිසුන්ට නිබන්ධන ලැබෙන්නේ කෙසේද?',
-      faq1A: 'ලියාපදිංචි වූ පසු අදාළ මාසයේ සියලුම මුද්‍රිත නිබන්ධන කට්ටල (Theory, Paper Tutes, Q Books) කුරියර් සේවාව මඟින් ආරක්ෂිතව ඔබේ නිවසටම ගෙන්වා දෙනු ලැබේ.',
-      faq2Q: 'සජීවී පන්තිය මඟහැරුණහොත් නැවත නැරඹිය හැකිද?',
-      faq2A: 'ඔව්. සෑම සජීවී පන්තියකම උසස් තාක්ෂණික පටිගත කිරීම් (Recordings) අපගේ ශිෂ්‍ය පද්ධතිය තුළින් විභාගය අවසන් වන තෙක් ඕනෑම වේලාවක නැවත නැරඹිය හැක.',
-      faq3Q: 'ලිඛිත පිළිතුරු ගුරුතුමිය පෞද්ගලිකව පරීක්ෂා කරනවාද?',
-      faq3A: 'නියත වශයෙන්ම. භෞතික සහ ඔන්ලයින් පන්ති දෙකෙහිම සිසුන් ලියන විචාර, රසවින්දන සහ ප්‍රශ්න පත්‍ර ගුරුතුමිය විසින්ම පෞද්ගලිකව පරීක්ෂා කර ලකුණු සහ උපදෙස් ලබා දේ.',
-      faq4Q: 'නව පන්ති සඳහා ලියාපදිංචි වන්නේ කෙසේද?',
-      faq4A: 'අපගේ නිල WhatsApp අංකය වන 074 362 4117 වෙත පණිවිඩයක් එවන්න. නැතහොත් පහත පෝරමය පුරවා ක්ෂණිකව ලියාපදිංචි වන්න.',
-
-      contactBadge: 'සම්බන්ධ වන්න',
-      contactTitle: 'ඔබේ A සාමාර්ථයේ ගමන අදම අරඹන්න',
-      formTitle: 'ක්ෂණික ලියාපදිංචි වීමේ පෝරමය',
-      formName: 'ශිෂ්‍යයාගේ නම',
-      formPhone: 'WhatsApp දුරකථන අංකය',
-      formSchool: 'පාසල',
-      formGrade: 'ශ්‍රේණිය',
-      formMode: 'පන්ති මාදිලිය',
-      formBtn: 'WhatsApp මඟින් ලියාපදිංචි වන්න'
-    },
-    en: {
-      navAbout: 'About',
-      navProcess: 'Methodology',
-      navPillars: 'Pillars',
-      navClasses: 'Classes',
-      navResults: 'Results',
-      navFaq: 'FAQ',
-      navContact: 'Contact',
-      navEnroll: 'Enroll Now',
-      
-      announcement: 'Registrations are now open for 2026 and 2027 O/L Sinhala batches!',
-      
-      heroBadge: 'Sri Lanka No 1 O/L Sinhala Program',
-      heroTitle1: 'Guaranteeing',
-      heroTitleHighlight: 'Double A Passes',
-      heroTitle2: 'in Ordinary Level Sinhala',
-      heroDesc: 'Under the personal guidance of Teacher Kaushalya Wicramarachchi, BA Special Degree graduate from the University of Peradeniya, master the syllabus with pictorial illustrations and proven shortcuts.',
-      heroCtaWhatsapp: 'Enroll via WhatsApp',
-      heroCtaProcess: 'View Methodology',
-      
-      stat1Number: '100%',
-      stat1Label: 'Complete syllabus with mind-mapping',
-      stat2Number: '2 A Grades',
-      stat2Label: 'Sinhala Language and Literature from one tutor',
-      stat3Number: '4 Months',
-      stat3Label: 'Comprehensive rapid revision before the exam',
-      stat4Number: 'Island-wide',
-      stat4Label: 'Direct doorstep tute pack delivery',
-
-      aboutBadge: 'Your Teacher',
-      aboutName: 'Kaushalya Wicramarachchi',
-      aboutDegree: 'Bachelor of Arts Special Degree, University of Peradeniya',
-      aboutDesc1: 'Achieved 3 A passes in G.C.E. Advanced Level Arts Stream, entered the Faculty of Arts at the University of Peradeniya, and graduated with a Special Degree with Class Honours.',
-      aboutDesc2: 'As a renowned educator for both O/L Sinhala Language & Literature and Sinhala Literature Appreciation, she has guided hundreds of students across Sri Lanka to achieve double A distinctions through a methodical and proven curriculum.',
-
-      processBadge: 'Our 6-Step System',
-      processTitle: 'The 6-Step Pathway to Double A Distinctions',
-      processSubtitle: 'A structured educational roadmap leading each student safely from basic theory to the final exam hall.',
-      step1Title: '01. Theory Classes',
-      step1Desc: 'Syllabus delivered from ground up using conceptual diagrams, memory frameworks, and simplified literature insights.',
-      step2Title: '02. Live Exams & Ranking',
-      step2Desc: 'Weekly exam papers written under timed conditions, scored personally, with island-wide student ranking.',
-      step3Title: '03. 4-Month Rapid Revision',
-      step3Desc: 'An intensive 4-month program consolidating and reviewing the entire syllabus ahead of the exam.',
-      step4Title: '04. Final Shot Paper Class',
-      step4Desc: 'Specially crafted prediction papers mirroring exact exam patterns, with detailed marking breakdowns.',
-      step5Title: '05. Special Seminars',
-      step5Desc: 'Focused specialized seminar series including Term Test Revise Seminars, MCQ Seminars, and Final Night Seminars.',
-      step6Title: '06. Class Recordings',
-      step6Desc: 'High-definition recordings accessible anytime until the final exam, backed by ongoing teacher supervision.',
-
-      pillarBadge: 'Exclusive Highlights',
-      pillarTitle: '3 Core Pillars of Our Successful Program',
-      pillar1Title: 'Doorstep Delivery of Tutes',
-      pillar1Desc: 'Complete printed tute packs delivered right to your home: Theory Tutes, Paper Tutes, Q Books, MCQ Packs, and Final Guess Papers.',
-      pillar2Title: 'In-Class Real Exam Training',
-      pillar2Desc: 'Practicing timed essay writing, critiques, and answer composition directly during class hours.',
-      pillar3Title: 'Direct Teacher Review',
-      pillar3Desc: 'Essays, critiques, and homework checked and scored personally by the teacher both in class and via WhatsApp.',
-
-      classesBadge: 'Locations & Modes',
-      classesTitle: 'Flexible Learning Designed for Every Student',
-      tabOnline: 'ONLINE (Island-wide)',
-      tabMathugama: 'ZINERGY Mathugama',
-      tabMeegahathenna: 'LAYARA Meegahathenna',
-      
-      onlineTitle: 'ONLINE Platform: Learn from Anywhere in Sri Lanka',
-      onlinePoint1: 'Live Zoom lectures in HD plus on-demand class recordings',
-      onlinePoint2: 'Printed monthly tute sets delivered to your doorstep via courier',
-      onlinePoint3: 'Personal marking and guidance from the teacher via WhatsApp',
-
-      mathugamaTitle: 'ZINERGY Mathugama Physical Class',
-      mathugamaPoint1: 'Fully air-conditioned lecture facility with comfortable seating',
-      mathugamaPoint2: 'In-class paper sessions scored and evaluated on the spot',
-      mathugamaPoint3: 'Printed comprehensive study materials provided directly in class',
-
-      meegahathennaTitle: 'LAYARA Meegahathenna Physical Class',
-      meegahathennaPoint1: 'Spacious and welcoming academic environment',
-      meegahathennaPoint2: 'Weekly in-person paper writing and dedicated attention',
-      meegahathennaPoint3: 'Full theory tutes and question books provided in class',
-
-      resultsBadge: 'Proven Results',
-      resultsTitle: 'Authentic Student Exam Results',
-      resultsSubtitle: 'Official Department of Examinations result sheets demonstrating verified double A distinctions.',
-
-      galleryBadge: 'Photo Gallery',
-      galleryTitle: 'Classroom & Seminar Moments',
-
-      faqBadge: 'FAQ',
-      faqTitle: 'Frequently Asked Questions',
-      faq1Q: 'How do ONLINE students receive printed materials?',
-      faq1A: 'Upon registration, complete printed monthly tute packages (Theory, Paper Tutes, Q Books) are dispatched directly to your doorstep by express courier.',
-      faq2Q: 'What happens if a student misses a live session?',
-      faq2A: 'Full HD recordings of every class are available 24/7 on our student portal until the conclusion of the O/L examination.',
-      faq3Q: 'Does the teacher personally mark written essays?',
-      faq3A: 'Yes, essays and exam papers submitted by both physical and online students are reviewed and scored personally by Teacher Kaushalya.',
-      faq4Q: 'How do I register for upcoming classes?',
-      faq4A: 'Send a message to our official WhatsApp hotline at 074 362 4117 or fill out the quick registration form below.',
-
-      contactBadge: 'Contact Us',
-      contactTitle: 'Begin Your Double A Journey Today',
-      formTitle: 'Quick Registration Form',
-      formName: 'Student Name',
-      formPhone: 'WhatsApp Mobile Number',
-      formSchool: 'School Name',
-      formGrade: 'Grade Batch',
-      formMode: 'Preferred Class Mode',
-      formBtn: 'Register via WhatsApp'
-    }
+  /* ---------- i18n (Sinhala is the HTML default; English below) ---------- */
+  const en = {
+    navAbout: 'Teacher', navResults: 'Results', navProcess: 'Method', navClasses: 'Classes',
+    navGallery: 'Gallery', navFaq: 'FAQ', navContact: 'Contact', navEnroll: 'Enroll',
+    heroPill: '2026 · 2027 batches now enrolling',
+    heroT1: 'O/L Sinhala,',
+    heroT2: '× 2',
+    heroSub: 'Language and Literature Appreciation from one teacher, made simple with mind maps and special techniques.',
+    heroCta: 'Enroll now', heroCta2: 'Our method', globeHint: 'Drag to rotate',
+    teacherName: 'Kaushalya Wicramarachchi',
+    aboutEyebrow: 'Your teacher',
+    stampAL: 'A/L Arts',
+    aboutP1: 'Earned 3 A passes in the G.C.E. A/L Arts stream, entered the Faculty of Arts at the University of Peradeniya and graduated with a Special Degree with class honours.',
+    aboutP2: 'As a lecturer in O/L Sinhala Language & Literature and Sinhala Literature Appreciation, she has guided students across Sri Lanka to double A passes through a clear, structured programme.',
+    fact1: 'A/L Arts stream', fact2: 'Special Degree, Peradeniya', fact3: 'subjects, one place',
+    resEyebrow: 'Results', resTitle: 'Results speak', resSub: 'Grades earned by our students at the 2022 O/L examination.',
+    st1: 'Sinhala Language & Literature', st2: 'Sinhala Literature Appreciation',
+    resHint: 'Tap a result sheet to view it full size',
+    procEyebrow: 'Our method', procTitle: '6 steps to an A',
+    procSub: 'A structured programme that takes you from the first lesson to the exam hall.',
+    s1t: 'Theory Class', s1d: 'The full syllabus taught step by step, simplified with mind maps and special techniques.',
+    s2t: 'Live Exam', s2d: 'Timed live exams to master time management, marked and ranked.',
+    s3t: 'Revision', s3d: 'Full syllabus revision starting about 4 months before the exam.',
+    s4t: 'Final Shot Paper Class', s4d: 'Teacher-made papers in the exact exam pattern, full theory discussion and past paper review.',
+    s5t: 'Seminars', s5d: 'Our signature seminar series: Term Test Revise, MCQ and Final Seminar.',
+    s6t: 'Recorded Class', s6d: 'Recordings for students who cannot join live, with the same personal attention.',
+    spEyebrow: 'What makes us different', spTitle: 'Sri Lanka’s best A-making programme',
+    sp1t: 'Tutes to your door', sp1d: 'A complete set of tutes that builds you up step by step, delivered home.',
+    sp2t: 'Exam practice in class', sp2d: 'Every question type, including critiques and appreciation, written in class within exam time.',
+    sp3t: 'Every answer checked', sp3d: 'The teacher personally marks your work in class and via WhatsApp, including for students watching recordings.',
+    clEyebrow: 'Classes', clTitle: 'The Sinhala class that works', clSub: 'Online from home, or in person at Mathugama and Meegahathenna.',
+    v1t: 'Island-wide, from home', v1a: 'Live Zoom classes and recordings', v1b: 'Tutes delivered by courier', v1c: 'Work checked via WhatsApp',
+    v2t: 'Mathugama', v2a: 'Physical classroom', v2b: 'In-class papers and marking', v2c: 'Tutes given in class',
+    v3t: 'Meegahathenna', v3a: 'Physical classroom', v3b: 'Personal attention for every student', v3c: 'Tutes given in class',
+    vidEyebrow: 'Inside the class', vidTitle: 'Watch how we teach',
+    galEyebrow: 'Gallery', galTitle: 'Classes & seminar moments', fAll: 'All', fSem: 'Seminars', fClass: 'Classes',
+    faqEyebrow: 'FAQ', faqTitle: 'Frequently asked', faqSub: 'Still have a question? Ask us on WhatsApp.',
+    q1: 'How do online students get tutes?', a1: 'After registering, Theory Tutes, Paper Tutes, Q Books and more are sent to your home by courier.',
+    q2: 'What if I miss a live class?', a2: 'Every class is recorded, and the teacher checks the work of students who learn from recordings too.',
+    q3: 'Does the teacher check answers herself?', a3: 'Yes. All work, including critiques, is marked personally by the teacher in class and via WhatsApp.',
+    q4: 'How do I register?', a4: 'Send a WhatsApp message to 074 362 4117, or fill in the form below.',
+    ctEyebrow: 'Contact', ctTitle: 'Start your A journey today', ctPlace: 'Location', ctPlaceV: 'Meegahathenna, Sri Lanka',
+    fmTitle: 'Register', fmName: 'Student name', fmPhone: 'WhatsApp number', fmSchool: 'School',
+    fmGrade: 'Exam year', fmMode: 'Class', fmBtn: 'Send via WhatsApp',
+  };
+  const formMsgs = {
+    si: { invalid: 'කරුණාකර සියලු තොරතුරු නිවැරදිව පුරවන්න.' },
+    en: { invalid: 'Please fill in all fields correctly.' },
   };
 
-  let currentLang = 'si';
+  let lang = localStorage.getItem('kw-lang') === 'en' ? 'en' : 'si';
+  const i18nEls = $$('[data-i18n]');
+  i18nEls.forEach(el => { el.dataset.si = el.innerHTML; });
 
-  // Apply Language
-  function applyLanguage(lang) {
-    currentLang = lang;
-    const t = translations[lang];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (t[key]) {
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-          el.placeholder = t[key];
-        } else {
-          el.textContent = t[key];
-        }
-      }
+  function applyLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    i18nEls.forEach(el => {
+      const k = el.dataset.i18n;
+      el.innerHTML = l === 'en' && en[k] ? en[k] : el.dataset.si;
     });
+    $('#langLabel').textContent = l === 'en' ? 'සිං' : 'EN';
+    const lbl = $('.globe-label');
+    if (lbl) lbl.textContent = l === 'en' ? 'Sri Lanka' : 'ශ්‍රී ලංකාව';
+    localStorage.setItem('kw-lang', l);
+  }
+  $('#langBtn')?.addEventListener('click', () => applyLang(lang === 'si' ? 'en' : 'si'));
+  if (lang === 'en') applyLang('en');
+  // globe label is created later by the module; sync once it exists
+  const labelSync = new MutationObserver(() => {
+    const lbl = $('.globe-label');
+    if (lbl) { if (lang === 'en') lbl.textContent = 'Sri Lanka'; labelSync.disconnect(); }
+  });
+  const gs = $('#globeStage');
+  if (gs) labelSync.observe(gs, { childList: true });
 
-    const langBtnText = document.getElementById('langToggleText');
-    if (langBtnText) {
-      langBtnText.textContent = lang === 'si' ? 'English' : 'සිංහල';
+  /* ---------- header ---------- */
+  const header = $('#siteHeader');
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---------- mobile menu ---------- */
+  const menuBtn = $('#menuBtn');
+  const menu = $('#mobileMenu');
+  const setMenu = open => {
+    document.body.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-hidden', String(!open));
+  };
+  menuBtn?.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+  $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+  window.addEventListener('resize', () => { if (window.innerWidth > 1080) setMenu(false); });
+
+  /* ---------- reveal on scroll ---------- */
+  const revealEls = $$('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        const siblings = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+        el.style.transitionDelay = `${Math.min(siblings.indexOf(el), 6) * 70}ms`;
+        el.classList.add('is-in');
+        io.unobserve(el);
+        setTimeout(() => { el.style.transitionDelay = ''; }, 1200);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-in'));
+  }
+
+  /* ---------- count up ---------- */
+  const counters = $$('.count');
+  const runCount = el => {
+    const to = +el.dataset.to;
+    if (reduceMotion) { el.textContent = to; return; }
+    const dur = 1400, t0 = performance.now();
+    const tick = now => {
+      const p = Math.min(1, (now - t0) / dur);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window) {
+    counters.forEach(c => { c.textContent = '0'; });
+    const cio = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { runCount(en.target); cio.unobserve(en.target); } });
+    }, { threshold: 0.6 });
+    counters.forEach(c => cio.observe(c));
+  }
+
+  /* ---------- active nav link ---------- */
+  const navLinks = $$('.nav a');
+  const sections = navLinks.map(a => $(a.getAttribute('href'))).filter(Boolean);
+  if ('IntersectionObserver' in window) {
+    const nio = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => nio.observe(s));
+  }
+
+  /* ---------- hero parallax shapes ---------- */
+  const hero = $('.hero');
+  const decos = $$('.deco[data-depth]');
+  if (hero && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    let raf = 0;
+    hero.addEventListener('pointermove', e => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = hero.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        decos.forEach(d => {
+          const k = +d.dataset.depth * 40;
+          d.style.translate = `${-x * k}px ${-y * k}px`;
+        });
+      });
+    });
+  }
+
+  /* ---------- gallery filter ---------- */
+  const filters = $$('.filter');
+  const items = $$('.m-item');
+  filters.forEach(btn => btn.addEventListener('click', () => {
+    filters.forEach(b => b.classList.toggle('is-active', b === btn));
+    const f = btn.dataset.filter;
+    items.forEach(it => it.classList.toggle('is-hidden', f !== 'all' && it.dataset.cat !== f));
+  }));
+
+  /* ---------- lightbox ---------- */
+  const lb = $('#lightbox'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+  let group = [], idx = 0, lastFocus = null;
+  const show = i => {
+    idx = (i + group.length) % group.length;
+    const t = group[idx];
+    lbImg.src = t.dataset.src;
+    lbImg.alt = t.querySelector('img')?.alt || '';
+    lbCap.textContent = `${t.dataset.caption || ''}  ·  ${idx + 1} / ${group.length}`;
+  };
+  const open = trigger => {
+    const name = trigger.dataset.lightbox;
+    group = $$(`[data-lightbox="${name}"]`).filter(t => !t.closest('.is-hidden'));
+    lastFocus = trigger;
+    show(group.indexOf(trigger));
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    $('#lbClose').focus();
+  };
+  const close = () => {
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lastFocus?.focus();
+  };
+  $$('[data-lightbox]').forEach(t => t.addEventListener('click', () => open(t)));
+  $('#lbClose').addEventListener('click', close);
+  $('#lbPrev').addEventListener('click', () => show(idx - 1));
+  $('#lbNext').addEventListener('click', () => show(idx + 1));
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-figure')) close(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('is-open')) {
+      if (e.key === 'Escape' && document.body.classList.contains('menu-open')) setMenu(false);
+      return;
     }
-    const mobileLangBtn = document.getElementById('mobileLangToggleBtn');
-    if (mobileLangBtn) {
-      mobileLangBtn.textContent = lang === 'si' ? 'Switch to English' : 'සිංහල භාෂාවට මාරු වන්න';
-    }
-  }
-
-  const langBtn = document.getElementById('langToggleBtn');
-  if (langBtn) {
-    langBtn.addEventListener('click', () => {
-      applyLanguage(currentLang === 'si' ? 'en' : 'si');
-    });
-  }
-
-  const mobileLangBtn = document.getElementById('mobileLangToggleBtn');
-  if (mobileLangBtn) {
-    mobileLangBtn.addEventListener('click', () => {
-      applyLanguage(currentLang === 'si' ? 'en' : 'si');
-    });
-  }
-
-  // 2. Mobile Menu Toggle
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileNavMenu = document.getElementById('mobileNavMenu');
-  if (mobileMenuBtn && mobileNavMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileNavMenu.classList.toggle('hidden');
-    });
-    // Close menu when a link is clicked
-    mobileNavMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNavMenu.classList.add('hidden');
-      });
-    });
-  }
-
-  // 3. Class Location Tabs Switcher (NO ACTIVE CLASS CONFLICTS)
-  const classTabs = document.querySelectorAll('.class-tab-btn');
-  const classContents = document.querySelectorAll('.class-tab-pane');
-  classTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetId = tab.getAttribute('data-target');
-
-      // Reset all buttons
-      classTabs.forEach(t => {
-        t.classList.remove('active', 'bg-[#FFC20E]', 'text-slate-950', 'border-[#FFC20E]');
-        t.classList.add('text-slate-600', 'border-slate-200', 'bg-white');
-      });
-
-      // Highlight active button
-      tab.classList.add('active', 'bg-[#FFC20E]', 'text-slate-950', 'border-[#FFC20E]');
-      tab.classList.remove('text-slate-600', 'border-slate-200', 'bg-white');
-
-      // Show targeted pane
-      classContents.forEach(pane => {
-        if (pane.id === targetId) {
-          pane.classList.remove('hidden');
-          pane.classList.add('block');
-        } else {
-          pane.classList.remove('block');
-          pane.classList.add('hidden');
-        }
-      });
-    });
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+  let sx = 0;
+  lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
   });
 
-  // 4. Gallery Category Filter
-  const galleryFilters = document.querySelectorAll('.gallery-filter-btn');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  galleryFilters.forEach(filterBtn => {
-    filterBtn.addEventListener('click', () => {
-      const filter = filterBtn.getAttribute('data-filter');
-
-      galleryFilters.forEach(b => {
-        b.classList.remove('active', 'bg-[#235E83]', 'text-white');
-        b.classList.add('bg-slate-100', 'text-slate-700');
-      });
-      filterBtn.classList.add('active', 'bg-[#235E83]', 'text-white');
-      filterBtn.classList.remove('bg-slate-100', 'text-slate-700');
-
-      galleryItems.forEach(item => {
-        if (filter === 'all' || item.classList.contains(filter)) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
-      });
+  /* ---------- video ---------- */
+  const video = $('#introVideo'), playBtn = $('#videoPlay');
+  const card = video?.closest('.video-card');
+  if (video && playBtn) {
+    playBtn.addEventListener('click', () => {
+      video.controls = true;
+      video.play();
     });
+    video.addEventListener('play', () => card.classList.add('is-playing'));
+    video.addEventListener('pause', () => { if (!video.seeking) card.classList.remove('is-playing'); });
+    video.addEventListener('ended', () => card.classList.remove('is-playing'));
+  }
+
+  /* ---------- registration form -> WhatsApp ---------- */
+  const form = $('#regForm');
+  form?.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = $('#fName'), phone = $('#fPhone'), school = $('#fSchool');
+    const phoneOk = /^[0-9+\s-]{9,15}$/.test(phone.value.trim());
+    const fields = [[name, name.value.trim().length > 1], [phone, phoneOk], [school, school.value.trim().length > 1]];
+    fields.forEach(([el, ok]) => el.classList.toggle('is-invalid', !ok));
+    const note = $('#formNote');
+    if (fields.some(([, ok]) => !ok)) { note.textContent = formMsgs[lang].invalid; return; }
+    note.textContent = '';
+    const msg =
+      'ආයුබෝවන් ගුරුතුමියනි,\nSinhala KW වෙබ් අඩවිය හරහා ලියාපදිංචි වීමට කැමැත්තෙමි.\n\n' +
+      `• නම: ${name.value.trim()}\n` +
+      `• WhatsApp: ${phone.value.trim()}\n` +
+      `• පාසල: ${school.value.trim()}\n` +
+      `• විභාග වර්ෂය: ${$('#fGrade').value}\n` +
+      `• පන්තිය: ${$('#fMode').value}\n\nස්තූතියි!`;
+    window.open(`https://wa.me/94743624117?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
   });
+  $$('.field input').forEach(i => i.addEventListener('input', () => i.classList.remove('is-invalid')));
 
-  // 5. Result Sheets Lightbox Modal
-  const modal = document.getElementById('resultModal');
-  const modalImg = document.getElementById('modalImg');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalCloseBtn = document.getElementById('modalCloseBtn');
-
-  document.querySelectorAll('.result-card-trigger').forEach(card => {
-    card.addEventListener('click', () => {
-      const imgSrc = card.getAttribute('data-img');
-      const title = card.getAttribute('data-title');
-      if (modal && modalImg && imgSrc) {
-        modalImg.src = imgSrc;
-        if (modalTitle && title) modalTitle.textContent = title;
-        modal.classList.add('active');
-      }
-    });
-  });
-
-  if (modalCloseBtn && modal) {
-    modalCloseBtn.addEventListener('click', () => modal.classList.remove('active'));
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.remove('active');
-    });
-  }
-
-  // 6. FAQ Accordion
-  document.querySelectorAll('.faq-accordion-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const content = btn.nextElementSibling;
-      const arrow = btn.querySelector('.faq-arrow');
-      const isExpanded = !content.classList.contains('hidden');
-
-      // Close all first for clean single-item focus
-      document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
-      document.querySelectorAll('.faq-arrow').forEach(a => a.classList.remove('rotate-180'));
-
-      if (!isExpanded) {
-        content.classList.remove('hidden');
-        if (arrow) arrow.classList.add('rotate-180');
-      }
-    });
-  });
-
-  // 7. Video Player Controls
-  const mainVideo = document.getElementById('mainIntroVideo');
-  const playOverlay = document.getElementById('videoPlayOverlay');
-  const soundBtn = document.getElementById('videoSoundBtn');
-
-  if (mainVideo && playOverlay) {
-    playOverlay.addEventListener('click', () => {
-      if (mainVideo.paused) {
-        mainVideo.play();
-        playOverlay.style.opacity = '0';
-        playOverlay.style.pointerEvents = 'none';
-      } else {
-        mainVideo.pause();
-        playOverlay.style.opacity = '1';
-        playOverlay.style.pointerEvents = 'auto';
-      }
-    });
-
-    mainVideo.addEventListener('click', () => {
-      if (!mainVideo.paused) {
-        mainVideo.pause();
-        playOverlay.style.opacity = '1';
-        playOverlay.style.pointerEvents = 'auto';
-      }
-    });
-
-    mainVideo.addEventListener('ended', () => {
-      playOverlay.style.opacity = '1';
-      playOverlay.style.pointerEvents = 'auto';
-    });
-  }
-
-  if (soundBtn && mainVideo) {
-    soundBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      mainVideo.muted = !mainVideo.muted;
-      soundBtn.classList.toggle('opacity-50', mainVideo.muted);
-    });
-  }
-
-  // 8. Quick WhatsApp Registration Form Submission
-  const quickForm = document.getElementById('quickRegisterForm');
-  if (quickForm) {
-    quickForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('regName').value.trim();
-      const phone = document.getElementById('regPhone').value.trim();
-      const school = document.getElementById('regSchool').value.trim();
-      const grade = document.getElementById('regGrade').value;
-      const mode = document.getElementById('regMode').value;
-
-      const message = `ආයුබෝවන් ගුරුතුමියනි,\nමම Sinhala KW වෙබ් අඩවිය හරහා ලියාපදිංචි වීමට කැමැත්තෙමි.\n\n` +
-        `• ශිෂ්‍යයාගේ නම: ${name}\n` +
-        `• WhatsApp අංකය: ${phone}\n` +
-        `• පාසල: ${school}\n` +
-        `• ශ්‍රේණිය: ${grade}\n` +
-        `• පන්ති මාදිලිය: ${mode}\n\n` +
-        `කරුණාකර පන්ති සම්බන්ධ වැඩිදුර තොරතුරු සහ සම්බන්ධ වීමේ ක්‍රමවේදය දන්වන්න. ස්තූතියි!`;
-
-      const whatsappUrl = `https://wa.me/94743624117?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-    });
-  }
-});
+  /* ---------- misc ---------- */
+  const y = $('#year');
+  if (y) y.textContent = new Date().getFullYear();
+})();
