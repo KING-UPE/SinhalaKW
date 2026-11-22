@@ -191,7 +191,7 @@ async function init() {
   const emblemPivot = new THREE.Group();
   emblemRoot.add(emblemPivot);
   try {
-    const gltf = await new GLTFLoader().loadAsync('assets/3d/sinhala_kw_globe_orb.glb');
+    const gltf = await new GLTFLoader().loadAsync('assets/3d/sinhala_kw_globe_exact.glb');
     const emblem = gltf.scene;
     const box = new THREE.Box3().setFromObject(emblem);
     const size = box.getSize(new THREE.Vector3());
