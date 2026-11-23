@@ -7,7 +7,7 @@
   const WA_NUMBER = '94743624117';
   const formMsgs = {
     invalid: 'කරුණාකර සියලු තොරතුරු නිවැරදිව පුරවන්න.',
-    sent: 'WhatsApp විවෘත විය. පණිවිඩය යවා ලියාපදිංචිය සම්පූර්ණ කරන්න. WhatsApp විවෘත නොවුණේ නම් 074 362 4117 අංකයට අමතන්න.'
+    sent: 'WhatsApp විවෘත විය. පණිවිඩය යවන්න. WhatsApp විවෘත නොවුණේ නම් 074 362 4117 අංකයට අමතන්න.'
   };
 
   /* ---------- header ---------- */
@@ -111,6 +111,96 @@
     const f = btn.dataset.filter;
     items.forEach(it => it.classList.toggle('is-hidden', f !== 'all' && it.dataset.cat !== f));
   }));
+
+  /* ---------- results year tabs ---------- */
+  const yTabs = $$('.year-tab');
+  const selectYear = (tab, focus) => {
+    yTabs.forEach(t => {
+      const on = t === tab;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      $('#' + t.getAttribute('aria-controls'))?.classList.toggle('is-hidden', !on);
+    });
+    if (focus) tab.focus();
+  };
+  yTabs.forEach((t, i) => {
+    t.addEventListener('click', () => selectYear(t));
+    t.addEventListener('keydown', e => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      selectYear(yTabs[(i + d + yTabs.length) % yTabs.length], true);
+    });
+  });
+
+  /* ---------- testimonials · read more ---------- */
+  const tCards = $$('.t-card');
+  const measureT = () => tCards.forEach(c => {
+    if (c.classList.contains('is-open')) return;
+    c.classList.remove('is-full');
+    const b = $('.t-body', c), extra = b.scrollHeight - b.clientHeight;
+    // only clamp when at least ~3 more lines are hidden; otherwise show it all
+    c.classList.toggle('is-clamped', extra > 80);
+    c.classList.toggle('is-full', extra > 4 && extra <= 80);
+  });
+  measureT();
+  window.addEventListener('resize', measureT);
+  document.fonts?.ready.then(measureT);
+  tCards.forEach(c => {
+    const btn = $('.t-more', c);
+    btn?.addEventListener('click', () => {
+      const open = !c.classList.contains('is-open');
+      c.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      $('span', btn).textContent = open ? 'Show less' : 'Read more';
+      if (open) c.classList.remove('is-clamped');
+      else { measureT(); if (c.getBoundingClientRect().top < 0) c.scrollIntoView({ block: 'start', behavior: 'smooth' }); }
+    });
+  });
+
+  /* ---------- process journey ---------- */
+  const jWrap = $('#jSteps');
+  if (jWrap) {
+    const jSteps = $$('.jstep', jWrap);
+    const real = jSteps.filter(s => s.dataset.step);
+    const dial = $('#jDial');
+    const dialSegs = dial ? $$('.dial-seg', dial) : [];
+    const miniSegs = $$('.jm-segs i');
+    const fill = $('.journey-line-fill', jWrap);
+    const noEls = $$('.jn-no'), titleEls = $$('.jn-title');
+    let cur = -1, ticking = false;
+    const nodeY = s => { const r = $('.jstep-node', s).getBoundingClientRect(); return r.top + r.height / 2; };
+    const update = () => {
+      ticking = false;
+      const line = innerHeight * 0.55;
+      let n = 0;
+      jSteps.forEach((s, i) => { if (nodeY(s) <= line) n = i + 1; });
+      const first = nodeY(jSteps[0]), last = nodeY(jSteps[jSteps.length - 1]);
+      const p = Math.min(1, Math.max(0, (line - first) / (last - first)));
+      fill.style.setProperty('--fill', p.toFixed(4));
+      if (n === cur) return;
+      cur = n;
+      const k = Math.min(n, real.length);
+      jSteps.forEach((s, i) => {
+        s.classList.toggle('is-active', i === n - 1);
+        s.classList.toggle('is-passed', i < n - 1);
+      });
+      dialSegs.forEach((g, i) => g.classList.toggle('on', i < k));
+      miniSegs.forEach((g, i) => g.classList.toggle('on', i < k));
+      if (dial) {
+        dial.style.setProperty('--p', (k / real.length).toFixed(3));
+        dial.classList.toggle('done', n > real.length);
+      }
+      const shown = real[Math.max(0, k - 1)];
+      noEls.forEach(e => { e.textContent = shown.dataset.step.padStart(2, '0'); });
+      titleEls.forEach(e => { e.textContent = $('h3', shown).textContent; });
+    };
+    const onScrollJ = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', onScrollJ, { passive: true });
+    window.addEventListener('resize', onScrollJ);
+    update();
+  }
 
   /* ---------- lightbox ---------- */
   const lb = $('#lightbox'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
@@ -224,13 +314,13 @@
     fab?.classList.add('is-shown');
   }
 
-  /* ---------- registration form -> WhatsApp message ---------- */
-  const form = $('#regForm');
+  /* ---------- contact form -> WhatsApp message ---------- */
+  const form = $('#contactForm');
   form?.addEventListener('submit', e => {
     e.preventDefault();
-    const name = $('#fName'), phone = $('#fPhone'), school = $('#fSchool');
+    const name = $('#cName'), phone = $('#cPhone'), msgEl = $('#cMsg');
     const phoneOk = /^[0-9+\s-]{9,15}$/.test(phone.value.trim());
-    const fields = [[name, name.value.trim().length > 1], [phone, phoneOk], [school, school.value.trim().length > 1]];
+    const fields = [[name, name.value.trim().length > 1], [phone, phoneOk], [msgEl, msgEl.value.trim().length > 1]];
     fields.forEach(([el, ok]) => el.classList.toggle('is-invalid', !ok));
     const note = $('#formNote');
     note.classList.toggle('is-ok', false);
@@ -240,19 +330,18 @@
       return;
     }
     const msg = [
-      'ආයුබෝවන්! සිංහල KW පන්තියට ලියාපදිංචි වීමට කැමැත්තෙමි.',
+      'ආයුබෝවන්! (සිංහල KW වෙබ් අඩවියෙන්)',
       '',
       `නම: ${name.value.trim()}`,
       `දුරකථන අංකය: ${phone.value.trim()}`,
-      `පාසල: ${school.value.trim()}`,
-      `විභාග වර්ෂය: ${$('#fGrade').value}`,
-      `පන්තිය: ${$('#fMode').value}`
+      '',
+      msgEl.value.trim()
     ].join('\n');
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
     note.classList.toggle('is-ok', true);
     note.textContent = formMsgs.sent;
   });
-  $$('.field input').forEach(i => i.addEventListener('input', () => i.classList.toggle('is-invalid', false)));
+  $$('.field input, .field textarea').forEach(i => i.addEventListener('input', () => i.classList.toggle('is-invalid', false)));
 
   /* ---------- misc ---------- */
   const y = $('#year');

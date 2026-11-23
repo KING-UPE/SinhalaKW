@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t">
+  <title id="t">Sinhala KW Online Class</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1B4D6D"/>
+      <stop offset="1" stop-color="#0E2E43"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFC20E" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#FFC20E" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.3" fill="#fff" fill-opacity=".09"/>
+    </pattern>
+    <linearGradient id="board" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#235E83"/>
+      <stop offset="1" stop-color="#16425F"/>
+    </linearGradient>
+    <linearGradient id="base" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E3E9ED"/>
+      <stop offset="1" stop-color="#B9C6CF"/>
+    </linearGradient>
+    <filter id="sh" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#06121B" flood-opacity=".35"/>
+    </filter>
+    <filter id="sh2" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#06121B" flood-opacity=".45"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#dots)"/>
+  <circle cx="640" cy="110" r="230" fill="url(#glow)"/>
+  <circle cx="120" cy="470" r="170" fill="url(#glow)" opacity=".6"/>
+  <path d="M-20 420 C 160 360, 300 470, 470 410 S 760 330, 830 380" fill="none" stroke="#FFC20E" stroke-opacity=".25" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/>
+
+  <!-- laptop -->
+  <g filter="url(#sh2)">
+    <rect x="176" y="62" width="432" height="286" rx="18" fill="#0E1C27"/>
+    <rect x="190" y="76" width="404" height="258" rx="9" fill="#F7F5EF"/>
+    <!-- top bar -->
+    <path d="M190 85a9 9 0 0 1 9-9h386a9 9 0 0 1 9 9v21H190z" fill="#fff"/>
+    <rect x="202" y="84" width="58" height="16" rx="8" fill="#E5484D"/>
+    <circle cx="213" cy="92" r="3.2" fill="#fff"/>
+    <text x="221" y="96.5" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="10.5" font-weight="800" fill="#fff" letter-spacing=".6">LIVE</text>
+    <rect x="272" y="88" width="118" height="8" rx="4" fill="#D9E1E7"/>
+    <circle cx="560" cy="92" r="4" fill="#D9E1E7"/><circle cx="574" cy="92" r="4" fill="#D9E1E7"/>
+    <!-- board -->
+    <rect x="202" y="116" width="262" height="172" rx="12" fill="url(#board)"/>
+    <text x="262" y="236" text-anchor="middle" font-family="'Noto Sans Sinhala','Nirmala UI','Iskoola Pota','Sinhala Sangam MN',sans-serif" font-size="112" font-weight="700" fill="#FFC20E">අ</text>
+    <path d="M226 258 C 250 252, 280 252, 300 258" stroke="#FFC20E" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <rect x="318" y="150" width="124" height="9" rx="4.5" fill="#fff" fill-opacity=".85"/>
+    <rect x="318" y="170" width="100" height="9" rx="4.5" fill="#fff" fill-opacity=".55"/>
+    <rect x="318" y="190" width="116" height="9" rx="4.5" fill="#fff" fill-opacity=".55"/>
+    <rect x="318" y="210" width="84" height="9" rx="4.5" fill="#fff" fill-opacity=".55"/>
+    <rect x="318" y="236" width="62" height="18" rx="9" fill="#FFC20E"/>
+    <rect x="388" y="236" width="44" height="18" rx="9" fill="#fff" fill-opacity=".18"/>
+    <!-- students column (abstract avatars) -->
+    <g>
+      <rect x="474" y="116" width="108" height="52" rx="10" fill="#E6EDF2"/>
+      <circle cx="528" cy="134" r="9" fill="#9FB4C3"/><path d="M510 160c3-10 10-14 18-14s15 4 18 14z" fill="#9FB4C3"/>
+      <rect x="474" y="176" width="108" height="52" rx="10" fill="#FFF1C6"/>
+      <circle cx="528" cy="194" r="9" fill="#E0B340"/><path d="M510 220c3-10 10-14 18-14s15 4 18 14z" fill="#E0B340"/>
+      <rect x="474" y="236" width="108" height="52" rx="10" fill="#DCEBF5"/>
+      <circle cx="528" cy="254" r="9" fill="#7FA6C2"/><path d="M510 280c3-10 10-14 18-14s15 4 18 14z" fill="#7FA6C2"/>
+    </g>
+    <!-- controls -->
+    <path d="M190 298h404v27a9 9 0 0 1-9 9H199a9 9 0 0 1-9-9z" fill="#fff"/>
+    <rect x="204" y="310" width="120" height="6" rx="3" fill="#E7ECEF"/>
+    <rect x="204" y="310" width="78" height="6" rx="3" fill="#FFC20E"/>
+    <circle cx="452" cy="316" r="10" fill="#E7ECEF"/>
+    <rect x="449" y="310" width="6" height="9" rx="3" fill="#5A6A77"/>
+    <circle cx="480" cy="316" r="10" fill="#E7ECEF"/>
+    <rect x="474" y="312" width="9" height="8" rx="2" fill="#5A6A77"/><path d="M483 314l4-2v8l-4-2z" fill="#5A6A77"/>
+    <circle cx="508" cy="316" r="10" fill="#E5484D"/>
+    <path d="M503 317c3-3 7-3 10 0" stroke="#fff" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+    <!-- base -->
+    <path d="M150 348h484l22 22a8 8 0 0 1-8 10H136a8 8 0 0 1-8-10z" fill="url(#base)"/>
+    <rect x="352" y="348" width="80" height="7" rx="3.5" fill="#9DAEB9"/>
+  </g>
+
+  <!-- chip: island-wide -->
+  <g filter="url(#sh)" transform="translate(36 54)">
+    <rect width="156" height="46" rx="23" fill="#fff"/>
+    <circle cx="23" cy="23" r="15" fill="#FFF6DA"/>
+    <path d="M23 13.5a6.5 6.5 0 0 0-6.5 6.5c0 4.9 6.5 11 6.5 11s6.5-6.1 6.5-11a6.5 6.5 0 0 0-6.5-6.5z" fill="#FFC20E"/>
+    <circle cx="23" cy="20" r="2.4" fill="#0E1C27"/>
+    <text x="46" y="21" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="13" font-weight="800" fill="#0E1C27">Island-wide</text>
+    <text x="46" y="35" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="10.5" font-weight="600" fill="#5A6A77">Join live, anywhere</text>
+  </g>
+
+  <!-- chip: recorded -->
+  <g filter="url(#sh)" transform="translate(612 40)">
+    <rect width="162" height="88" rx="16" fill="#fff"/>
+    <rect x="12" y="12" width="54" height="42" rx="9" fill="#1B4D6D"/>
+    <path d="M33 25v16l13-8z" fill="#FFC20E"/>
+    <text x="76" y="30" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="13" font-weight="800" fill="#0E1C27">Recorded</text>
+    <text x="76" y="47" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" fill="#5A6A77">Watch anytime</text>
+    <rect x="12" y="68" width="138" height="6" rx="3" fill="#E7ECEF"/>
+    <rect x="12" y="68" width="90" height="6" rx="3" fill="#FFC20E"/>
+  </g>
+
+  <!-- chip: whatsapp checking -->
+  <g filter="url(#sh)" transform="translate(586 286)">
+    <rect width="186" height="66" rx="18" fill="#fff"/>
+    <circle cx="33" cy="33" r="19" fill="#25D366"/>
+    <path d="M24 33.5l6 6 12-13" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="62" y="30" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="13" font-weight="800" fill="#0E1C27">Answers checked</text>
+    <text x="62" y="47" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" fill="#5A6A77">via WhatsApp</text>
+    <path d="M140 42l3 3 6-7M147 42l3 3 6-7" stroke="#34B7F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- tutes stack -->
+  <g filter="url(#sh)" transform="translate(40 300)">
+    <g transform="rotate(-6 70 80)">
+      <rect x="8" y="86" width="132" height="26" rx="5" fill="#235E83"/>
+      <rect x="8" y="86" width="12" height="26" rx="4" fill="#1B4D6D"/>
+      <rect x="28" y="96" width="70" height="5" rx="2.5" fill="#fff" fill-opacity=".6"/>
+    </g>
+    <g transform="rotate(3 70 70)">
+      <rect x="14" y="58" width="128" height="26" rx="5" fill="#FFC20E"/>
+      <rect x="14" y="58" width="12" height="26" rx="4" fill="#E0A800"/>
+      <rect x="34" y="68" width="62" height="5" rx="2.5" fill="#0E1C27" fill-opacity=".4"/>
+    </g>
+    <g transform="rotate(-2 70 50)">
+      <rect x="6" y="32" width="136" height="26" rx="5" fill="#fff"/>
+      <rect x="6" y="32" width="12" height="26" rx="4" fill="#E7ECEF"/>
+      <rect x="26" y="42" width="78" height="5" rx="2.5" fill="#235E83" fill-opacity=".5"/>
+    </g>
+    <rect x="22" y="-4" width="120" height="30" rx="15" fill="#0E1C27"/>
+    <path d="M38 12l7-6 7 6v7h-14z" fill="#FFC20E"/>
+    <text x="60" y="15.5" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="11.5" font-weight="800" fill="#fff">Tutes home</text>
+  </g>
+
+  <!-- sparkles -->
+  <path d="M690 210c.8 8.5 7.5 15.2 16 16-8.5.8-15.2 7.5-16 16-.8-8.5-7.5-15.2-16-16 8.5-.8 15.2-7.5 16-16z" fill="#FFC20E"/>
+  <path d="M150 190c.5 5.3 4.7 9.5 10 10-5.3.5-9.5 4.7-10 10-.5-5.3-4.7-9.5-10-10 5.3-.5 9.5-4.7 10-10z" fill="#FFC20E" opacity=".8"/>
+  <path d="M760 440c.4 4 3.6 7.2 7.6 7.6-4 .4-7.2 3.6-7.6 7.6-.4-4-3.6-7.2-7.6-7.6 4-.4 7.2-3.6 7.6-7.6z" fill="#fff" opacity=".6"/>
+</svg>

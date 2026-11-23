@@ -6,3 +6,7 @@ __pycache__/
 Thumbs.db
 
 chat images/
+
+*.zip
+_dev/backup_*/
+_dev/incoming/
