@@ -334,7 +334,7 @@ h1, h2, h3, p, figure { margin: 0; }
 .cfg-chips button:hover { border-color: #C9D3DA; }
 .cfg-chips button[aria-checked="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
 .dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 0 1.5px #fff; }
-.dot-brand { background: linear-gradient(90deg, #0E1C27 50%, var(--yellow) 50%); }
+.dot-brand { background: linear-gradient(90deg, #08080a 50%, var(--yellow) 50%); }
 .dot-navy { background: linear-gradient(90deg, var(--navy) 50%, var(--yellow) 50%); }
 .dot-gold { background: radial-gradient(circle at 35% 30%, #FFF0B8, var(--yellow) 50%, #B7850A); }
 .cfg-range {
@@ -371,39 +371,39 @@ h1, h2, h3, p, figure { margin: 0; }
 .hero-teacher {
   position: relative; align-self: end; justify-self: end;
   /* as wide as the column allows, but never taller than the space under the header */
-  width: min(calc(100% + var(--bleed)), calc((min(100svh, 920px) - var(--header-h) - 40px) * .5786), 500px);
+  width: min(calc(100% + var(--bleed)), calc((min(100svh, 920px) - var(--header-h) - 20px) * .72), 560px);
   margin-right: calc(-1 * var(--bleed));
   margin-bottom: calc(-1 * var(--hero-pb));   /* bottom edge lands under the yellow marquee */
 }
-.teacher-figure { position: relative; aspect-ratio: 810 / 1400; isolation: isolate; }
+.teacher-figure { position: relative; aspect-ratio: 810 / 1150; isolation: isolate; }
 .t-sun {
-  position: absolute; z-index: -1; width: 88%; aspect-ratio: 1; border-radius: 50%;
-  left: 6%; top: 27%;
+  position: absolute; z-index: -1; width: 95%; aspect-ratio: 1; border-radius: 50%;
+  left: 14%; top: 18%;
   background: radial-gradient(circle at 35% 30%, var(--yellow-2), var(--yellow) 60%);
   box-shadow: 0 30px 60px -20px rgba(255, 194, 14, .6);
 }
 .t-ring {
-  position: absolute; z-index: -1; width: 106%; aspect-ratio: 1; border-radius: 50%;
-  left: -3%; top: 21%; border: 1.5px solid rgba(35, 94, 131, .18);
+  position: absolute; z-index: -1; width: 114%; aspect-ratio: 1; border-radius: 50%;
+  left: 5%; top: 10%; border: 1.5px solid rgba(35, 94, 131, .18);
 }
 .teacher-figure img {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: bottom;
 }
 .name-chip {
-  position: absolute; left: -28px; bottom: 20%;
-  background: #fff; border-radius: 18px; padding: 12px 18px;
+  position: absolute; left: -32px; bottom: 16%;
+  background: #fff; border-radius: 20px; padding: 14px 22px;
   box-shadow: var(--shadow-lg);
   display: flex; flex-direction: column; line-height: 1.35;
   animation: float 6s ease-in-out infinite;
 }
-.name-chip strong { font-size: 15px; font-weight: 800; }
-.name-chip span { font-size: 11.5px; color: var(--muted); font-weight: 600; }
+.name-chip strong { font-size: 17.5px; font-weight: 800; letter-spacing: -0.01em; }
+.name-chip span { font-size: 13px; color: var(--muted); font-weight: 600; margin-top: 3px; }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
 /* decorative shapes */
 .hero-deco { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .deco { position: absolute; display: block; transition: transform .6s var(--ease); }
-.deco-ring { width: 180px; height: 180px; border-radius: 50%; border: 1.5px solid rgba(35, 94, 131, .18); top: 12%; left: 6%; }
+.deco-ring { width: 180px; height: 180px; border-radius: 50%; border: 1.5px solid rgba(35, 94, 131, .18); bottom: 8%; right: 6%; }
 .deco-dots {
   width: 150px; height: 150px; bottom: 9%; left: 2%;
   background-image: radial-gradient(rgba(35, 94, 131, .3) 1.6px, transparent 1.8px);
@@ -411,7 +411,7 @@ h1, h2, h3, p, figure { margin: 0; }
   -webkit-mask-image: radial-gradient(circle, #000 40%, transparent 72%);
           mask-image: radial-gradient(circle, #000 40%, transparent 72%);
 }
-.deco-half { width: 84px; height: 42px; border-radius: 84px 84px 0 0; background: var(--navy); bottom: 12%; right: 4%; opacity: .9; }
+.deco-half { display: none; }
 .deco-plus { font-size: 40px; font-weight: 300; color: var(--navy); top: 20%; right: 33%; line-height: 1; opacity: .5; }
 .deco-spark { width: 26px; height: 26px; color: var(--yellow); top: 24%; left: 5%; }
 .deco-spark svg { width: 100%; height: 100%; animation: spin 14s linear infinite; }
@@ -833,8 +833,8 @@ h1, h2, h3, p, figure { margin: 0; }
   .hero-sub { max-width: 520px; }
   .hero-cta { justify-content: center; }
   .hero-logo { width: 100%; max-width: 720px; justify-self: center; }
-  .hero-teacher { justify-self: center; width: min(100%, 440px); }
-  .deco-ring { top: 50%; left: 2%; }
+  .hero-teacher { justify-self: center; width: min(100%, 480px); }
+  .deco-ring { bottom: 6%; right: 4%; }
   .deco-plus { top: 12%; right: 8%; }
   .deco-arc { top: 40%; }
 
@@ -878,7 +878,7 @@ h1, h2, h3, p, figure { margin: 0; }
   .hero-cta { flex-direction: column; gap: 16px; width: 100%; }
   .hero-cta .btn { width: 100%; max-width: 340px; }
   .logo-hint { font-size: 11px; }
-  .hero-teacher { width: min(100%, 330px); }
+  .hero-teacher { width: min(100%, 380px); }
   /* settings: round button bottom-left, panel as a bottom sheet */
   .cfg { position: fixed; z-index: 60; left: 0; right: 0; top: auto; bottom: 0; display: block; transform: none; }
   .cfg.is-open { transform: none; }
@@ -899,9 +899,9 @@ h1, h2, h3, p, figure { margin: 0; }
   .cfg-styles { grid-template-columns: repeat(4, 1fr); }
   .cfg-styles .sw { height: 32px; }
   .hero.cfg-open .hero-logo { transform: none; }
-  .name-chip { left: auto; right: 0; bottom: 16%; padding: 8px 12px; border-radius: 14px; max-width: 100%; }
-  .name-chip strong { font-size: 12.5px; }
-  .name-chip span { display: none; }
+  .name-chip { left: auto; right: 0; bottom: 16%; padding: 10px 16px; border-radius: 16px; max-width: 100%; }
+  .name-chip strong { font-size: 14.5px; }
+  .name-chip span { font-size: 11px; display: block; }
   .deco-ring, .deco-arc { display: none; }
   .deco-dots { width: 100px; height: 100px; bottom: auto; top: 46%; }
   .deco-half, .deco-plus { display: none; }

@@ -17,7 +17,7 @@ const panel = document.getElementById('cfg');
 
 const STYLES = ['solid', 'particles', 'glass', 'layers'];
 const SCHEMES = {
-  brand: { letters: '#0E1C27', edge: '#1B4D6D', speck: '#235E83', stack: ['#FFE6A0', '#7FB0CF', '#235E83', '#0E1C27'] },
+  brand: { letters: '#08080a', edge: '#141416', speck: '#202024', stack: ['#FFE6A0', '#888888', '#333333', '#08080a'] },
   navy: { letters: '#235E83', edge: '#1B4D6D', speck: '#7FB0CF', stack: ['#FFE6A0', '#9FC3DA', '#235E83'] },
   gold: { letters: '#FFC20E', edge: '#D99A00', speck: '#D99A00', stack: ['#0E2E43', '#235E83', '#7FB0CF', '#FFE6A0', '#FFC20E'], metal: true },
 };
@@ -574,8 +574,13 @@ function makeSolid(logo) {
         face.color.copy(C.gold); face.metalness = 1; face.roughness = 0.16;
         side.color.copy(C.goldDeep); side.metalness = 1;
       } else {
-        face.color.set(s.letters); face.metalness = 0.35; face.roughness = 0.3;
-        side.color.set(s.edge); side.metalness = 0.5;
+        face.color.set(s.letters);
+        face.metalness = name === 'brand' ? 0.15 : 0.35;
+        face.roughness = name === 'brand' ? 0.22 : 0.3;
+        face.clearcoat = 1;
+        face.clearcoatRoughness = 0.05;
+        side.color.set(s.edge);
+        side.metalness = name === 'brand' ? 0.25 : 0.5;
       }
     },
     update(dt, t, ctx) {
