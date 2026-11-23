@@ -48,6 +48,8 @@
     <symbol id="i-rotate" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></g></symbol>
     <symbol id="i-sliders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M19 7h1M4 17h3M13 17h7"/><circle cx="16" cy="7" r="2.5"/><circle cx="10" cy="17" r="2.5"/></g></symbol>
     <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></symbol>
+    <symbol id="i-lms" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14.5l-7-3.82V17c0 3.31 3.13 6 7 6s7-2.69 7-6v-3.32l-7 3.82z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.24a2 2 0 0 0-.59-1.42l-2.83-2.83A2 2 0 0 0 15.17 2H10a2 2 0 0 0-2 2z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"/></symbol>
   </svg>
 
   <!-- ============ HEADER ============ -->
@@ -68,6 +70,7 @@
 
       <div class="header-actions">
         <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language"><span id="langLabel">EN</span></button>
+        <button type="button" class="btn btn-primary btn-sm lms-header-btn hide-sm" data-lms-trigger aria-haspopup="dialog"><svg class="ic"><use href="#i-lms"/></svg><span>student.sinhalakw.lk</span></button>
         <a href="#contact" class="btn btn-dark btn-sm hide-sm" data-i18n="navEnroll">Enroll Now</a>
         <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span>
@@ -88,9 +91,9 @@
       <a href="#contact" data-i18n="navContact">Contact & Enroll</a>
     </nav>
     <div class="mobile-menu-foot">
-      <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="btn btn-primary btn-block">
-        <svg class="ic"><use href="#i-wa"/></svg><span>074 362 4117</span>
-      </a>
+      <button type="button" class="btn btn-primary btn-block" data-lms-trigger aria-haspopup="dialog">
+        <svg class="ic"><use href="#i-lms"/></svg><span>student.sinhalakw.lk · Student LMS</span>
+      </button>
     </div>
   </div>
 
@@ -374,7 +377,7 @@
               <ul class="ticks">
                 <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v1a">සජීවී Zoom දේශන සමඟ පැහැදිලි HD Recordings සංරක්ෂිතය</span></li>
                 <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v1b">මුද්‍රිත සම්පූර්ණ නිබන්ධන කට්ටල කුරියර් මඟින් නිවසටම</span></li>
-                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v1c">WhatsApp හරහා ගුරුතුමියගේ ඍජු පිළිතුරු පරීක්ෂාව සහ ලකුණු ලබාදීම</span></li>
+                <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="v1c">student.sinhalakw.lk නව LMS පද්ධතිය ඔස්සේ ගුරුතුමියගේ ඍජු පිළිතුරු පරීක්ෂාව සහ ලකුණු ලබාදීම</span></li>
               </ul>
             </div>
           </article>
@@ -463,8 +466,8 @@
         <div class="faq-head">
           <span class="eyebrow reveal" data-i18n="faqEyebrow">FREQUENTLY ASKED QUESTIONS</span>
           <h2 class="h2 reveal" data-i18n="faqTitle">Frequently Asked Questions</h2>
-          <p class="sub reveal" data-i18n="faqSub">තවත් විමසීම් තිබේද? WhatsApp හරහා ඍජුවම අප අමතන්න.</p>
-          <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="link-arrow reveal"><span>074 362 4117</span><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <p class="sub reveal" data-i18n="faqSub">නව ශිෂ්‍ය LMS පද්ධතිය හෝ පන්ති පිළිබඳ විමසීම් සඳහා student.sinhalakw.lk වෙත පිවිසෙන්න.</p>
+          <button type="button" class="link-arrow reveal" data-lms-trigger><span>student.sinhalakw.lk</span><svg class="ic"><use href="#i-arrow"/></svg></button>
         </div>
         <div class="faq-list">
           <details class="qa reveal" open>
@@ -485,7 +488,7 @@
           </details>
           <details class="qa reveal">
             <summary><span data-i18n="q5">නව පන්ති සඳහා ලියාපදිංචි වන්නේ කෙසේද?</span><i></i></summary>
-            <p data-i18n="a5">074 362 4117 අංකයට WhatsApp පණිවිඩයක් එවන්න, නැතහොත් පහත ලියාපදිංචි වීමේ පෝරමය පුරවා අප වෙත යොමු කරන්න.</p>
+            <p data-i18n="a5">student.sinhalakw.lk ඔස්සේ හෝ පහත ලියාපදිංචි වීමේ පෝරමය පුරවා අපගේ නව ශිෂ්‍ය LMS පද්ධතිය සඳහා කලින්ම ලියාපදිංචි වන්න.</p>
           </details>
         </div>
       </div>
@@ -500,12 +503,12 @@
             <span class="eyebrow reveal" data-i18n="ctEyebrow">ENROLLMENT & INQUIRIES</span>
             <h2 class="h2 reveal" data-i18n="ctTitle">Begin Your Journey to 2 'A' Passes Today</h2>
             <ul class="contact-list reveal">
-              <li><a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener"><span class="c-ic"><svg class="ic"><use href="#i-wa"/></svg></span><span><small>WhatsApp Hotline</small>074 362 4117</span></a></li>
+              <li><button type="button" class="contact-lms-btn" data-lms-trigger><span class="c-ic"><svg class="ic"><use href="#i-lms"/></svg></span><span><small>Student LMS Portal</small>student.sinhalakw.lk</span></button></li>
               <li><a href="mailto:kwsinhala@gmail.com"><span class="c-ic"><svg class="ic"><use href="#i-mail"/></svg></span><span><small>Email</small>kwsinhala@gmail.com</span></a></li>
               <li><div><span class="c-ic"><svg class="ic"><use href="#i-pin"/></svg></span><span><small data-i18n="ctPlace">Location</small><span data-i18n="ctPlaceV">Meegahathenna, Sri Lanka</span></span></div></li>
             </ul>
             <div class="socials reveal">
-              <a href="https://whatsapp.com/channel/0029VajTCfCADTOA3ZcOol3W" target="_blank" rel="noopener" aria-label="WhatsApp Channel"><svg class="ic"><use href="#i-wa"/></svg></a>
+              <button type="button" data-lms-trigger aria-label="Student LMS Portal student.sinhalakw.lk" class="social-lms-btn"><svg class="ic"><use href="#i-lms"/></svg></button>
               <a href="https://youtube.com/@kaushalyawicramarachchi" target="_blank" rel="noopener" aria-label="YouTube"><svg class="ic"><use href="#i-yt"/></svg></a>
               <a href="https://www.facebook.com/kaushalyawicramarachchisinhala" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
               <a href="https://www.tiktok.com/@kw_sinhala" target="_blank" rel="noopener" aria-label="TikTok"><svg class="ic"><use href="#i-tt"/></svg></a>
@@ -521,7 +524,7 @@
             </label>
             <div class="field-row">
               <label class="field">
-                <span data-i18n="fmPhone">WhatsApp අංකය</span>
+                <span data-i18n="fmPhone">දුරකථන අංකය</span>
                 <input type="tel" id="fPhone" required placeholder="07X XXX XXXX" autocomplete="tel" inputmode="tel">
               </label>
               <label class="field">
@@ -547,7 +550,7 @@
                 </select>
               </label>
             </div>
-            <button type="submit" class="btn btn-primary btn-block"><svg class="ic"><use href="#i-wa"/></svg><span data-i18n="fmBtn">WhatsApp හරහා ලියාපදිංචි වන්න</span></button>
+            <button type="submit" class="btn btn-primary btn-block"><svg class="ic"><use href="#i-lms"/></svg><span data-i18n="fmBtn">student.sinhalakw.lk වෙත ලියාපදිංචි වන්න</span></button>
             <p class="form-note" id="formNote" role="status"></p>
           </form>
         </div>
@@ -571,8 +574,177 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp -->
-  <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="fab" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+  <!-- Floating Student LMS Action Button -->
+  <button type="button" class="lms-fab" data-lms-trigger aria-label="Student LMS Portal student.sinhalakw.lk">
+    <span class="lms-fab-pulse"></span>
+    <svg class="ic"><use href="#i-lms"/></svg>
+    <span class="lms-fab-text">student.sinhalakw.lk</span>
+  </button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+    <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous"><svg class="ic"><use href="#i-left"/></svg></button>
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Next"><svg class="ic"><use href="#i-right"/></svg></button>
+  </div>
+
+  <!-- ============ STUDENT LMS COMING SOON MODAL ============ -->
+  <div class="lms-modal" id="lmsModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lmsModalTitle">
+    <div class="lms-dialog">
+      <button class="lms-close" id="lmsClose" type="button" aria-label="Close LMS portal"><svg class="ic"><use href="#i-close"/></svg></button>
+
+      <div class="lms-content">
+        <div class="lms-header">
+          <span class="lms-badge"><span class="lms-badge-dot"></span> NEXT-GEN STUDENT PORTAL</span>
+          <h2 class="lms-title" id="lmsModalTitle">student.sinhalakw.lk</h2>
+          <p class="lms-sub">We are building an all-new dedicated Learning Management System (LMS) for Sinhala KW students across Sri Lanka. Direct lecture access, digital paper marking, live rankings, and study resources—all in one place.</p>
+          
+          <div class="lms-domain-box">
+            <div class="domain-info">
+              <span class="domain-tag">PORTAL URL</span>
+              <strong class="domain-val">student.sinhalakw.lk</strong>
+            </div>
+            <button type="button" class="btn-copy" id="lmsCopyBtn" aria-label="Copy portal address">
+              <svg class="ic"><use href="#i-copy"/></svg>
+              <span id="lmsCopyTxt">Copy Link</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Feature Tabs -->
+        <div class="lms-tabs-sec">
+          <span class="lms-sec-label">EXPLORE UPCOMING LMS FEATURES</span>
+          <div class="lms-tabs" role="tablist">
+            <button type="button" class="lms-tab is-active" data-lms-tab="vault">📹 Lecture Vault</button>
+            <button type="button" class="lms-tab" data-lms-tab="marking">✍️ 1-on-1 Marking</button>
+            <button type="button" class="lms-tab" data-lms-tab="ranks">📊 Live Leaderboard</button>
+            <button type="button" class="lms-tab" data-lms-tab="tracking">📦 Tute Tracker</button>
+          </div>
+
+          <div class="lms-preview-deck">
+            <!-- Vault Preview -->
+            <div class="lms-preview-panel is-active" id="prev-vault">
+              <div class="preview-card">
+                <div class="prev-screen">
+                  <div class="prev-screen-bar"><span>🔴 LIVE & RECORDED HD PLAYER</span><span>1080p 60fps</span></div>
+                  <div class="prev-video-mock">
+                    <svg class="ic play-ic"><use href="#i-play"/></svg>
+                    <div class="prev-video-title">2026 O/L Sinhala Special Seminar · Term Revision Masterclass</div>
+                  </div>
+                  <div class="prev-timeline">
+                    <span class="prev-time">00:15 Grammar Fundamentals</span>
+                    <span class="prev-time">32:40 Classical Poetry Breakdown</span>
+                    <span class="prev-time">1:15:00 Essay Composition Blueprint</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Marking Preview -->
+            <div class="lms-preview-panel" id="prev-marking">
+              <div class="preview-card">
+                <div class="prev-paper">
+                  <div class="prev-paper-head">
+                    <div>
+                      <span class="prev-chip">Paper 02 · Literary Critique</span>
+                      <strong>සාහිත්‍ය රසාස්වාදය හා විචාරය</strong>
+                    </div>
+                    <div class="prev-score">98<span>/100</span></div>
+                  </div>
+                  <div class="prev-teacher-note">
+                    <span class="teacher-tag">FEEDBACK FROM KAUSHALYA WICRAMARACHCHI:</span>
+                    <p>"විශිෂ්ට සාහිත්‍ය විචාරයක්! උපමා රූපක සහ භාෂා රටාව පැහැදිලිව විග්‍රහ කර ඇත. විභාගයේදී සම්පූර්ණ ලකුණු හිමිවන විශිෂ්ට පිළිතුරකි."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ranks Preview -->
+            <div class="lms-preview-panel" id="prev-ranks">
+              <div class="preview-card">
+                <div class="prev-ranks-list">
+                  <div class="prev-rank-item top-1">
+                    <span class="r-badge">#1</span>
+                    <div class="r-info"><strong>Kasun Rajapaksha</strong><span>Colombo District · Royal College</span></div>
+                    <span class="r-marks">99%</span>
+                  </div>
+                  <div class="prev-rank-item">
+                    <span class="r-badge">#2</span>
+                    <div class="r-info"><strong>Nimasha Senarath</strong><span>Kandy District · Mahamaya Girls</span></div>
+                    <span class="r-marks">97%</span>
+                  </div>
+                  <div class="prev-rank-item">
+                    <span class="r-badge">#3</span>
+                    <div class="r-info"><strong>Dilshan Fernando</strong><span>Kalutara District · Tissa Central</span></div>
+                    <span class="r-marks">96%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tracking Preview -->
+            <div class="lms-preview-panel" id="prev-tracking">
+              <div class="preview-card">
+                <div class="prev-courier">
+                  <div class="courier-head">
+                    <div><span class="prev-chip">Consignment #SKW-8841</span><strong>Term 01 Master Tute Pack</strong></div>
+                    <span class="courier-badge">Out for Delivery</span>
+                  </div>
+                  <div class="courier-steps">
+                    <div class="c-step done"><span>✓</span> Printed & Packed</div>
+                    <div class="c-step done"><span>✓</span> Handed to Courier (Citypak)</div>
+                    <div class="c-step active"><span>🚚</span> On Delivery to Your Address</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Student Pass Generator -->
+        <div class="lms-pass-sec">
+          <span class="lms-sec-label">INTERACTIVE EARLY ACCESS PASS</span>
+          <p class="lms-pass-desc">Type your name below to generate your personalized early-access student pass for the new LMS platform.</p>
+          
+          <form class="lms-pass-form" id="lmsPassForm">
+            <input type="text" id="lmsNameInput" placeholder="Enter student name (e.g. Kasun Wickrama)" required>
+            <button type="submit" class="btn btn-primary"><svg class="ic"><use href="#i-spark"/></svg><span>Generate Access Pass</span></button>
+          </form>
+
+          <div class="lms-pass-card" id="lmsPassCard" style="display:none">
+            <div class="pass-glare"></div>
+            <div class="pass-head">
+              <img src="assets/logos/tight_logo_w.png" alt="Sinhala KW" class="pass-logo">
+              <span class="pass-tier">VIP EARLY ACCESS</span>
+            </div>
+            <div class="pass-body">
+              <div class="pass-stud-name" id="passStudentName">Student Name</div>
+              <div class="pass-meta">
+                <span>PORTAL: <strong>student.sinhalakw.lk</strong></span>
+                <span>BATCH: <strong>2026/2027 O/L Master</strong></span>
+                <span>STATUS: <strong class="pass-status">VERIFIED ACTIVE</strong></span>
+              </div>
+            </div>
+            <div class="pass-foot">
+              <span class="pass-id" id="passId">SKW-LMS-2026</span>
+              <span class="pass-check">✦ PRIORITY ACCOUNT RESERVED</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lms-footer-actions">
+          <a href="https://student.sinhalakw.lk" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+            <svg class="ic"><use href="#i-lms"/></svg><span>Launch student.sinhalakw.lk</span>
+          </a>
+          <button type="button" class="btn btn-ghost btn-block" id="lmsDismiss">Back to Website</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
