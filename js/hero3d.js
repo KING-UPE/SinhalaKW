@@ -429,6 +429,12 @@ async function loadLogo(url) {
     const node = path.userData && path.userData.node;
     const inEmblem = node && node.closest ? !!node.closest('#emblem') : path.color.getHexString() === 'ffc20e';
     const part = inEmblem ? 'emblem' : 'letters';
+    // the KW font glyphs are y-flipped, which makes the loader read their winding as holes;
+    // every glyph piece is a solid polygon, so take each sub-path as its own shape
+    if (node && node.hasAttribute && node.hasAttribute('data-glyph')) {
+      for (const sub of path.subPaths) raw[part].push({ outer: toPts(sub), holes: [] });
+      continue;
+    }
     for (const shape of SVGLoader.createShapes(path)) {
       raw[part].push({ outer: toPts(shape), holes: shape.holes.map(toPts) });
     }
@@ -626,7 +632,8 @@ const PARTICLE_VS = /* glsl */`
     vTone = aTone;
     vShade = clamp(position.z * 4.0 + 0.5, 0.0, 1.0) * 0.6 + aRnd.x * 0.4;
     float e = length((p.xy + uOffset) / uFade);
-    vA = (1.0 - s * 0.4) * (1.0 - smoothstep(0.8, 1.0, e));
+    // only drifting grains fade near the canvas edge; the formed logo stays solid
+    vA = (1.0 - s * 0.4) * (1.0 - s * smoothstep(0.8, 1.0, e));
   }`;
 const PARTICLE_FS = /* glsl */`
   uniform vec3 uCol, uColDeep, uAccent, uWhite;
@@ -658,7 +665,7 @@ function makeParticles(logo, isMobile, shared) {
       home.set([p.x, p.y, p.z], i * 3);
       rnd.set([Math.random(), Math.random(), Math.random(), Math.random()], i * 4);
       const r = Math.random();
-      tone[i] = r < 0.05 ? 1 : r < 0.07 ? 2 : 0;   // mostly main colour, a few accent and white sparks
+      tone[i] = r < 0.02 ? 1 : r < 0.03 ? 2 : 0;   // mostly main colour, a few accent and white sparks
     });
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(home, 3));
