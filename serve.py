@@ -81,7 +81,8 @@ class RangeFileWrapper:
         self.f.close()
 
 if __name__ == '__main__':
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", PORT), RangeHTTPRequestHandler) as httpd:
+    # threaded: a browser holding a keep-alive connection open must not block every other request
+    http.server.ThreadingHTTPServer.allow_reuse_address = True
+    with http.server.ThreadingHTTPServer(("", PORT), RangeHTTPRequestHandler) as httpd:
         print(f"Serving at http://localhost:{PORT} with HTTP Range support")
         httpd.serve_forever()

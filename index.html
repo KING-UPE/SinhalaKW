@@ -46,6 +46,7 @@
     <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></symbol>
     <symbol id="i-zoom" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2M11 8.5v5M8.5 11h5"/></g></symbol>
     <symbol id="i-rotate" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></g></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M19 7h1M4 17h3M13 17h7"/><circle cx="16" cy="7" r="2.5"/><circle cx="10" cy="17" r="2.5"/></g></symbol>
     <symbol id="i-spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></symbol>
   </svg>
 
@@ -106,33 +107,14 @@
         <span class="deco deco-arc" data-depth="0.3"></span>
       </div>
 
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow-pill reveal"><span class="pulse-dot"></span><span data-i18n="heroPill">2026 · 2027 නව පන්ති ලියාපදිංචිය ඇරඹේ</span></span>
-          <h1 class="hero-title reveal">
-            <span class="ht-line" data-i18n="heroT1">සාමාන්‍ය පෙළ සිංහලෙන්</span>
-            <span class="ht-big"><span class="hl">A</span> <span data-i18n="heroT2">2ක්</span></span>
-          </h1>
-          <p class="hero-sub reveal" data-i18n="heroSub">භාෂාව සහ සාහිත්‍ය රසාස්වාදය, එකම ගුරුතුමියකගෙන් සිතුවම් සහ විශේෂ ක්‍රම ඔස්සේ සරලව.</p>
-          <div class="hero-cta reveal">
-            <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="btn btn-primary">
-              <svg class="ic"><use href="#i-wa"/></svg><span data-i18n="heroCta">ලියාපදිංචි වන්න</span>
-            </a>
-            <a href="#process" class="link-arrow"><span data-i18n="heroCta2">ක්‍රමවේදය</span><svg class="ic"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
+      <h1 class="sr-only"><span class="ht-line" data-i18n="heroT1">සාමාන්‍ය පෙළ සිංහලෙන්</span> <span class="ht-big"><span class="hl">A</span> <span data-i18n="heroT2">2ක්</span></span></h1>
 
-        <div class="hero-emblem reveal">
-          <div class="emblem-stage" id="emblemStage">
-            <img class="emblem-fallback" src="assets/logos/emblem_designer.svg" alt="Sinhala KW emblem">
+      <div class="container hero-grid">
+        <div class="hero-logo reveal">
+          <div class="logo-stage" id="logoStage">
+            <img class="logo-fallback" src="assets/logos/logo_full_vector.svg" alt="සිංහල KW">
           </div>
-          <div class="emblem-switch" id="emblemSwitch" role="radiogroup" aria-label="3D style">
-            <button type="button" role="radio" aria-checked="true" data-style="solid"><span class="sw sw-solid" aria-hidden="true"></span><span class="sw-label" data-i18n="emSolid">රන්</span></button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-style="particles"><span class="sw sw-particles" aria-hidden="true"></span><span class="sw-label" data-i18n="emParticles">අංශු</span></button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-style="glass"><span class="sw sw-glass" aria-hidden="true"></span><span class="sw-label" data-i18n="emGlass">වීදුරු</span></button>
-            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-style="layers"><span class="sw sw-layers" aria-hidden="true"></span><span class="sw-label" data-i18n="emLayers">ස්තර</span></button>
-          </div>
-          <div class="emblem-hint" id="emblemHint"><svg class="ic"><use href="#i-rotate"/></svg><span data-i18n="globeHint">කරකවා බලන්න</span></div>
+          <div class="logo-hint" id="logoHint"><svg class="ic"><use href="#i-rotate"/></svg><span data-i18n="globeHint">කරකවා බලන්න</span></div>
         </div>
 
         <div class="hero-teacher reveal">
@@ -147,6 +129,55 @@
           </div>
         </div>
       </div>
+
+      <!-- 3D logo settings: slides out from the left edge (bottom sheet on phones) -->
+      <aside class="cfg" id="cfg" aria-label="3D logo settings">
+        <div class="cfg-body" id="cfgBody">
+          <div class="cfg-head">
+            <strong data-i18n="cfgTitle">3D ලාංඡනය</strong>
+            <button type="button" class="cfg-close" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
+          </div>
+
+          <div class="cfg-group">
+            <span class="cfg-label" id="cfgStyleLbl" data-i18n="cfgStyle">විලාසය</span>
+            <div class="cfg-styles" role="radiogroup" aria-labelledby="cfgStyleLbl" data-setting="style">
+              <button type="button" role="radio" aria-checked="true" data-value="solid"><span class="sw sw-solid" aria-hidden="true"></span><span data-i18n="emSolid">රන්</span></button>
+              <button type="button" role="radio" aria-checked="false" data-value="particles"><span class="sw sw-particles" aria-hidden="true"></span><span data-i18n="emParticles">අංශු</span></button>
+              <button type="button" role="radio" aria-checked="false" data-value="glass"><span class="sw sw-glass" aria-hidden="true"></span><span data-i18n="emGlass">වීදුරු</span></button>
+              <button type="button" role="radio" aria-checked="false" data-value="layers"><span class="sw sw-layers" aria-hidden="true"></span><span data-i18n="emLayers">ස්තර</span></button>
+            </div>
+          </div>
+
+          <div class="cfg-group">
+            <span class="cfg-label" id="cfgColourLbl" data-i18n="cfgColour">වර්ණ</span>
+            <div class="cfg-chips" role="radiogroup" aria-labelledby="cfgColourLbl" data-setting="scheme">
+              <button type="button" role="radio" aria-checked="true" data-value="brand"><span class="dot dot-brand" aria-hidden="true"></span><span data-i18n="cfgBrand">මුල්</span></button>
+              <button type="button" role="radio" aria-checked="false" data-value="navy"><span class="dot dot-navy" aria-hidden="true"></span><span data-i18n="cfgNavy">නිල්</span></button>
+              <button type="button" role="radio" aria-checked="false" data-value="gold"><span class="dot dot-gold" aria-hidden="true"></span><span data-i18n="cfgGold">රන්</span></button>
+            </div>
+          </div>
+
+          <div class="cfg-group">
+            <div class="cfg-range">
+              <label for="cfgDepth" data-i18n="cfgDepth">ගැඹුර</label><output for="cfgDepth">100%</output>
+              <input type="range" id="cfgDepth" data-setting="depth" min="0.4" max="2" step="0.05" value="1">
+            </div>
+            <div class="cfg-range">
+              <label for="cfgSpeed" data-i18n="cfgSpeed">චලන වේගය</label><output for="cfgSpeed">100%</output>
+              <input type="range" id="cfgSpeed" data-setting="speed" min="0" max="2" step="0.05" value="1">
+            </div>
+          </div>
+
+          <div class="cfg-group cfg-switches">
+            <label class="cfg-toggle"><span data-i18n="cfgSway">ස්වයංක්‍රීය චලනය</span><input type="checkbox" role="switch" data-setting="sway" checked></label>
+            <label class="cfg-toggle"><span data-i18n="cfgSpin">මැද ලකුණ කරකවන්න</span><input type="checkbox" role="switch" data-setting="spin"></label>
+            <label class="cfg-toggle"><span data-i18n="cfgHover">මවුස ආචරණය</span><input type="checkbox" role="switch" data-setting="hover" checked></label>
+          </div>
+
+          <button type="button" class="cfg-reset" data-i18n="cfgReset">යළි සකසන්න</button>
+        </div>
+        <button type="button" class="cfg-tab" aria-expanded="false" aria-controls="cfgBody"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><span>3D</span></button>
+      </aside>
 
       <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
     </section>
