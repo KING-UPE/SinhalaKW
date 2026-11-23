@@ -13,6 +13,7 @@
     heroT2: '× 2',
     heroSub: 'Language and Literature Appreciation from one teacher, made simple with mind maps and special techniques.',
     heroCta: 'Enroll now', heroCta2: 'Our method', globeHint: 'Drag to rotate',
+    emSolid: 'Gold', emParticles: 'Particles', emGlass: 'Glass', emLayers: 'Layers',
     teacherName: 'Kaushalya Wicramarachchi',
     aboutEyebrow: 'Your teacher',
     stampAL: 'A/L Arts',
@@ -66,19 +67,10 @@
       el.innerHTML = l === 'en' && en[k] ? en[k] : el.dataset.si;
     });
     $('#langLabel').textContent = l === 'en' ? 'සිං' : 'EN';
-    const lbl = $('.globe-label');
-    if (lbl) lbl.textContent = l === 'en' ? 'Sri Lanka' : 'ශ්‍රී ලංකාව';
     localStorage.setItem('kw-lang', l);
   }
   $('#langBtn')?.addEventListener('click', () => applyLang(lang === 'si' ? 'en' : 'si'));
   if (lang === 'en') applyLang('en');
-  // globe label is created later by the module; sync once it exists
-  const labelSync = new MutationObserver(() => {
-    const lbl = $('.globe-label');
-    if (lbl) { if (lang === 'en') lbl.textContent = 'Sri Lanka'; labelSync.disconnect(); }
-  });
-  const gs = $('#globeStage');
-  if (gs) labelSync.observe(gs, { childList: true });
 
   /* ---------- header ---------- */
   const header = $('#siteHeader');

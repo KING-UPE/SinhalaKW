@@ -122,17 +122,21 @@
           </div>
         </div>
 
-        <div class="hero-globe reveal">
-          <div class="globe-halo" aria-hidden="true"></div>
-          <div class="globe-stage" id="globeStage">
-            <img class="globe-fallback" src="assets/3d/render_globe_face.png" alt="Sinhala KW 3D Globe">
+        <div class="hero-emblem reveal">
+          <div class="emblem-stage" id="emblemStage">
+            <img class="emblem-fallback" src="assets/logos/emblem_designer.svg" alt="Sinhala KW emblem">
           </div>
-          <div class="globe-hint" id="globeHint"><svg class="ic"><use href="#i-rotate"/></svg><span data-i18n="globeHint">කරකවා බලන්න</span></div>
+          <div class="emblem-switch" id="emblemSwitch" role="radiogroup" aria-label="3D style">
+            <button type="button" role="radio" aria-checked="true" data-style="solid"><span class="sw sw-solid" aria-hidden="true"></span><span class="sw-label" data-i18n="emSolid">රන්</span></button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-style="particles"><span class="sw sw-particles" aria-hidden="true"></span><span class="sw-label" data-i18n="emParticles">අංශු</span></button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-style="glass"><span class="sw sw-glass" aria-hidden="true"></span><span class="sw-label" data-i18n="emGlass">වීදුරු</span></button>
+            <button type="button" role="radio" aria-checked="false" tabindex="-1" data-style="layers"><span class="sw sw-layers" aria-hidden="true"></span><span class="sw-label" data-i18n="emLayers">ස්තර</span></button>
+          </div>
+          <div class="emblem-hint" id="emblemHint"><svg class="ic"><use href="#i-rotate"/></svg><span data-i18n="globeHint">කරකවා බලන්න</span></div>
         </div>
 
         <div class="hero-teacher reveal">
           <div class="teacher-figure">
-            <span class="t-arch" aria-hidden="true"></span>
             <span class="t-sun" aria-hidden="true"></span>
             <span class="t-ring" aria-hidden="true"></span>
             <img src="assets/optimized/teacher/teacher_cutout.webp" alt="කෞෂල්‍යා වික්‍රමාරච්චි" width="810" height="1400" fetchpriority="high">
