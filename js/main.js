@@ -4,14 +4,10 @@
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Clear any cached language override so descriptions always render in authentic Sinhala
-  try {
-    localStorage.removeItem('kw-lang');
-  } catch {}
-
+  const WA_NUMBER = '94743624117';
   const formMsgs = {
     invalid: 'කරුණාකර සියලු තොරතුරු නිවැරදිව පුරවන්න.',
-    success: 'ස්තූතියි! student.sinhalakw.lk සඳහා ඔබගේ ලියාපදිංචිය තහවුරු විය.'
+    sent: 'WhatsApp විවෘත විය. පණිවිඩය යවා ලියාපදිංචිය සම්පූර්ණ කරන්න. WhatsApp විවෘත නොවුණේ නම් 074 362 4117 අංකයට අමතන්න.'
   };
 
   /* ---------- header ---------- */
@@ -108,7 +104,10 @@
   const filters = $$('.filter');
   const items = $$('.m-item');
   filters.forEach(btn => btn.addEventListener('click', () => {
-    filters.forEach(b => b.classList.toggle('is-active', b === btn));
+    filters.forEach(b => {
+      b.classList.toggle('is-active', b === btn);
+      b.setAttribute('aria-pressed', String(b === btn));
+    });
     const f = btn.dataset.filter;
     items.forEach(it => it.classList.toggle('is-hidden', f !== 'all' && it.dataset.cat !== f));
   }));
@@ -130,13 +129,13 @@
     show(group.indexOf(trigger));
     lb.classList.add('is-open');
     lb.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
     $('#lbClose').focus();
   };
   const close = () => {
     lb.classList.remove('is-open');
     lb.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
     lastFocus?.focus();
   };
   $$('[data-lightbox]').forEach(t => t.addEventListener('click', () => open(t)));
@@ -173,103 +172,59 @@
     video.addEventListener('ended', () => card.classList.remove('is-playing'));
   }
 
-  /* ---------- interactive Student LMS modal (student.sinhalakw.lk) ---------- */
-  const lmsModal = $('#lmsModal');
-  const lmsClose = $('#lmsClose');
-  const lmsDismiss = $('#lmsDismiss');
-  const lmsTriggers = $$('[data-lms-trigger]');
-  const lmsCopyBtn = $('#lmsCopyBtn');
-  const lmsCopyTxt = $('#lmsCopyTxt');
-  const lmsTabs = $$('.lms-tab');
-  const lmsPanels = $$('.lms-preview-panel');
-  const lmsPassForm = $('#lmsPassForm');
-  const lmsNameInput = $('#lmsNameInput');
-  const lmsPassCard = $('#lmsPassCard');
-  const passStudentName = $('#passStudentName');
-  const passId = $('#passId');
+  /* ---------- Student LMS · Coming Soon modal ---------- */
+  const cs = $('#lmsModal');
+  const csDialog = cs && $('.cs-dialog', cs);
+  let csLastFocus = null;
+  const focusables = () => $$('a[href], button:not([disabled])', csDialog);
 
-  function openLmsModal(prefillName = '') {
-    if (!lmsModal) return;
+  const openCs = trigger => {
+    if (!cs) return;
     setMenu(false);
-    lmsModal.classList.add('is-open');
-    lmsModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    if (prefillName) {
-      if (lmsNameInput) lmsNameInput.value = prefillName;
-      generateStudentPass(prefillName);
-    }
-    lmsClose?.focus();
-  }
+    csLastFocus = trigger || document.activeElement;
+    cs.classList.add('is-open');
+    cs.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    setTimeout(() => $('.cs-close', cs)?.focus(), 60);
+  };
+  const closeCs = () => {
+    if (!cs?.classList.contains('is-open')) return;
+    cs.classList.remove('is-open');
+    cs.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    csLastFocus?.focus?.();
+  };
 
-  function closeLmsModal() {
-    if (!lmsModal) return;
-    lmsModal.classList.remove('is-open');
-    lmsModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  function generateStudentPass(name) {
-    if (!name || !name.trim()) return;
-    if (passStudentName) passStudentName.textContent = name.trim();
-    if (passId) {
-      const code = Math.floor(1000 + Math.random() * 9000);
-      passId.textContent = `SKW-2026-LMS-${code}`;
-    }
-    if (lmsPassCard) {
-      lmsPassCard.style.display = 'block';
-      lmsPassCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  }
-
-  lmsTriggers.forEach(btn => btn.addEventListener('click', e => {
+  $$('[data-lms-trigger]').forEach(btn => btn.addEventListener('click', e => {
     e.preventDefault();
-    openLmsModal();
+    openCs(btn);
   }));
-
-  lmsClose?.addEventListener('click', closeLmsModal);
-  lmsDismiss?.addEventListener('click', closeLmsModal);
-  lmsModal?.addEventListener('click', e => {
-    if (e.target === lmsModal) closeLmsModal();
-  });
-
+  if (cs) $$('[data-cs-close]', cs).forEach(el => el.addEventListener('click', closeCs));
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && lmsModal?.classList.contains('is-open')) closeLmsModal();
-  });
-
-  // Copy portal URL with visual feedback
-  lmsCopyBtn?.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText('https://student.sinhalakw.lk');
-      if (lmsCopyTxt) lmsCopyTxt.textContent = 'Copied! ✓';
-      lmsCopyBtn.style.background = 'var(--yellow)';
-      lmsCopyBtn.style.color = 'var(--ink)';
-      setTimeout(() => {
-        if (lmsCopyTxt) lmsCopyTxt.textContent = 'Copy Link';
-        lmsCopyBtn.style.background = '';
-        lmsCopyBtn.style.color = '';
-      }, 2400);
-    } catch {
-      if (lmsCopyTxt) lmsCopyTxt.textContent = 'student.sinhalakw.lk';
+    if (!cs?.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { closeCs(); return; }
+    if (e.key === 'Tab') {
+      const f = focusables();
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
 
-  // Interactive LMS Feature Preview Tabs
-  lmsTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.lmsTab;
-      lmsTabs.forEach(t => t.classList.toggle('is-active', t === tab));
-      lmsPanels.forEach(p => p.classList.toggle('is-active', p.id === `prev-${target}`));
-    });
-  });
+  /* floating LMS button: only after the hero, and out of the way of the footer */
+  const fab = $('.lms-fab');
+  const footer = $('.footer');
+  if (fab && hero && 'IntersectionObserver' in window) {
+    let pastHero = false, atFooter = false;
+    const sync = () => fab.classList.toggle('is-shown', pastHero && !atFooter);
+    new IntersectionObserver(([en]) => { pastHero = !en.isIntersecting; sync(); }, { threshold: 0.15 }).observe(hero);
+    if (footer) new IntersectionObserver(([en]) => { atFooter = en.isIntersecting; sync(); }).observe(footer);
+  } else {
+    fab?.classList.add('is-shown');
+  }
 
-  // Interactive Student Pass Generator Form
-  lmsPassForm?.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = lmsNameInput?.value.trim();
-    if (name) generateStudentPass(name);
-  });
-
-  /* ---------- registration form -> Student LMS Registration ---------- */
+  /* ---------- registration form -> WhatsApp message ---------- */
   const form = $('#regForm');
   form?.addEventListener('submit', e => {
     e.preventDefault();
@@ -278,32 +233,26 @@
     const fields = [[name, name.value.trim().length > 1], [phone, phoneOk], [school, school.value.trim().length > 1]];
     fields.forEach(([el, ok]) => el.classList.toggle('is-invalid', !ok));
     const note = $('#formNote');
+    note.classList.toggle('is-ok', false);
     if (fields.some(([, ok]) => !ok)) {
-      if (note) note.textContent = formMsgs.invalid;
+      note.textContent = formMsgs.invalid;
+      fields.find(([, ok]) => !ok)[0].focus();
       return;
     }
-    const studentData = {
-      name: name.value.trim(),
-      phone: phone.value.trim(),
-      school: school.value.trim(),
-      grade: $('#fGrade')?.value,
-      mode: $('#fMode')?.value,
-      registeredAt: new Date().toISOString(),
-    };
-    try {
-      localStorage.setItem('kw_lms_student', JSON.stringify(studentData));
-    } catch {}
-
-    if (note) {
-      note.style.color = '#10B981';
-      note.textContent = formMsgs.success;
-    }
-    // Launch the LMS Coming Soon Modal with their pass immediately pre-generated!
-    setTimeout(() => {
-      openLmsModal(studentData.name);
-    }, 400);
+    const msg = [
+      'ආයුබෝවන්! සිංහල KW පන්තියට ලියාපදිංචි වීමට කැමැත්තෙමි.',
+      '',
+      `නම: ${name.value.trim()}`,
+      `දුරකථන අංකය: ${phone.value.trim()}`,
+      `පාසල: ${school.value.trim()}`,
+      `විභාග වර්ෂය: ${$('#fGrade').value}`,
+      `පන්තිය: ${$('#fMode').value}`
+    ].join('\n');
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    note.classList.toggle('is-ok', true);
+    note.textContent = formMsgs.sent;
   });
-  $$('.field input').forEach(i => i.addEventListener('input', () => i.classList.remove('is-invalid')));
+  $$('.field input').forEach(i => i.addEventListener('input', () => i.classList.toggle('is-invalid', false)));
 
   /* ---------- misc ---------- */
   const y = $('#year');
