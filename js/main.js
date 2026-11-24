@@ -99,16 +99,43 @@
   }
 
   /* ---------- gallery filter ---------- */
+  // the first six photos of the chosen filter show; "View more" opens the rest
   const filters = $$('.filter');
   const items = $$('.m-item');
+  const gMore = $('#gShowMore');
+  const G_LIMIT = 6;
+  let gFilter = 'all', gAll = false;
+  const renderGallery = () => {
+    const match = items.filter(it => gFilter === 'all' || it.dataset.cat === gFilter);
+    items.forEach(it => {
+      const i = match.indexOf(it);
+      it.classList.toggle('is-hidden', i < 0 || (!gAll && i >= G_LIMIT));
+    });
+    if (gMore) {
+      const extra = match.length - G_LIMIT;
+      gMore.parentElement.hidden = extra <= 0;
+      gMore.setAttribute('aria-expanded', String(gAll));
+      $('span', gMore).textContent = gAll ? 'View less' : 'View more';
+      $('em', gMore).textContent = `+${Math.max(extra, 0)}`;
+      $('em', gMore).hidden = gAll;
+    }
+  };
   filters.forEach(btn => btn.addEventListener('click', () => {
     filters.forEach(b => {
       b.classList.toggle('is-active', b === btn);
       b.setAttribute('aria-pressed', String(b === btn));
     });
-    const f = btn.dataset.filter;
-    items.forEach(it => it.classList.toggle('is-hidden', f !== 'all' && it.dataset.cat !== f));
+    gFilter = btn.dataset.filter;
+    gAll = false;
+    renderGallery();
   }));
+  gMore?.addEventListener('click', () => {
+    gAll = !gAll;
+    renderGallery();
+    const m = $('#masonry');
+    if (!gAll && m && m.getBoundingClientRect().top < 0) m.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+  renderGallery();
 
   /* ---------- results year tabs ---------- */
   const yTabs = $$('.year-tab');
@@ -540,10 +567,22 @@
     let side = '', lastPointer = 'mouse';
     const setSide = s => {
       if (s === side) return;
+      if (s) fitSplit();
       side = s;
       hs.dataset.side = s;
       hs.classList.remove('is-hinting');
     };
+    // where the seam stops on hover: just past her shoulders, so the whole portrait takes that side's look
+    const photo = $('.hs-photo', hs), stage = $('.hs-stage', hs);
+    const fitSplit = () => {
+      if (!photo || !stage || !stage.clientWidth) return;
+      const w = stage.clientWidth, reach = photo.offsetWidth / 2 * 0.94 + 16;
+      hs.style.setProperty('--split-lang', `${Math.min(w, w / 2 + reach)}px`);
+      hs.style.setProperty('--split-lit', `${Math.max(0, w / 2 - reach)}px`);
+    };
+    fitSplit();
+    window.addEventListener('resize', fitSplit);
+    photo?.addEventListener('load', fitSplit);
     const halfAt = x => {
       const r = hs.getBoundingClientRect();
       return x < r.left + r.width / 2 ? 'lang' : 'lit';
