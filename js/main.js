@@ -105,12 +105,36 @@
   const gMore = $('#gShowMore');
   const G_LIMIT = 6;
   let gFilter = 'all', gAll = false;
-  const renderGallery = () => {
+  const masonry = $('#masonry');
+  // photos marked data-lead="<filter>" open that filter; the rest keep page order
+  const ordered = () => {
     const match = items.filter(it => gFilter === 'all' || it.dataset.cat === gFilter);
+    const lead = match.filter(it => it.dataset.lead === gFilter);
+    return lead.concat(match.filter(it => !lead.includes(it)));
+  };
+  // lay photos out row by row (1st left, 2nd middle, ...) so the lead photos sit in the top row
+  const layoutGallery = shown => {
+    if (!masonry) return;
+    const n = window.matchMedia('(max-width: 1080px)').matches ? 2 : 3;
+    masonry.classList.add('is-cols');
+    const cols = Array.from({ length: n }, () => {
+      const c = document.createElement('div');
+      c.className = 'm-col';
+      return c;
+    });
+    shown.forEach((it, i) => cols[i % n].appendChild(it));
+    items.filter(it => !shown.includes(it)).forEach(it => cols[0].appendChild(it));
+    masonry.replaceChildren(...cols);
+  };
+  const renderGallery = () => {
+    const match = ordered();
     items.forEach(it => {
       const i = match.indexOf(it);
       it.classList.toggle('is-hidden', i < 0 || (!gAll && i >= G_LIMIT));
     });
+    layoutGallery(match.filter(it => !it.classList.contains('is-hidden')));
+    // lightbox steps through the photos in the same order as shown
+    match.forEach((it, i) => { $('[data-lightbox]', it).dataset.order = i; });
     if (gMore) {
       const extra = match.length - G_LIMIT;
       gMore.parentElement.hidden = extra <= 0;
@@ -136,6 +160,7 @@
     if (!gAll && m && m.getBoundingClientRect().top < 0) m.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
   });
   renderGallery();
+  window.matchMedia('(max-width: 1080px)').addEventListener('change', renderGallery);
 
   /* ---------- results year tabs ---------- */
   const yTabs = $$('.year-tab');
@@ -187,6 +212,24 @@
       if (all) $('.t-card.is-more', tGrid)?.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' });
       else if (tGrid.getBoundingClientRect().top < 0) tGrid.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
     });
+  }
+  // phones: the review cards under the spotlight slide along by themselves.
+  // Stops while a finger is on them or a review is open, and only runs when in view.
+  if (tGrid && !reduceMotion && 'IntersectionObserver' in window) {
+    const phone = window.matchMedia('(max-width: 640px)');
+    let inView = false, holdUntil = 0;
+    new IntersectionObserver(([en]) => { inView = en.isIntersecting; }, { threshold: 0.5 }).observe(tGrid);
+    const hold = () => { holdUntil = Date.now() + 7000; };
+    ['pointerdown', 'touchstart', 'wheel'].forEach(ev => tGrid.addEventListener(ev, hold, { passive: true }));
+    setInterval(() => {
+      if (!phone.matches || !inView || Date.now() < holdUntil || document.hidden) return;
+      if ($('.t-card.is-open', tGrid)) return;
+      const card = $$('.t-card', tGrid).find(c => c.offsetParent);
+      if (!card) return;
+      const step = card.offsetWidth + 12;
+      const atEnd = tGrid.scrollLeft + tGrid.clientWidth >= tGrid.scrollWidth - 8;
+      tGrid.scrollTo({ left: atEnd ? 0 : tGrid.scrollLeft + step, behavior: 'smooth' });
+    }, 4200);
   }
   tCards.forEach(c => {
     const btn = $('.t-more', c);
@@ -256,6 +299,7 @@
   const open = trigger => {
     const name = trigger.dataset.lightbox;
     group = $$(`[data-lightbox="${name}"]`).filter(t => !t.closest('.is-hidden'));
+    if (group.every(t => t.dataset.order !== undefined)) group.sort((a, b) => a.dataset.order - b.dataset.order);
     lastFocus = trigger;
     show(group.indexOf(trigger));
     lb.classList.add('is-open');
@@ -370,22 +414,31 @@
       fields.find(([, ok]) => !ok)[0].focus();
       return;
     }
-    // Demo send: plays the animation only. Nothing leaves the browser.
+    // send through WhatsApp: opens a chat with the details filled in (must happen inside the click)
+    const msg = [
+      'ආයුබෝවන්! (සිංහල KW වෙබ් අඩවියෙන්)',
+      '',
+      `නම: ${name.value.trim()}`,
+      `දුරකථන අංකය: ${phone.value.trim()}`,
+      '',
+      msgEl.value.trim()
+    ].join('\n');
+    window.open(`https://wa.me/94743624117?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
     note.textContent = '';
     const first = name.value.trim().split(/\s+/)[0];
     const sendText = $('.send-text', form);
     form.classList.add('is-sending');
-    sendText.textContent = 'යවමින්...';
+    sendText.textContent = 'WhatsApp විවෘත වෙමින්...';
     setTimeout(() => {
       form.classList.remove('is-sending');
       form.classList.add('is-sent');
       $('#doneTitle').textContent = `ස්තූතියි, ${first}!`;
       $('#formDone').setAttribute('aria-hidden', 'false');
-      note.textContent = 'ඔබගේ පණිවිඩය යවා ඇත.';
+      note.textContent = 'WhatsApp විවෘත විය.';
       form.reset();
-      sendText.textContent = 'පණිවිඩය යවන්න';
+      sendText.textContent = 'WhatsApp හරහා යවන්න';
       $('#doneAgain').focus({ preventScroll: true });
-    }, reduceMotion ? 250 : 1650);
+    }, reduceMotion ? 250 : 1200);
   });
   $('#doneAgain')?.addEventListener('click', () => {
     form.classList.remove('is-sent');

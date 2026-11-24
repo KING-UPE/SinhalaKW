@@ -1918,16 +1918,20 @@ h1, h2, h3, p, figure { margin: 0; }
   .hs-copy { padding: 18px 16px 52px; }
   .hs-title { font-size: clamp(19px, 5.6vw, 24px); }
   .hs-desc { display: none; }
-  /* only the space above her shoulders is free on a phone: three words per side, up there
+  /* only the space above her shoulders is free on a phone: four words per side, up there
+     (language: 1, 2, 3 + විභක්ති; literature: 1, 2, 3 + කෙටිකතා)
      (left/top, not --x/--y: the inline custom properties would win) */
   .hs-words li { font-size: 11.5px; padding: 5px 9px; }
   .hs-words li:nth-child(n+4) { display: none; }
-  .hs-w-lang .hs-words li:nth-child(1) { left: 19%; top: 31%; }
-  .hs-w-lang .hs-words li:nth-child(2) { left: 28%; top: 40%; }
-  .hs-w-lang .hs-words li:nth-child(3) { left: 15%; top: 49%; }
-  .hs-w-lit .hs-words li:nth-child(1) { left: 81%; top: 31%; }
-  .hs-w-lit .hs-words li:nth-child(2) { left: 72%; top: 40%; }
-  .hs-w-lit .hs-words li:nth-child(3) { left: 85%; top: 49%; }
+  .hs-w-lang .hs-words li:nth-child(5), .hs-w-lit .hs-words li:nth-child(4) { display: block; }
+  .hs-w-lang .hs-words li:nth-child(1) { left: 19%; top: 26%; }
+  .hs-w-lang .hs-words li:nth-child(2) { left: 28%; top: 34%; }
+  .hs-w-lang .hs-words li:nth-child(3) { left: 17%; top: 42%; }
+  .hs-w-lang .hs-words li:nth-child(5) { left: 25%; top: 50%; }
+  .hs-w-lit .hs-words li:nth-child(1) { left: 81%; top: 26%; }
+  .hs-w-lit .hs-words li:nth-child(2) { left: 72%; top: 34%; }
+  .hs-w-lit .hs-words li:nth-child(3) { left: 83%; top: 42%; }
+  .hs-w-lit .hs-words li:nth-child(4) { left: 75%; top: 50%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hs-chev, .hs-night, .hs-words li { animation: none !important; }
@@ -1966,3 +1970,43 @@ h1, h2, h3, p, figure { margin: 0; }
 .qa p a { color: var(--navy); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .qa p a:hover { color: var(--ink); }
 .faq-wa:hover .ic:first-child { transform: none; }
+
+/* gallery: JS lays photos out row by row in columns, so chosen photos sit in the top row */
+.masonry.is-cols { columns: auto; display: flex; align-items: flex-start; gap: 16px; }
+.m-col { flex: 1 1 0; min-width: 0; }
+@media (max-width: 640px) { .masonry.is-cols { gap: 10px; } }
+
+
+/* ---------- results 2025: each subject as a set (cover poster with its pages behind) ---------- */
+.sheets-sets { gap: clamp(36px, 6vw, 80px); padding: 26px 0 30px; }
+.sheet-set {
+  flex: 0 1 290px; overflow: visible; padding: 0; background: transparent; box-shadow: none;
+}
+.set-face, .set-page {
+  display: block; background: #fff; padding: 8px; border-radius: 18px;
+  box-shadow: 0 30px 50px -20px rgba(0, 0, 0, .55);
+}
+.set-face { position: relative; z-index: 2; overflow: hidden; }
+.set-page {
+  position: absolute; inset: 0; z-index: 1;
+  transition: transform .6s var(--ease);
+}
+.set-face img, .set-page img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; border-radius: 12px;
+}
+.set-page.p1 { transform: rotate(-6deg) translate(-16px, 8px); }
+.set-page.p2 { transform: rotate(6deg) translate(16px, 12px); }
+.sheet-set:hover .set-page.p1, .sheet-set:focus-visible .set-page.p1 { transform: rotate(-11deg) translate(-44px, 4px); }
+.sheet-set:hover .set-page.p2, .sheet-set:focus-visible .set-page.p2 { transform: rotate(10deg) translate(44px, 8px); }
+@media (max-width: 860px) {
+  /* two sets fit side by side, so no sideways scrolling (which would also clip the fanned pages) */
+  .sheets.sheets-sets {
+    overflow: visible; justify-content: center; scroll-snap-type: none;
+    margin: 0; padding: 20px 14px 26px; gap: 30px;
+  }
+  .sheets-sets .sheet-set { flex: 0 1 46%; }
+  .sheets-sets .sheet-tag { left: 10px; right: 10px; bottom: 10px; font-size: 10.5px; text-align: center; }
+  .sheets-sets .sheet-more { right: 10px; top: 10px; font-size: 10.5px; padding: 4px 9px; }
+  .set-page.p1 { transform: rotate(-6deg) translate(-10px, 6px); }
+  .set-page.p2 { transform: rotate(6deg) translate(10px, 8px); }
+}
