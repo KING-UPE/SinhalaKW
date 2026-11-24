@@ -10,3 +10,11 @@ chat images/
 *.zip
 _dev/backup_*/
 _dev/incoming/
+
+# local test tooling (browser profiles, screenshots, one-off scripts)
+_dev/chrome-prof*/
+_dev/shots/
+_dev/extra.mjs
+_dev/h2.mjs
+_dev/hero.mjs
+_dev/y24.mjs

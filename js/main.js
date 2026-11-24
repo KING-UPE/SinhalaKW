@@ -79,24 +79,7 @@
     sections.forEach(s => nio.observe(s));
   }
 
-  /* ---------- hero parallax shapes ---------- */
   const hero = $('.hero');
-  const decos = $$('.deco[data-depth]');
-  if (hero && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
-    let raf = 0;
-    hero.addEventListener('pointermove', e => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const r = hero.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        decos.forEach(d => {
-          const k = +d.dataset.depth * 40;
-          d.style.translate = `${-x * k}px ${-y * k}px`;
-        });
-      });
-    });
-  }
 
   /* ---------- gallery filter ---------- */
   // the first six photos of the chosen filter show; "View more" opens the rest
@@ -494,7 +477,6 @@
   }
 
   /* ---------- results graph ---------- */
-  const resultsSec = $('#results');
   const plot = $('#rPlot');
   const SERIES = {
     lang: { name: 'Sinhala Language', data: [22, 60, 63, 77] },
@@ -661,63 +643,21 @@
     }
   }
 
-  /* 3D logo (hero V1) is only downloaded when that hero is actually shown */
-  let hero3dLoaded = false;
-  const loadHero3d = () => {
-    if (hero3dLoaded) return;
-    hero3dLoaded = true;
-    const s = document.createElement('script');
-    s.type = 'module';
-    s.src = 'js/hero3d.js';
-    document.body.appendChild(s);
-  };
-
-  /* ---------- view-options panel ---------- */
-  const STORE = 'kw-view';
-  const DEFAULTS = { hero: 'v2', adv: 'v2', sheets: true, graph: true, lang: true, lit: true };
-  view = { ...DEFAULTS };
-  try { Object.assign(view, JSON.parse(localStorage.getItem(STORE) || '{}')); } catch (_) { /* private mode */ }
-  if (view.hero !== 'v1' && view.hero !== 'v2') view.hero = DEFAULTS.hero;
-  const applyView = animate => {
-    hero?.setAttribute('data-hero', view.hero);
-    document.body.classList.toggle('hero-v2', view.hero === 'v2');
-    if (view.hero === 'v1') loadHero3d();
-    $$('[data-pv="hero"] [role="radio"]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.value === view.hero)));
-    $('#special')?.setAttribute('data-adv', view.adv);
-    resultsSec?.classList.toggle('no-sheets', !view.sheets);
-    resultsSec?.classList.toggle('no-graph', !view.graph);
-    $$('[data-pv="adv"] [role="radio"]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.value === view.adv)));
-    ['sheets', 'graph', 'lang', 'lit'].forEach(k => { const i = $(`input[data-pv="${k}"]`); if (i) i.checked = view[k]; });
-    $$('input[data-pv="lang"], input[data-pv="lit"]').forEach(i => { i.disabled = !view.graph; });
+  /* ---------- results graph: legend buttons show or hide each subject's line ---------- */
+  view = { lang: true, lit: true };
+  const syncLines = animate => {
     $$('.r-key').forEach(b => b.setAttribute('aria-pressed', String(view[b.dataset.series])));
     chart?.render(animate);
-    try { localStorage.setItem(STORE, JSON.stringify(view)); } catch (_) { /* ignore */ }
   };
-  // Pairs that can't both be off: switching off the last one brings its partner back.
-  // (graph lines: lang / lit; results section: year-by-year block / graph)
-  const PARTNER = { lang: 'lit', lit: 'lang', sheets: 'graph', graph: 'sheets' };
-  const setPaired = (k, on) => {
-    view[k] = on;
-    if (!view[k] && !view[PARTNER[k]]) view[PARTNER[k]] = true;
-    applyView(true);
-  };
-  $$('.r-key').forEach(b => b.addEventListener('click', () => setPaired(b.dataset.series, b.getAttribute('aria-pressed') !== 'true')));
-  $$('[data-pv="adv"] [role="radio"]').forEach(b => b.addEventListener('click', () => { view.adv = b.dataset.value; applyView(); }));
-  $$('[data-pv="hero"] [role="radio"]').forEach(b => b.addEventListener('click', () => { view.hero = b.dataset.value; applyView(); }));
-  $$('input[data-pv]').forEach(i => i.addEventListener('change', () => setPaired(i.dataset.pv, i.checked)));
-  const pv = $('#pv');
-  if (pv) {
-    const tab = $('.pv-tab', pv);
-    const setPv = open => {
-      pv.classList.toggle('is-open', open);
-      tab.setAttribute('aria-expanded', String(open));
-    };
-    tab.addEventListener('click', () => setPv(!pv.classList.contains('is-open')));
-    $('.pv-close', pv).addEventListener('click', () => { setPv(false); tab.focus(); });
-    $('.pv-reset', pv).addEventListener('click', () => { view = { ...DEFAULTS }; applyView(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && pv.classList.contains('is-open')) { setPv(false); tab.focus(); } });
-  }
-  applyView();
+  // a line can be hidden, but never both: switching off the last one brings the other back
+  $$('.r-key').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.series;
+    view[k] = !view[k];
+    if (!view.lang && !view.lit) view[k === 'lang' ? 'lit' : 'lang'] = true;
+    syncLines(true);
+  }));
+  syncLines();
+  try { localStorage.removeItem('kw-view'); } catch (_) { /* old preview-panel settings */ }
 
   /* ---------- misc ---------- */
   const y = $('#year');
