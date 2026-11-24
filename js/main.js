@@ -4,10 +4,8 @@
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const WA_NUMBER = '94743624117';
   const formMsgs = {
-    invalid: 'කරුණාකර සියලු තොරතුරු නිවැරදිව පුරවන්න.',
-    sent: 'WhatsApp විවෘත විය. පණිවිඩය යවන්න. WhatsApp විවෘත නොවුණේ නම් 074 362 4117 අංකයට අමතන්න.'
+    invalid: 'කරුණාකර සියලු තොරතුරු නිවැරදිව පුරවන්න.'
   };
 
   /* ---------- header ---------- */
@@ -329,19 +327,224 @@
       fields.find(([, ok]) => !ok)[0].focus();
       return;
     }
-    const msg = [
-      'ආයුබෝවන්! (සිංහල KW වෙබ් අඩවියෙන්)',
-      '',
-      `නම: ${name.value.trim()}`,
-      `දුරකථන අංකය: ${phone.value.trim()}`,
-      '',
-      msgEl.value.trim()
-    ].join('\n');
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
-    note.classList.toggle('is-ok', true);
-    note.textContent = formMsgs.sent;
+    // Demo send: plays the animation only. Nothing leaves the browser.
+    note.textContent = '';
+    const first = name.value.trim().split(/\s+/)[0];
+    const sendText = $('.send-text', form);
+    form.classList.add('is-sending');
+    sendText.textContent = 'යවමින්...';
+    setTimeout(() => {
+      form.classList.remove('is-sending');
+      form.classList.add('is-sent');
+      $('#doneTitle').textContent = `ස්තූතියි, ${first}!`;
+      $('#formDone').setAttribute('aria-hidden', 'false');
+      note.textContent = 'ඔබගේ පණිවිඩය යවා ඇත.';
+      form.reset();
+      sendText.textContent = 'පණිවිඩය යවන්න';
+      $('#doneAgain').focus({ preventScroll: true });
+    }, reduceMotion ? 250 : 1650);
+  });
+  $('#doneAgain')?.addEventListener('click', () => {
+    form.classList.remove('is-sent');
+    $('#formDone').setAttribute('aria-hidden', 'true');
+    $('#formNote').textContent = '';
+    $('#cName').focus();
   });
   $$('.field input, .field textarea').forEach(i => i.addEventListener('input', () => i.classList.toggle('is-invalid', false)));
+
+  /* ---------- reviews spotlight ---------- */
+  const spot = $('#tSpot');
+  if (spot) {
+    const picks = $$('.t-pick', spot), slides = $$('.t-slide', spot), pickRow = $('.t-picks', spot);
+    let cur = 0;
+    spot.style.setProperty('--t-dur', '8s');
+    const go = (i, focus) => {
+      cur = (i + picks.length) % picks.length;
+      picks.forEach((p, k) => {
+        const on = k === cur;
+        p.classList.toggle('is-active', on);
+        p.setAttribute('aria-selected', String(on));
+        p.tabIndex = on ? 0 : -1;
+      });
+      slides.forEach((s, k) => {
+        s.classList.toggle('is-active', k === cur);
+        s.setAttribute('aria-hidden', String(k !== cur));
+      });
+      // restart the progress bar on the newly active pick
+      const bar = $('.t-pick-bar', picks[cur]);
+      bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
+      if (focus) picks[cur].focus();
+      if (pickRow.scrollWidth > pickRow.clientWidth + 2) {
+        pickRow.scrollTo({ left: picks[cur].offsetLeft - pickRow.offsetLeft - 20, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+    };
+    picks.forEach((p, i) => {
+      p.addEventListener('click', () => go(i));
+      p.addEventListener('keydown', e => {
+        const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (!d) return;
+        e.preventDefault();
+        go(cur + d, true);
+      });
+      $('.t-pick-bar', p).addEventListener('animationend', () => { if (i === cur) go(cur + 1); });
+    });
+    slides.forEach((s, k) => s.setAttribute('aria-hidden', String(k !== 0)));
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => spot.classList.toggle('is-playing', en.isIntersecting), { threshold: 0.35 }).observe(spot);
+      const pause = on => spot.classList.toggle('is-paused', on);
+      spot.addEventListener('pointerenter', () => pause(true));
+      spot.addEventListener('pointerleave', () => pause(spot.contains(document.activeElement)));
+      spot.addEventListener('focusin', () => pause(true));
+      spot.addEventListener('focusout', e => { if (!spot.contains(e.relatedTarget)) pause(false); });
+    }
+  }
+
+  /* ---------- results graph ---------- */
+  const resultsSec = $('#results');
+  const plot = $('#rPlot');
+  const SERIES = {
+    lang: { name: 'Sinhala Language', data: [22, 60, 63, 77] },
+    lit: { name: 'Sinhala Lit', data: [10, 52, 88, 129] }
+  };
+  const YEARS = [2022, 2023, 2024, 2025];
+  let view; // defined below with the view panel
+  let drawn = reduceMotion;
+  const chart = plot && (() => {
+    let geo = null;
+    const tip = document.createElement('div');
+    tip.className = 'r-tip';
+    const render = () => {
+      const W = plot.clientWidth, H = plot.clientHeight;
+      if (!W || !H) return;
+      const narrow = W < 560;
+      const m = { t: 14, r: narrow ? 52 : 132, b: 34, l: 40 };
+      const keys = Object.keys(SERIES).filter(k => view[k]);
+      const max = Math.max(...keys.flatMap(k => SERIES[k].data));
+      const step = max > 100 ? 25 : 20;
+      const top = Math.ceil((max * 1.08) / step) * step;
+      const x = i => m.l + (i * (W - m.l - m.r)) / (YEARS.length - 1);
+      const y = v => m.t + (1 - v / top) * (H - m.t - m.b);
+      let grid = '', axis = '';
+      for (let v = 0; v <= top; v += step) {
+        grid += `<line class="${v ? '' : 'base'}" x1="${m.l}" x2="${W - m.r + (narrow ? 0 : 8)}" y1="${y(v)}" y2="${y(v)}"/>`;
+        axis += `<text x="${m.l - 10}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+      }
+      YEARS.forEach((yr, i) => { axis += `<text class="yr" x="${x(i)}" y="${H - 8}" text-anchor="middle">${yr}</text>`; });
+      // end labels, nudged apart if they would collide
+      const ends = keys.map(k => ({ k, y: y(SERIES[k].data.at(-1)) })).sort((a, b) => a.y - b.y);
+      if (ends.length === 2 && ends[1].y - ends[0].y < 34) {
+        const mid = (ends[0].y + ends[1].y) / 2;
+        ends[0].y = mid - 17; ends[1].y = mid + 17;
+      }
+      const lastX = x(YEARS.length - 1);
+      let lines = '', dots = '', labels = '';
+      keys.forEach(k => {
+        const d = SERIES[k].data.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
+        lines += `<path class="r-line ${k}" d="${d}"/>`;
+        SERIES[k].data.forEach((v, i) => { dots += `<circle class="r-dot ${k}" data-i="${i}" cx="${x(i)}" cy="${y(v)}" r="5"/>`; });
+        const ly = ends.find(e => e.k === k).y;
+        labels += narrow
+          ? `<text class="v" x="${lastX + 12}" y="${ly + 5}">${SERIES[k].data.at(-1)}</text>`
+          : `<text class="v" x="${lastX + 14}" y="${ly - 2}">A ${SERIES[k].data.at(-1)}</text><text x="${lastX + 14}" y="${ly + 14}">${SERIES[k].name}</text>`;
+      });
+      plot.innerHTML = `<svg aria-hidden="true" focusable="false">
+        <g class="r-grid">${grid}</g><g class="r-axis">${axis}</g>
+        <line class="r-cross" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}"/>
+        <g>${lines}</g><g>${dots}</g><g class="r-end">${labels}</g></svg>`;
+      plot.appendChild(tip);
+      geo = { x, y, m, W, H, keys };
+      if (!drawn) $$('.r-line', plot).forEach(p => {
+        const L = p.getTotalLength();
+        p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+      });
+    };
+    const draw = () => {
+      if (drawn) return;
+      drawn = true;
+      $$('.r-line', plot).forEach(p => {
+        p.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.22,.8,.24,1)';
+        p.style.strokeDashoffset = '0';
+      });
+    };
+    const hover = e => {
+      if (!geo) return;
+      const r = plot.getBoundingClientRect();
+      const px = e.clientX - r.left;
+      const span = (geo.W - geo.m.l - geo.m.r) / (YEARS.length - 1);
+      const i = Math.max(0, Math.min(YEARS.length - 1, Math.round((px - geo.m.l) / span)));
+      const cx = geo.x(i);
+      const cross = $('.r-cross', plot);
+      cross.setAttribute('x1', cx); cross.setAttribute('x2', cx);
+      $$('.r-dot', plot).forEach(d => d.classList.toggle('on', +d.dataset.i === i));
+      tip.innerHTML = `<strong>${YEARS[i]} O/L</strong>` + geo.keys
+        .map(k => ({ k, v: SERIES[k].data[i] })).sort((a, b) => b.v - a.v)
+        .map(({ k, v }) => `<div class="row"><span class="r-swatch s-${k}"></span>${SERIES[k].name}<b>A ${v}</b></div>`).join('');
+      const tw = tip.offsetWidth, th = tip.offsetHeight;
+      const topY = Math.min(...geo.keys.map(k => geo.y(SERIES[k].data[i])));
+      let left = cx + 14;
+      if (left + tw > geo.W) left = cx - tw - 14;
+      let tY = topY - th - 14;
+      if (tY < 0) tY = Math.max(...geo.keys.map(k => geo.y(SERIES[k].data[i]))) + 14;
+      tip.style.transform = `translate(${Math.max(0, left)}px, ${Math.min(tY, geo.H - th)}px)`;
+      plot.classList.add('is-hover');
+    };
+    plot.addEventListener('pointermove', hover);
+    plot.addEventListener('pointerdown', hover);
+    plot.addEventListener('pointerleave', () => {
+      plot.classList.remove('is-hover');
+      $$('.r-dot.on', plot).forEach(d => d.classList.remove('on'));
+    });
+    if ('ResizeObserver' in window) new ResizeObserver(() => render()).observe(plot);
+    else window.addEventListener('resize', render);
+    if (!drawn && 'IntersectionObserver' in window) {
+      const dio = new IntersectionObserver(([en]) => { if (en.isIntersecting) { draw(); dio.disconnect(); } }, { threshold: 0.4 });
+      dio.observe(plot);
+    } else drawn = true;
+    return { render };
+  })();
+
+  /* ---------- view-options panel ---------- */
+  const STORE = 'kw-view';
+  const DEFAULTS = { adv: 'v2', sheets: true, graph: true, lang: true, lit: true };
+  view = { ...DEFAULTS };
+  try { Object.assign(view, JSON.parse(localStorage.getItem(STORE) || '{}')); } catch (_) { /* private mode */ }
+  const applyView = () => {
+    $('#special')?.setAttribute('data-adv', view.adv);
+    resultsSec?.classList.toggle('no-sheets', !view.sheets);
+    resultsSec?.classList.toggle('no-graph', !view.graph);
+    $$('[data-pv="adv"] [role="radio"]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.value === view.adv)));
+    ['sheets', 'graph', 'lang', 'lit'].forEach(k => { const i = $(`input[data-pv="${k}"]`); if (i) i.checked = view[k]; });
+    $$('input[data-pv="lang"], input[data-pv="lit"]').forEach(i => { i.disabled = !view.graph; });
+    $$('.r-key').forEach(b => b.setAttribute('aria-pressed', String(view[b.dataset.series])));
+    chart?.render();
+    try { localStorage.setItem(STORE, JSON.stringify(view)); } catch (_) { /* ignore */ }
+  };
+  // a line can be hidden, but never both: switching off the last one brings the other back
+  const setSeries = (k, on) => {
+    view[k] = on;
+    if (!view.lang && !view.lit) view[k === 'lang' ? 'lit' : 'lang'] = true;
+    applyView();
+  };
+  $$('.r-key').forEach(b => b.addEventListener('click', () => setSeries(b.dataset.series, b.getAttribute('aria-pressed') !== 'true')));
+  $$('[data-pv="adv"] [role="radio"]').forEach(b => b.addEventListener('click', () => { view.adv = b.dataset.value; applyView(); }));
+  $$('input[data-pv]').forEach(i => i.addEventListener('change', () => {
+    const k = i.dataset.pv;
+    if (k === 'lang' || k === 'lit') setSeries(k, i.checked);
+    else { view[k] = i.checked; applyView(); }
+  }));
+  const pv = $('#pv');
+  if (pv) {
+    const tab = $('.pv-tab', pv);
+    const setPv = open => {
+      pv.classList.toggle('is-open', open);
+      tab.setAttribute('aria-expanded', String(open));
+    };
+    tab.addEventListener('click', () => setPv(!pv.classList.contains('is-open')));
+    $('.pv-close', pv).addEventListener('click', () => { setPv(false); tab.focus(); });
+    $('.pv-reset', pv).addEventListener('click', () => { view = { ...DEFAULTS }; applyView(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && pv.classList.contains('is-open')) { setPv(false); tab.focus(); } });
+  }
+  applyView();
 
   /* ---------- misc ---------- */
   const y = $('#year');
