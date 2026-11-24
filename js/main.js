@@ -145,6 +145,22 @@
   measureT();
   window.addEventListener('resize', measureT);
   document.fonts?.ready.then(measureT);
+  // the grid shows six reviews; the rest open with "Show more reviews"
+  const tGrid = $('#tGrid'), tShowMore = $('#tShowMore');
+  if (tGrid && tShowMore) {
+    const extra = $$('.t-card.is-more', tGrid).length;
+    $('em', tShowMore).textContent = `+${extra}`;
+    tShowMore.addEventListener('click', () => {
+      const all = !tGrid.classList.contains('is-all');
+      tGrid.classList.toggle('is-all', all);
+      tShowMore.setAttribute('aria-expanded', String(all));
+      $('span', tShowMore).textContent = all ? 'Show fewer reviews' : 'Show more reviews';
+      $('em', tShowMore).hidden = all;
+      measureT();
+      if (all) $('.t-card.is-more', tGrid)?.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' });
+      else if (tGrid.getBoundingClientRect().top < 0) tGrid.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
   tCards.forEach(c => {
     const btn = $('.t-more', c);
     btn?.addEventListener('click', () => {
@@ -355,9 +371,10 @@
   /* ---------- reviews spotlight ---------- */
   const spot = $('#tSpot');
   if (spot) {
-    const picks = $$('.t-pick', spot), slides = $$('.t-slide', spot), pickRow = $('.t-picks', spot);
+    const picks = $$('.t-pick', spot), slides = $$('.t-slide', spot);
     let cur = 0;
     spot.style.setProperty('--t-dur', '8s');
+    slides.forEach(s => s.classList.toggle('is-short', $('blockquote', s).textContent.trim().length < 240));
     const go = (i, focus) => {
       cur = (i + picks.length) % picks.length;
       picks.forEach((p, k) => {
@@ -374,9 +391,6 @@
       const bar = $('.t-pick-bar', picks[cur]);
       bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
       if (focus) picks[cur].focus();
-      if (pickRow.scrollWidth > pickRow.clientWidth + 2) {
-        pickRow.scrollTo({ left: picks[cur].offsetLeft - pickRow.offsetLeft - 20, behavior: reduceMotion ? 'auto' : 'smooth' });
-      }
     };
     picks.forEach((p, i) => {
       p.addEventListener('click', () => go(i));
@@ -413,7 +427,7 @@
     let geo = null;
     const tip = document.createElement('div');
     tip.className = 'r-tip';
-    const render = () => {
+    const render = animate => {
       const W = plot.clientWidth, H = plot.clientHeight;
       if (!W || !H) return;
       const narrow = W < 560;
@@ -453,18 +467,35 @@
         <g>${lines}</g><g>${dots}</g><g class="r-end">${labels}</g></svg>`;
       plot.appendChild(tip);
       geo = { x, y, m, W, H, keys };
-      if (!drawn) $$('.r-line', plot).forEach(p => {
+      if (!drawn) prime();
+      else if (animate && !reduceMotion) { prime(); void plot.offsetWidth; play(); }
+    };
+    // lines draw left to right; each point pops in as the line reaches it
+    const DRAW_MS = 2800;
+    const prime = () => {
+      $$('.r-line', plot).forEach(p => {
         const L = p.getTotalLength();
+        p.style.transition = 'none';
         p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
       });
+      $$('.r-dot, .r-end', plot).forEach(d => { d.style.transition = 'none'; d.style.opacity = '0'; });
+    };
+    const play = () => {
+      $$('.r-line', plot).forEach(p => {
+        p.style.transition = `stroke-dashoffset ${DRAW_MS}ms cubic-bezier(.45,.05,.25,1)`;
+        p.style.strokeDashoffset = '0';
+      });
+      $$('.r-dot', plot).forEach(d => {
+        const t = (+d.dataset.i / (YEARS.length - 1)) * DRAW_MS * 0.92;
+        d.style.transition = `opacity .35s ease ${t}ms, r .2s`;
+        d.style.opacity = '1';
+      });
+      $$('.r-end', plot).forEach(g => { g.style.transition = `opacity .5s ease ${DRAW_MS - 200}ms`; g.style.opacity = '1'; });
     };
     const draw = () => {
       if (drawn) return;
       drawn = true;
-      $$('.r-line', plot).forEach(p => {
-        p.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.22,.8,.24,1)';
-        p.style.strokeDashoffset = '0';
-      });
+      play();
     };
     const hover = e => {
       if (!geo) return;
@@ -495,7 +526,7 @@
       $$('.r-dot.on', plot).forEach(d => d.classList.remove('on'));
     });
     if ('ResizeObserver' in window) new ResizeObserver(() => render()).observe(plot);
-    else window.addEventListener('resize', render);
+    else window.addEventListener('resize', () => render());
     if (!drawn && 'IntersectionObserver' in window) {
       const dio = new IntersectionObserver(([en]) => { if (en.isIntersecting) { draw(); dio.disconnect(); } }, { threshold: 0.4 });
       dio.observe(plot);
@@ -503,12 +534,63 @@
     return { render };
   })();
 
+  /* ---------- hero V2 · split portrait (Sinhala Language | Sinhala Literature) ---------- */
+  const hs = $('#hsplit');
+  if (hs) {
+    let side = '', lastPointer = 'mouse';
+    const setSide = s => {
+      if (s === side) return;
+      side = s;
+      hs.dataset.side = s;
+      hs.classList.remove('is-hinting');
+    };
+    const halfAt = x => {
+      const r = hs.getBoundingClientRect();
+      return x < r.left + r.width / 2 ? 'lang' : 'lit';
+    };
+    // mouse: whichever half the pointer is over
+    hs.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') setSide(halfAt(e.clientX)); });
+    hs.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') setSide(''); });
+    // touch / pen: tap a half or a subject tile; tap it again to go back to the even split
+    hs.addEventListener('pointerdown', e => { lastPointer = e.pointerType; });
+    hs.addEventListener('click', e => {
+      if (lastPointer === 'mouse') return;
+      const tile = e.target.closest('.hs-copy');
+      const s = tile ? tile.dataset.side : halfAt(e.clientX);
+      setSide(s === side ? '' : s);
+    });
+    // one gentle sway of the seam after load, so visitors see the halves can move
+    if (!reduceMotion) {
+      setTimeout(() => {
+        if (side || hs.offsetParent === null || hs.getBoundingClientRect().bottom < 0) return;
+        hs.classList.add('is-hinting');
+        hs.addEventListener('animationend', e => { if (e.animationName === 'hsHint') hs.classList.remove('is-hinting'); });
+      }, 1500);
+    }
+  }
+
+  /* 3D logo (hero V1) is only downloaded when that hero is actually shown */
+  let hero3dLoaded = false;
+  const loadHero3d = () => {
+    if (hero3dLoaded) return;
+    hero3dLoaded = true;
+    const s = document.createElement('script');
+    s.type = 'module';
+    s.src = 'js/hero3d.js';
+    document.body.appendChild(s);
+  };
+
   /* ---------- view-options panel ---------- */
   const STORE = 'kw-view';
-  const DEFAULTS = { adv: 'v2', sheets: true, graph: true, lang: true, lit: true };
+  const DEFAULTS = { hero: 'v2', adv: 'v2', sheets: true, graph: true, lang: true, lit: true };
   view = { ...DEFAULTS };
   try { Object.assign(view, JSON.parse(localStorage.getItem(STORE) || '{}')); } catch (_) { /* private mode */ }
-  const applyView = () => {
+  if (view.hero !== 'v1' && view.hero !== 'v2') view.hero = DEFAULTS.hero;
+  const applyView = animate => {
+    hero?.setAttribute('data-hero', view.hero);
+    document.body.classList.toggle('hero-v2', view.hero === 'v2');
+    if (view.hero === 'v1') loadHero3d();
+    $$('[data-pv="hero"] [role="radio"]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.value === view.hero)));
     $('#special')?.setAttribute('data-adv', view.adv);
     resultsSec?.classList.toggle('no-sheets', !view.sheets);
     resultsSec?.classList.toggle('no-graph', !view.graph);
@@ -516,22 +598,21 @@
     ['sheets', 'graph', 'lang', 'lit'].forEach(k => { const i = $(`input[data-pv="${k}"]`); if (i) i.checked = view[k]; });
     $$('input[data-pv="lang"], input[data-pv="lit"]').forEach(i => { i.disabled = !view.graph; });
     $$('.r-key').forEach(b => b.setAttribute('aria-pressed', String(view[b.dataset.series])));
-    chart?.render();
+    chart?.render(animate);
     try { localStorage.setItem(STORE, JSON.stringify(view)); } catch (_) { /* ignore */ }
   };
-  // a line can be hidden, but never both: switching off the last one brings the other back
-  const setSeries = (k, on) => {
+  // Pairs that can't both be off: switching off the last one brings its partner back.
+  // (graph lines: lang / lit; results section: year-by-year block / graph)
+  const PARTNER = { lang: 'lit', lit: 'lang', sheets: 'graph', graph: 'sheets' };
+  const setPaired = (k, on) => {
     view[k] = on;
-    if (!view.lang && !view.lit) view[k === 'lang' ? 'lit' : 'lang'] = true;
-    applyView();
+    if (!view[k] && !view[PARTNER[k]]) view[PARTNER[k]] = true;
+    applyView(true);
   };
-  $$('.r-key').forEach(b => b.addEventListener('click', () => setSeries(b.dataset.series, b.getAttribute('aria-pressed') !== 'true')));
+  $$('.r-key').forEach(b => b.addEventListener('click', () => setPaired(b.dataset.series, b.getAttribute('aria-pressed') !== 'true')));
   $$('[data-pv="adv"] [role="radio"]').forEach(b => b.addEventListener('click', () => { view.adv = b.dataset.value; applyView(); }));
-  $$('input[data-pv]').forEach(i => i.addEventListener('change', () => {
-    const k = i.dataset.pv;
-    if (k === 'lang' || k === 'lit') setSeries(k, i.checked);
-    else { view[k] = i.checked; applyView(); }
-  }));
+  $$('[data-pv="hero"] [role="radio"]').forEach(b => b.addEventListener('click', () => { view.hero = b.dataset.value; applyView(); }));
+  $$('input[data-pv]').forEach(i => i.addEventListener('change', () => setPaired(i.dataset.pv, i.checked)));
   const pv = $('#pv');
   if (pv) {
     const tab = $('.pv-tab', pv);

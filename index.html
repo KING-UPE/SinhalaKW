@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/optimized/teacher/teacher_cutout.webp">
+  <link rel="preload" as="image" href="assets/optimized/teacher/hero_split_lang.webp" imagesrcset="assets/optimized/teacher/hero_split_lang_540.webp 540w, assets/optimized/teacher/hero_split_lang.webp 829w" imagesizes="(max-width: 1080px) 62vw, 30vw">
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js');</script>
 
@@ -110,90 +110,100 @@
 
   <main>
     <!-- ============ HERO ============ -->
-    <section class="hero" id="home">
-      <!-- decorative shapes -->
-      <div class="hero-deco" aria-hidden="true">
-        <span class="deco deco-ring" data-depth="0.4"></span>
-        <span class="deco deco-dots" data-depth="0.2"></span>
-        <span class="deco deco-half" data-depth="0.6"></span>
-        <span class="deco deco-plus" data-depth="0.8">+</span>
-        <span class="deco deco-spark" data-depth="0.5"><svg><use href="#i-spark"/></svg></span>
-        <span class="deco deco-arc" data-depth="0.3"></span>
-      </div>
-
+    <section class="hero" id="home" data-hero="v2">
       <h1 class="sr-only">Sinhala KW · O/L Sinhala Language &amp; Literature and Sinhala Literature · Kaushalya Wicramarachchi</h1>
 
-      <div class="container hero-grid">
-        <div class="hero-logo reveal">
-          <div class="logo-stage" id="logoStage">
-            <img class="logo-fallback" src="assets/logos/logo_full_vector.svg" alt="සිංහල KW">
+      <!-- V2 · split portrait: Sinhala Language (left) | Sinhala Literature (right) -->
+      <div class="hv2" id="hsplit" data-side="">
+        <div class="hs-stage" role="img" aria-label="කෞෂල්‍යා වික්‍රමාරච්චි ගුරුතුමිය">
+          <!-- Language world: an exercise-book page -->
+          <div class="hs-world hs-w-lang">
+            <div class="hs-page"></div>
+            <div class="hs-glyphs">
+          <span style="--x:3%;--y:11%;--s:170;--r:-8deg;--i:0">අ</span>
+          <span style="--x:27%;--y:9%;--s:96;--r:10deg;--i:1">ක</span>
+          <span style="--x:5%;--y:64%;--s:190;--r:6deg;--i:2">ශ</span>
+          <span style="--x:31%;--y:58%;--s:120;--r:-10deg;--i:3">ඥ</span>
+          <span style="--x:40%;--y:36%;--s:84;--r:12deg;--i:4">ළ</span>
+          <span style="--x:39%;--y:13%;--s:108;--r:-4deg;--i:5">ම</span>
+            </div>
+            <ul class="hs-words">
+          <li style="--x:9%;--y:19%;--r:-4deg;--i:0">ව්‍යාකරණ</li>
+          <li style="--x:24%;--y:25%;--r:4deg;--i:1">සන්ධි</li>
+          <li style="--x:8%;--y:81%;--r:3deg;--i:2">සමාස</li>
+          <li style="--x:19%;--y:88%;--r:-3deg;--i:3">රචනා</li>
+          <li style="--x:28%;--y:79%;--r:5deg;--i:4">විරාම ලක්ෂණ</li>
+            </ul>
+            <img class="hs-photo" src="assets/optimized/teacher/hero_split_lang.webp" srcset="assets/optimized/teacher/hero_split_lang_540.webp 540w, assets/optimized/teacher/hero_split_lang.webp 829w" sizes="(max-width: 1080px) 62vw, 30vw" width="829" height="1380" alt="" fetchpriority="high" decoding="async">
           </div>
-          <div class="logo-hint" id="logoHint"><svg class="ic"><use href="#i-rotate"/></svg><span>Drag to rotate · Hover to explore</span></div>
+          <!-- Literature world: a moonlit night -->
+          <div class="hs-world hs-w-lit">
+            <div class="hs-night"><span class="hs-moon"></span></div>
+            <svg class="hs-ink" viewBox="0 0 500 1000" preserveAspectRatio="none" focusable="false">
+              <path pathLength="1" d="M10 330 C 130 280, 230 380, 350 330 S 470 290, 500 300"/>
+              <path pathLength="1" d="M60 520 C 160 490, 260 560, 380 520 S 470 500, 500 505"/>
+              <path pathLength="1" d="M0 690 C 140 640, 240 740, 360 690 S 480 650, 500 660"/>
+            </svg>
+            <ul class="hs-words">
+          <li style="--x:89%;--y:18%;--r:4deg;--i:0">කවි</li>
+          <li style="--x:77%;--y:27%;--r:-3deg;--i:1">නවකතා</li>
+          <li style="--x:91%;--y:81%;--r:-4deg;--i:2">කෙටිකතා</li>
+          <li style="--x:81%;--y:88%;--r:3deg;--i:3">නාට්‍ය</li>
+          <li style="--x:72%;--y:79%;--r:-5deg;--i:4">විචාර</li>
+            </ul>
+            <img class="hs-photo" src="assets/optimized/teacher/hero_split_lit.webp" srcset="assets/optimized/teacher/hero_split_lit_540.webp 540w, assets/optimized/teacher/hero_split_lit.webp 829w" sizes="(max-width: 1080px) 62vw, 30vw" width="829" height="1380" alt="" fetchpriority="high" decoding="async">
+          </div>
+          <div class="hs-seam"><span class="hs-knot"><i class="hs-chev l"></i><img src="assets/logos/tight_logo_icon_b.png" alt="" width="30" height="30"><i class="hs-chev r"></i></span></div>
+          <div class="hs-name"><strong>Kaushalya Wicramarachchi</strong><span>BA Special · University of Peradeniya</span></div>
         </div>
 
-        <div class="hero-teacher reveal">
-          <div class="teacher-figure">
-            <span class="t-sun" aria-hidden="true"></span>
-            <span class="t-ring" aria-hidden="true"></span>
-            <img src="assets/optimized/teacher/teacher_cutout.webp" alt="කෞෂල්‍යා වික්‍රමාරච්චි" width="810" height="1150" fetchpriority="high">
-          </div>
-          <div class="name-chip">
-            <strong>Kaushalya Wicramarachchi</strong>
-            <span>BA Special · University of Peradeniya</span>
-          </div>
+        <div class="hs-copy hs-c-lang" data-side="lang">
+          <p class="hs-sub" lang="si">සිංහල භාෂාව</p>
+          <h2 class="hs-title">Sinhala Language</h2>
+          <p class="hs-desc" lang="si">ව්‍යාකරණ, රචනා සහ ලේඛන කුසලතා මුල සිට ක්‍රමානුකූලව ගොඩනඟමු.</p>
+        </div>
+        <div class="hs-copy hs-c-lit" data-side="lit">
+          <p class="hs-sub" lang="si">රසාස්වාදය</p>
+          <h2 class="hs-title">Sinhala Literature</h2>
+          <p class="hs-desc" lang="si">කවි, නවකතා, කෙටිකතා සහ නාට්‍ය රසවිඳිමින් විචාර ලියන්න පුහුණු වෙමු.</p>
         </div>
       </div>
 
-      <!-- 3D logo settings: slides out from the left edge (bottom sheet on phones) -->
-      <aside class="cfg" id="cfg" aria-label="3D logo settings">
-        <div class="cfg-body" id="cfgBody">
-          <div class="cfg-head">
-            <strong>3D Logo Settings</strong>
-            <button type="button" class="cfg-close" aria-label="Close"><svg class="ic"><use href="#i-close"/></svg></button>
-          </div>
-
-          <div class="cfg-group">
-            <span class="cfg-label" id="cfgStyleLbl">Style</span>
-            <div class="cfg-styles" role="radiogroup" aria-labelledby="cfgStyleLbl" data-setting="style">
-              <button type="button" role="radio" aria-checked="true" data-value="solid"><span class="sw sw-solid" aria-hidden="true"></span><span>Gold</span></button>
-              <button type="button" role="radio" aria-checked="false" data-value="particles"><span class="sw sw-particles" aria-hidden="true"></span><span>Particles</span></button>
-              <button type="button" role="radio" aria-checked="false" data-value="glass"><span class="sw sw-glass" aria-hidden="true"></span><span>Glass</span></button>
-              <button type="button" role="radio" aria-checked="false" data-value="layers"><span class="sw sw-layers" aria-hidden="true"></span><span>Layers</span></button>
-            </div>
-          </div>
-
-          <div class="cfg-group">
-            <span class="cfg-label" id="cfgColourLbl">Colours</span>
-            <div class="cfg-chips" role="radiogroup" aria-labelledby="cfgColourLbl" data-setting="scheme">
-              <button type="button" role="radio" aria-checked="true" data-value="brand"><span class="dot dot-brand" aria-hidden="true"></span><span>Brand</span></button>
-              <button type="button" role="radio" aria-checked="false" data-value="navy"><span class="dot dot-navy" aria-hidden="true"></span><span>Navy</span></button>
-              <button type="button" role="radio" aria-checked="false" data-value="gold"><span class="dot dot-gold" aria-hidden="true"></span><span>Gold</span></button>
-            </div>
-          </div>
-
-          <div class="cfg-group">
-            <div class="cfg-range">
-              <label for="cfgDepth">Depth</label><output for="cfgDepth">100%</output>
-              <input type="range" id="cfgDepth" data-setting="depth" min="0.4" max="2" step="0.05" value="1">
-            </div>
-            <div class="cfg-range">
-              <label for="cfgSpeed">Motion Speed</label><output for="cfgSpeed">100%</output>
-              <input type="range" id="cfgSpeed" data-setting="speed" min="0" max="2" step="0.05" value="1">
-            </div>
-          </div>
-
-          <div class="cfg-group cfg-switches">
-            <label class="cfg-toggle"><span>Gentle Sway</span><input type="checkbox" role="switch" data-setting="sway" checked></label>
-            <label class="cfg-toggle"><span>Spin Emblem</span><input type="checkbox" role="switch" data-setting="spin"></label>
-            <label class="cfg-toggle"><span>Mouse Hover</span><input type="checkbox" role="switch" data-setting="hover" checked></label>
-          </div>
-
-          <button type="button" class="cfg-reset">Reset Defaults</button>
+      <!-- V1 · 3D logo + teacher -->
+      <div class="hv1">
+        <!-- decorative shapes -->
+        <div class="hero-deco" aria-hidden="true">
+          <span class="deco deco-ring" data-depth="0.4"></span>
+          <span class="deco deco-dots" data-depth="0.2"></span>
+          <span class="deco deco-half" data-depth="0.6"></span>
+          <span class="deco deco-plus" data-depth="0.8">+</span>
+          <span class="deco deco-spark" data-depth="0.5"><svg><use href="#i-spark"/></svg></span>
+          <span class="deco deco-arc" data-depth="0.3"></span>
         </div>
-        <button type="button" class="cfg-tab" aria-expanded="false" aria-controls="cfgBody"><svg class="ic" aria-hidden="true"><use href="#i-sliders"/></svg><span>3D</span></button>
-      </aside>
 
-      <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+        <div class="container hero-grid">
+          <div class="hero-logo reveal">
+            <div class="logo-stage" id="logoStage">
+              <img class="logo-fallback" src="assets/logos/logo_full_vector.svg" alt="සිංහල KW">
+            </div>
+            <div class="logo-hint" id="logoHint"><svg class="ic"><use href="#i-rotate"/></svg><span>Drag to rotate · Hover to explore</span></div>
+          </div>
+
+          <div class="hero-teacher reveal">
+            <div class="teacher-figure">
+              <span class="t-sun" aria-hidden="true"></span>
+              <span class="t-ring" aria-hidden="true"></span>
+              <img src="assets/optimized/teacher/teacher_cutout.webp" alt="කෞෂල්‍යා වික්‍රමාරච්චි" width="810" height="1150" loading="lazy">
+            </div>
+            <div class="name-chip">
+              <strong>Kaushalya Wicramarachchi</strong>
+              <span>BA Special · University of Peradeniya</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+      </div>
     </section>
 
     <!-- ============ MARQUEE ============ -->
@@ -255,35 +265,35 @@
           <div class="stats reveal">
             <div class="stat">
               <div class="stat-num"><em>A</em><span class="count" data-to="22">22</span></div>
-              <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය</span></div>
+              <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව</span></div>
             </div>
             <div class="stat">
               <div class="stat-num"><em class="b">B</em><span class="count" data-to="9">9</span></div>
-              <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය</span></div>
+              <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව</span></div>
             </div>
             <div class="stat">
               <div class="stat-num"><em>A</em><span class="count" data-to="10">10</span></div>
-              <div class="stat-label">Sinhala Literature<span>සිංහල සාහිත්‍ය රසාස්වාදය</span></div>
+              <div class="stat-label">Sinhala Literature<span>රසාස්වාදය</span></div>
             </div>
             <div class="stat">
               <div class="stat-num"><em class="b">B</em><span class="count" data-to="4">4</span></div>
-              <div class="stat-label">Sinhala Literature<span>සිංහල සාහිත්‍ය රසාස්වාදය</span></div>
+              <div class="stat-label">Sinhala Literature<span>රසාස්වාදය</span></div>
             </div>
           </div>
           <div class="sheets">
-            <button class="sheet reveal" type="button" data-lightbox="results-2022" data-src="assets/optimized/results/result_sinhala_a.webp" data-caption="2022 O/L · සිංහල භාෂාව හා සාහිත්‍යය · A සාමාර්ථ 22">
+            <button class="sheet reveal" type="button" data-lightbox="results-2022" data-src="assets/optimized/results/result_sinhala_a.webp" data-caption="2022 O/L · සිංහල භාෂාව · A සාමාර්ථ 22">
               <img src="assets/optimized/results/result_sinhala_a.webp" alt="2022 සාමාන්‍ය පෙළ සිංහල ප්‍රතිඵල ලේඛනය, A සාමාර්ථ 22" loading="lazy">
               <span class="sheet-tag">Sinhala · A 22</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2022" data-src="assets/optimized/results/result_sinhala_ab.webp" data-caption="2022 O/L · සිංහල භාෂාව හා සාහිත්‍යය · A 22 සහ B 9">
+            <button class="sheet reveal" type="button" data-lightbox="results-2022" data-src="assets/optimized/results/result_sinhala_ab.webp" data-caption="2022 O/L · සිංහල භාෂාව · A 22 සහ B 9">
               <img src="assets/optimized/results/result_sinhala_ab.webp" alt="2022 සාමාන්‍ය පෙළ සිංහල ප්‍රතිඵල ලේඛනය, A 22 සහ B 9" loading="lazy">
               <span class="sheet-tag">Sinhala · A &amp; B</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2022" data-src="assets/optimized/results/result_rasawadaya_ab.webp" data-caption="2022 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · A 10 සහ B 4">
+            <button class="sheet reveal" type="button" data-lightbox="results-2022" data-src="assets/optimized/results/result_rasawadaya_ab.webp" data-caption="2022 O/L · රසාස්වාදය · A 10 සහ B 4">
               <img src="assets/optimized/results/result_rasawadaya_ab.webp" alt="2022 සාමාන්‍ය පෙළ රසාස්වාදය ප්‍රතිඵල ලේඛනය, A 10 සහ B 4" loading="lazy">
               <span class="sheet-tag">Sinhala Lit · A &amp; B</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2022" data-src="assets/optimized/results/result_sinhala_b.webp" data-caption="2022 O/L · සිංහල භාෂාව හා සාහිත්‍යය · B සාමාර්ථ 9">
+            <button class="sheet reveal" type="button" data-lightbox="results-2022" data-src="assets/optimized/results/result_sinhala_b.webp" data-caption="2022 O/L · සිංහල භාෂාව · B සාමාර්ථ 9">
               <img src="assets/optimized/results/result_sinhala_b.webp" alt="2022 සාමාන්‍ය පෙළ සිංහල ප්‍රතිඵල ලේඛනය, B සාමාර්ථ 9" loading="lazy">
               <span class="sheet-tag">Sinhala · B 9</span>
             </button>
@@ -294,148 +304,148 @@
           <div class="stats stats-5 reveal">
               <div class="stat">
                 <div class="stat-num"><em>A</em><span class="count" data-to="30">30</span></div>
-                <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය · Online</span></div>
+                <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව · Online</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em>A</em><span class="count" data-to="30">30</span></div>
-                <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය · ZINERGY මතුගම</span></div>
+                <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව · ZINERGY මතුගම</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em class="b">B</em><span class="count" data-to="15">15</span></div>
-                <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය · ZINERGY මතුගම</span></div>
+                <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව · ZINERGY මතුගම</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em>A</em><span class="count" data-to="52">52</span></div>
-                <div class="stat-label">Sinhala Literature<span>සිංහල සාහිත්‍ය රසාස්වාදය · Online</span></div>
+                <div class="stat-label">Sinhala Literature<span>රසාස්වාදය · Online</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em class="b">B</em><span class="count" data-to="4">4</span></div>
-                <div class="stat-label">Sinhala Literature<span>සිංහල සාහිත්‍ය රසාස්වාදය · Online</span></div>
+                <div class="stat-label">Sinhala Literature<span>රසාස්වාදය · Online</span></div>
               </div>
           </div>
           <div class="sheets">
-            <button class="sheet reveal" type="button" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_online_p1.webp" data-caption="2023 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Online · A 30 · පිටුව 1">
-              <img src="assets/optimized/results/2023/sinhala_online_p1_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Online A 30" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_online_p1.webp" data-caption="2023 O/L · සිංහල භාෂාව · Online · A 30 · පිටුව 1">
+              <img src="assets/optimized/results/2023/sinhala_online_p1_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Online A 30" loading="lazy">
               <span class="sheet-tag">Sinhala · Online · A 30</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_zinergy_p1.webp" data-caption="2023 O/L · සිංහල භාෂාව හා සාහිත්‍යය · ZINERGY මතුගම · A 30, B 15 · පිටුව 1">
-              <img src="assets/optimized/results/2023/sinhala_zinergy_p1_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය ZINERGY මතුගම A 30" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_zinergy_p1.webp" data-caption="2023 O/L · සිංහල භාෂාව · ZINERGY මතුගම · A 30, B 15 · පිටුව 1">
+              <img src="assets/optimized/results/2023/sinhala_zinergy_p1_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව ZINERGY මතුගම A 30" loading="lazy">
               <span class="sheet-tag">Sinhala · Zinergy · A 30</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2023" data-src="assets/optimized/results/2023/appreciation_online_p1.webp" data-caption="2023 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · Online · A 52, B 4 · පිටුව 1">
-              <img src="assets/optimized/results/2023/appreciation_online_p1_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය Online A 52, B 4" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2023" data-src="assets/optimized/results/2023/appreciation_online_p1.webp" data-caption="2023 O/L · රසාස්වාදය · Online · A 52, B 4 · පිටුව 1">
+              <img src="assets/optimized/results/2023/appreciation_online_p1_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය Online A 52, B 4" loading="lazy">
               <span class="sheet-tag">Sinhala Lit · A 52 · B 4</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_zinergy_p3.webp" data-caption="2023 O/L · සිංහල භාෂාව හා සාහිත්‍යය · ZINERGY මතුගම · A 30, B 15 · පිටුව 3">
-              <img src="assets/optimized/results/2023/sinhala_zinergy_p3_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය ZINERGY මතුගම B 15" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_zinergy_p3.webp" data-caption="2023 O/L · සිංහල භාෂාව · ZINERGY මතුගම · A 30, B 15 · පිටුව 3">
+              <img src="assets/optimized/results/2023/sinhala_zinergy_p3_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව ZINERGY මතුගම B 15" loading="lazy">
               <span class="sheet-tag">Sinhala · Zinergy · B 15</span>
               <span class="sheet-more">+5 more</span>
             </button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_online_p2.webp" data-caption="2023 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Online · A 30 · පිටුව 2"><img src="assets/optimized/results/2023/sinhala_online_p2_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Online A 30" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_zinergy_p2.webp" data-caption="2023 O/L · සිංහල භාෂාව හා සාහිත්‍යය · ZINERGY මතුගම · A 30, B 15 · පිටුව 2"><img src="assets/optimized/results/2023/sinhala_zinergy_p2_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය ZINERGY මතුගම A 30" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/appreciation_online_p2.webp" data-caption="2023 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · Online · A 52, B 4 · පිටුව 2"><img src="assets/optimized/results/2023/appreciation_online_p2_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය Online A 52, B 4" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/appreciation_online_p3.webp" data-caption="2023 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · Online · A 52, B 4 · පිටුව 3"><img src="assets/optimized/results/2023/appreciation_online_p3_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය Online A 52, B 4" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/appreciation_online_p4.webp" data-caption="2023 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · Online · A 52, B 4 · පිටුව 4"><img src="assets/optimized/results/2023/appreciation_online_p4_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය Online A 52, B 4" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_online_p2.webp" data-caption="2023 O/L · සිංහල භාෂාව · Online · A 30 · පිටුව 2"><img src="assets/optimized/results/2023/sinhala_online_p2_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Online A 30" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/sinhala_zinergy_p2.webp" data-caption="2023 O/L · සිංහල භාෂාව · ZINERGY මතුගම · A 30, B 15 · පිටුව 2"><img src="assets/optimized/results/2023/sinhala_zinergy_p2_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව ZINERGY මතුගම A 30" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/appreciation_online_p2.webp" data-caption="2023 O/L · රසාස්වාදය · Online · A 52, B 4 · පිටුව 2"><img src="assets/optimized/results/2023/appreciation_online_p2_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය Online A 52, B 4" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/appreciation_online_p3.webp" data-caption="2023 O/L · රසාස්වාදය · Online · A 52, B 4 · පිටුව 3"><img src="assets/optimized/results/2023/appreciation_online_p3_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය Online A 52, B 4" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2023" data-src="assets/optimized/results/2023/appreciation_online_p4.webp" data-caption="2023 O/L · රසාස්වාදය · Online · A 52, B 4 · පිටුව 4"><img src="assets/optimized/results/2023/appreciation_online_p4_thumb.webp" alt="2023 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය Online A 52, B 4" loading="lazy"></button>
           </div>
         </div>
 
         <div class="year-panel is-hidden" id="yp-2024" role="tabpanel" aria-labelledby="yt-2024">
           <div class="year-meta">
             <p class="year-note">අපගේ තුන්වන කණ්ඩායමේ ප්‍රතිඵල</p>
-            <span class="year-pill">සිංහල භාෂාව හා සාහිත්‍යය: A 63 · B 39 · C 9 · S 0 · W 0</span>
-            <span class="year-pill">සිංහල සාහිත්‍ය රසාස්වාදය: A 88 · B 3 · C 0 · S 0 · W 0</span>
+            <span class="year-pill">සිංහල භාෂාව: A 63 · B 39 · C 9 · S 0 · W 0</span>
+            <span class="year-pill">රසාස්වාදය: A 88 · B 3 · C 0 · S 0 · W 0</span>
           </div>
           <div class="stats reveal">
               <div class="stat">
                 <div class="stat-num"><em>A</em><span class="count" data-to="63">63</span></div>
-                <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය</span></div>
+                <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em class="b">B</em><span class="count" data-to="39">39</span></div>
-                <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය</span></div>
+                <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em>A</em><span class="count" data-to="88">88</span></div>
-                <div class="stat-label">Sinhala Literature<span>සිංහල සාහිත්‍ය රසාස්වාදය</span></div>
+                <div class="stat-label">Sinhala Literature<span>රසාස්වාදය</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em class="b">B</em><span class="count" data-to="3">3</span></div>
-                <div class="stat-label">Sinhala Literature<span>සිංහල සාහිත්‍ය රසාස්වාදය</span></div>
+                <div class="stat-label">Sinhala Literature<span>රසාස්වාදය</span></div>
               </div>
           </div>
           <div class="sheets">
-            <button class="sheet reveal" type="button" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_summary.webp" data-caption="2024 O/L · සිංහල භාෂාව හා සාහිත්‍යය · A 63, B 39, C 9, S 0, W 0">
-              <img src="assets/optimized/results/2024/sinhala_summary_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය A 63, B 39, C 9" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_summary.webp" data-caption="2024 O/L · සිංහල භාෂාව · A 63, B 39, C 9, S 0, W 0">
+              <img src="assets/optimized/results/2024/sinhala_summary_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව A 63, B 39, C 9" loading="lazy">
               <span class="sheet-tag">Sinhala · A 63 · B 39</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2024" data-src="assets/optimized/results/2024/appreciation_summary.webp" data-caption="2024 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · A 88, B 3, C 0, S 0, W 0">
-              <img src="assets/optimized/results/2024/appreciation_summary_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය A 88, B 3" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2024" data-src="assets/optimized/results/2024/appreciation_summary.webp" data-caption="2024 O/L · රසාස්වාදය · A 88, B 3, C 0, S 0, W 0">
+              <img src="assets/optimized/results/2024/appreciation_summary_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය A 88, B 3" loading="lazy">
               <span class="sheet-tag">Sinhala Lit · A 88 · B 3</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_online_a.webp" data-caption="2024 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Online පන්තිය · A සාමාර්ථ">
-              <img src="assets/optimized/results/2024/sinhala_online_a_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Online පන්තිය A සාමාර්ථ" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_online_a.webp" data-caption="2024 O/L · සිංහල භාෂාව · Online පන්තිය · A සාමාර්ථ">
+              <img src="assets/optimized/results/2024/sinhala_online_a_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Online පන්තිය A සාමාර්ථ" loading="lazy">
               <span class="sheet-tag">Sinhala · Online · A</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_physical_a.webp" data-caption="2024 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Physical පන්තිය (Layara | Zinergy) · A සාමාර්ථ">
-              <img src="assets/optimized/results/2024/sinhala_physical_a_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Physical පන්තිය A සාමාර්ථ" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_physical_a.webp" data-caption="2024 O/L · සිංහල භාෂාව · Physical පන්තිය (Layara | Zinergy) · A සාමාර්ථ">
+              <img src="assets/optimized/results/2024/sinhala_physical_a_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Physical පන්තිය A සාමාර්ථ" loading="lazy">
               <span class="sheet-tag">Sinhala · Physical · A</span>
               <span class="sheet-more">+5 more</span>
             </button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_online_b.webp" data-caption="2024 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Online පන්තිය · B සාමාර්ථ"><img src="assets/optimized/results/2024/sinhala_online_b_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Online පන්තිය B සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_physical_b.webp" data-caption="2024 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Physical පන්තිය (Layara | Zinergy) · B සාමාර්ථ"><img src="assets/optimized/results/2024/sinhala_physical_b_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Physical පන්තිය B සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/appreciation_online_a_1.webp" data-caption="2024 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · Online පන්තිය · A සාමාර්ථ"><img src="assets/optimized/results/2024/appreciation_online_a_1_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය Online පන්තිය A සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/appreciation_online_a_2.webp" data-caption="2024 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · Online පන්තිය · A සාමාර්ථ"><img src="assets/optimized/results/2024/appreciation_online_a_2_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය Online පන්තිය A සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/appreciation_online_ab_3.webp" data-caption="2024 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · Online පන්තිය · A සහ B සාමාර්ථ"><img src="assets/optimized/results/2024/appreciation_online_ab_3_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය Online පන්තිය A සහ B සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_online_b.webp" data-caption="2024 O/L · සිංහල භාෂාව · Online පන්තිය · B සාමාර්ථ"><img src="assets/optimized/results/2024/sinhala_online_b_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Online පන්තිය B සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/sinhala_physical_b.webp" data-caption="2024 O/L · සිංහල භාෂාව · Physical පන්තිය (Layara | Zinergy) · B සාමාර්ථ"><img src="assets/optimized/results/2024/sinhala_physical_b_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Physical පන්තිය B සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/appreciation_online_a_1.webp" data-caption="2024 O/L · රසාස්වාදය · Online පන්තිය · A සාමාර්ථ"><img src="assets/optimized/results/2024/appreciation_online_a_1_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය Online පන්තිය A සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/appreciation_online_a_2.webp" data-caption="2024 O/L · රසාස්වාදය · Online පන්තිය · A සාමාර්ථ"><img src="assets/optimized/results/2024/appreciation_online_a_2_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය Online පන්තිය A සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2024" data-src="assets/optimized/results/2024/appreciation_online_ab_3.webp" data-caption="2024 O/L · රසාස්වාදය · Online පන්තිය · A සහ B සාමාර්ථ"><img src="assets/optimized/results/2024/appreciation_online_ab_3_thumb.webp" alt="2024 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය Online පන්තිය A සහ B සාමාර්ථ" loading="lazy"></button>
           </div>
         </div>
 
         <div class="year-panel" id="yp-2025" role="tabpanel" aria-labelledby="yt-2025">
           <div class="year-meta">
-            <span class="year-pill">සිංහල භාෂාව හා සාහිත්‍යය: A 77 · B 43 · C 11 · <b>100% සමත්</b></span>
-            <span class="year-pill">සිංහල සාහිත්‍ය රසාස්වාදය: A 129 · B 2 · C 0 · S 0 · W 0 · <b>100% සමත්</b></span>
+            <span class="year-pill">සිංහල භාෂාව: A 77 · B 43 · C 11 · <b>100% සමත්</b></span>
+            <span class="year-pill">රසාස්වාදය: A 129 · B 2 · C 0 · S 0 · W 0 · <b>100% සමත්</b></span>
           </div>
           <div class="stats reveal">
               <div class="stat">
                 <div class="stat-num"><em>A</em><span class="count" data-to="77">77</span></div>
-                <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය</span></div>
+                <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em class="b">B</em><span class="count" data-to="43">43</span></div>
-                <div class="stat-label">Sinhala Language &amp; Literature<span>සිංහල භාෂාව හා සාහිත්‍යය</span></div>
+                <div class="stat-label">Sinhala Language<span>සිංහල භාෂාව</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em>A</em><span class="count" data-to="129">129</span></div>
-                <div class="stat-label">Sinhala Literature<span>සිංහල සාහිත්‍ය රසාස්වාදය</span></div>
+                <div class="stat-label">Sinhala Literature<span>රසාස්වාදය</span></div>
               </div>
               <div class="stat">
                 <div class="stat-num"><em class="b">B</em><span class="count" data-to="2">2</span></div>
-                <div class="stat-label">Sinhala Literature<span>සිංහල සාහිත්‍ය රසාස්වාදය</span></div>
+                <div class="stat-label">Sinhala Literature<span>රසාස්වාදය</span></div>
               </div>
           </div>
           <div class="sheets">
-            <button class="sheet reveal" type="button" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_summary.webp" data-caption="2025 O/L · සිංහල භාෂාව හා සාහිත්‍යය · A 77, B 43, C 11 · 100% සමත්">
-              <img src="assets/optimized/results/2025/sinhala_summary_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය A 77, B 43, C 11" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_summary.webp" data-caption="2025 O/L · සිංහල භාෂාව · A 77, B 43, C 11 · 100% සමත්">
+              <img src="assets/optimized/results/2025/sinhala_summary_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව A 77, B 43, C 11" loading="lazy">
               <span class="sheet-tag">Sinhala · A 77 · B 43</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_physical_a.webp" data-caption="2025 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Physical පන්තිය (Layara | Zinergy) · A සාමාර්ථ">
-              <img src="assets/optimized/results/2025/sinhala_physical_a_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Physical පන්තිය A සාමාර්ථ" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_physical_a.webp" data-caption="2025 O/L · සිංහල භාෂාව · Physical පන්තිය (Layara | Zinergy) · A සාමාර්ථ">
+              <img src="assets/optimized/results/2025/sinhala_physical_a_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Physical පන්තිය A සාමාර්ථ" loading="lazy">
               <span class="sheet-tag">Sinhala · Physical · A</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_online_a.webp" data-caption="2025 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Online පන්තිය · A සාමාර්ථ">
-              <img src="assets/optimized/results/2025/sinhala_online_a_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Online පන්තිය A සාමාර්ථ" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_online_a.webp" data-caption="2025 O/L · සිංහල භාෂාව · Online පන්තිය · A සාමාර්ථ">
+              <img src="assets/optimized/results/2025/sinhala_online_a_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Online පන්තිය A සාමාර්ථ" loading="lazy">
               <span class="sheet-tag">Sinhala · Online · A</span>
             </button>
-            <button class="sheet reveal" type="button" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_summary.webp" data-caption="2025 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · A 129, B 2 · 100% සමත්">
-              <img src="assets/optimized/results/2025/appreciation_summary_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය A 129, B 2" loading="lazy">
+            <button class="sheet reveal" type="button" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_summary.webp" data-caption="2025 O/L · රසාස්වාදය · A 129, B 2 · 100% සමත්">
+              <img src="assets/optimized/results/2025/appreciation_summary_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය A 129, B 2" loading="lazy">
               <span class="sheet-tag">Sinhala Lit · A 129 · B 2</span>
               <span class="sheet-more">+6 more</span>
             </button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_online_b.webp" data-caption="2025 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Online පන්තිය · B සාමාර්ථ"><img src="assets/optimized/results/2025/sinhala_online_b_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Online පන්තිය B සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_physical_b.webp" data-caption="2025 O/L · සිංහල භාෂාව හා සාහිත්‍යය · Physical පන්තිය (Layara | Zinergy) · B සාමාර්ථ"><img src="assets/optimized/results/2025/sinhala_physical_b_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව හා සාහිත්‍යය Physical පන්තිය B සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_a_1.webp" data-caption="2025 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · A සාමාර්ථ"><img src="assets/optimized/results/2025/appreciation_a_1_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය A සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_a_2.webp" data-caption="2025 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · A සාමාර්ථ"><img src="assets/optimized/results/2025/appreciation_a_2_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය A සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_a_3.webp" data-caption="2025 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · A සහ B සාමාර්ථ"><img src="assets/optimized/results/2025/appreciation_a_3_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය A සහ B සාමාර්ථ" loading="lazy"></button>
-            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_a_4.webp" data-caption="2025 O/L · සිංහල සාහිත්‍ය රසාස්වාදය · A සාමාර්ථ"><img src="assets/optimized/results/2025/appreciation_a_4_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල සාහිත්‍ය රසාස්වාදය A සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_online_b.webp" data-caption="2025 O/L · සිංහල භාෂාව · Online පන්තිය · B සාමාර්ථ"><img src="assets/optimized/results/2025/sinhala_online_b_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Online පන්තිය B සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/sinhala_physical_b.webp" data-caption="2025 O/L · සිංහල භාෂාව · Physical පන්තිය (Layara | Zinergy) · B සාමාර්ථ"><img src="assets/optimized/results/2025/sinhala_physical_b_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, සිංහල භාෂාව Physical පන්තිය B සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_a_1.webp" data-caption="2025 O/L · රසාස්වාදය · A සාමාර්ථ"><img src="assets/optimized/results/2025/appreciation_a_1_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය A සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_a_2.webp" data-caption="2025 O/L · රසාස්වාදය · A සාමාර්ථ"><img src="assets/optimized/results/2025/appreciation_a_2_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය A සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_a_3.webp" data-caption="2025 O/L · රසාස්වාදය · A සහ B සාමාර්ථ"><img src="assets/optimized/results/2025/appreciation_a_3_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය A සහ B සාමාර්ථ" loading="lazy"></button>
+            <button class="sheet sheet-extra" type="button" tabindex="-1" aria-hidden="true" data-lightbox="results-2025" data-src="assets/optimized/results/2025/appreciation_a_4.webp" data-caption="2025 O/L · රසාස්වාදය · A සාමාර්ථ"><img src="assets/optimized/results/2025/appreciation_a_4_thumb.webp" alt="2025 සාමාන්‍ය පෙළ ප්‍රතිඵල ලේඛනය, රසාස්වාදය A සාමාර්ථ" loading="lazy"></button>
           </div>
         </div>
 
@@ -477,58 +487,73 @@
             <span class="eyebrow reveal">STUDENT REVIEWS</span>
             <h2 class="h2 reveal">What Our Students Say</h2>
           </div>
-          <p class="sub reveal">අපගේ සිසුන් ගුරුතුමියට ලියූ අදහස් කිහිපයක්.</p>
+          <p class="sub reveal">අපගේ වැඩපිළිවෙළ පිළිබඳ සිසුන්ගේ අදහස්.</p>
         </div>
 
         <div class="t-spot reveal" id="tSpot">
           <span class="t-mark" aria-hidden="true">“</span>
           <div class="t-stage">
             <figure class="t-slide is-active" id="ts-0" role="tabpanel" aria-labelledby="tp-0">
+              <blockquote lang="si"><p>ඉස්කෝලේ ටීච රසාස්වාදය කියලා දුන්නා අපි හොඳට නිදාගත්තා. අද ටීච අපිට කියලා දුන්නා එක තප්පරයක් නිදාගන්න හිතුනෙවත් නෑ.</p><p>තැන්කිව් ටීච, අද ගොඩක් ලොකු දැනුමක් ගත්තා.</p></blockquote>
+              <figcaption class="t-author"><span class="t-avatar c0" aria-hidden="true">ස</span><span class="t-who"><span class="t-name">සිසු අදහසක්</span><span class="t-meta"><span class="t-year">O/L</span></span></span></figcaption>
+            </figure>
+            <figure class="t-slide" id="ts-1" role="tabpanel" aria-labelledby="tp-1">
               <blockquote lang="si"><p>ගුරුතුමියනි, ඔබ අපට අකුරු පමණක් නොව, ඒ අකුරුවල අරුතත්, ජීවිතයේ අගයත් උගන්වා දුන්නා. කවියත්, කතාවත් අතරින් අපි සිතන්න, හැඟෙන්න, සහ හොඳ මනුෂ්‍යයන් වෙන්න ඉගෙනගත්තේ ඔබ නිසා. සිනහවෙන්, සෙනෙහසෙන්, ඉවසීමෙන් අපට මඟ පෙන්වූ ඔබ අපගේ ජීවිතයේ අමතක නොවන ගුරුතුමියක්.</p><p>Thank you very much for your help Madam</p></blockquote>
               <figcaption class="t-author"><span class="t-avatar c0" aria-hidden="true">ම</span><span class="t-who"><span class="t-name">මින්තුලි දුල්හාරා</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
             </figure>
-            <figure class="t-slide" id="ts-1" role="tabpanel" aria-labelledby="tp-1">
-              <blockquote lang="en"><p>KW miss,</p><p>Miss ada pepar eka liwuwa. Ane miss marama lesiiiiiii. Ane thank you miss. Miss hinda thama ithin mama rasaswadayak , wicharayak liyanna igena gaththe. Miss api wenuwen kochchara dewal kalada? E karapu dewal walata thank you very much miss. A ekak thiyenawama thama ithin. Final shot kala , night saminer thibba. Marama shok e dawas nam. Miss api wenuwen mahansi unata thank you so much. Love you so much miss.</p></blockquote>
-              <figcaption class="t-author"><span class="t-avatar c3" aria-hidden="true">ද</span><span class="t-who"><span class="t-name">දිනාදි සහන්සා</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
-            </figure>
             <figure class="t-slide" id="ts-2" role="tabpanel" aria-labelledby="tp-2">
-              <blockquote lang="en"><p>Ane mage miss harima aadarei missta apita me wishaya me tharam lssata igennuwata adarei teacher , harima dukai misswa daalayanna ilagata miss lagata igenaganna ena hema nangi kenektama malli kenektama sure me wishayata A ekak ganna puluwan e tharam lassnata me wishaya miss ugannanawa miss apita liyawapu tharam wichara rasawindana adarei miss ,hemdamath hadawathe innawa ape miss</p></blockquote>
-              <figcaption class="t-author"><span class="t-avatar c1" aria-hidden="true">ච</span><span class="t-who"><span class="t-name">චමුදි අකීෂා</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
+              <blockquote lang="en"><p>Thank you very much for your dedication and for everything you did for our great results, teacher. (8h seminars, online sessions, MCQ sessions, Final shot sessions, batch party and also the free online sessions)</p><p>You’re not a teacher who only teaches lessons. You taught lessons for our lives...</p><p>You’re my great motivator. Finally, thank you so much, teacher. Love you forever.</p></blockquote>
+              <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">R</span><span class="t-who"><span class="t-name">Ridma Oshadhi</span><span class="t-meta"><span class="t-year">2025 O/L</span><span class="t-year">Sinhala A</span></span></span></figcaption>
             </figure>
             <figure class="t-slide" id="ts-3" role="tabpanel" aria-labelledby="tp-3">
-              <blockquote lang="si"><p>අ යන්නෙන් පටන් ගෙන ජීවිතයම දිනන්න පා පෙන්නු ගුරුමෑණියනි......</p><p>මේ සටහන ඔබට උපහාරයක්ම වේවා</p><p>අපි වගේම දරුවන් ඉදිරියේදි දැයට දායාද කරන්නට සුබ පැතුම් !!</p></blockquote>
-              <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">ම</span><span class="t-who"><span class="t-name">මන්තුලි · මහනුවර</span><span class="t-meta"><span class="t-year">2023 O/L</span></span></span></figcaption>
+              <blockquote lang="si"><p>Teacher ඇත්තටම හරි අහම්බෙන් හම්බවුණු සුපිරි ගුරුවරියක්... ළමයින්ට හොද අවධානයක් දෙන යාලුවෙක් වගේ teacher කෙනෙක්... Teacherge vibe එක නියමයි.. ගොඩක් පින් ටීචර් ඒ දුන්න දැනුමට...</p><p>ටීචර්ගෙ අනාගතයට හදවතින්ම සුබ පතනවා ටීචර්.. ගොඩක් දේවල් ටීචර්ගෙන් මම ඉගෙන ගත්තා... ස්තූතියි ගොඩාරියක්.</p></blockquote>
+              <figcaption class="t-author"><span class="t-avatar c3" aria-hidden="true">D</span><span class="t-who"><span class="t-name">Dimuthu Lakruwan</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
             </figure>
           </div>
           <div class="t-picks" role="tablist" aria-label="Student reviews">
             <button class="t-pick is-active" type="button" role="tab" id="tp-0" aria-controls="ts-0" aria-selected="true">
+              <span class="t-avatar c0" aria-hidden="true">ස</span>
+              <span class="t-pick-txt"><strong>සිසු අදහසක්</strong><span>ඉස්කෝලේ ටීච රසාස්වාදය කියලා දුන්නා අපි හොඳට නිදාගත්තා. අද…</span></span>
+              <span class="t-pick-bar" aria-hidden="true"></span>
+            </button>
+            <button class="t-pick" type="button" role="tab" id="tp-1" aria-controls="ts-1" aria-selected="false" tabindex="-1">
               <span class="t-avatar c0" aria-hidden="true">ම</span>
               <span class="t-pick-txt"><strong>මින්තුලි දුල්හාරා</strong><span>ගුරුතුමියනි, ඔබ අපට අකුරු පමණක් නොව, ඒ අකුරුවල අරුතත්, ජීව…</span></span>
               <span class="t-pick-bar" aria-hidden="true"></span>
             </button>
-            <button class="t-pick" type="button" role="tab" id="tp-1" aria-controls="ts-1" aria-selected="false" tabindex="-1">
-              <span class="t-avatar c3" aria-hidden="true">ද</span>
-              <span class="t-pick-txt"><strong>දිනාදි සහන්සා</strong><span>KW miss, Miss ada pepar eka liwuwa. Ane miss marama lesiii…</span></span>
-              <span class="t-pick-bar" aria-hidden="true"></span>
-            </button>
             <button class="t-pick" type="button" role="tab" id="tp-2" aria-controls="ts-2" aria-selected="false" tabindex="-1">
-              <span class="t-avatar c1" aria-hidden="true">ච</span>
-              <span class="t-pick-txt"><strong>චමුදි අකීෂා</strong><span>Ane mage miss harima aadarei missta apita me wishaya me th…</span></span>
+              <span class="t-avatar c2" aria-hidden="true">R</span>
+              <span class="t-pick-txt"><strong>Ridma Oshadhi</strong><span>Thank you very much for your dedication and for everything…</span></span>
               <span class="t-pick-bar" aria-hidden="true"></span>
             </button>
             <button class="t-pick" type="button" role="tab" id="tp-3" aria-controls="ts-3" aria-selected="false" tabindex="-1">
-              <span class="t-avatar c2" aria-hidden="true">ම</span>
-              <span class="t-pick-txt"><strong>මන්තුලි · මහනුවර</strong><span>අ යන්නෙන් පටන් ගෙන ජීවිතයම දිනන්න පා පෙන්නු ගුරුමෑණියනි…</span></span>
+              <span class="t-avatar c3" aria-hidden="true">D</span>
+              <span class="t-pick-txt"><strong>Dimuthu Lakruwan</strong><span>Teacher ඇත්තටම හරි අහම්බෙන් හම්බවුණු සුපිරි ගුරුවරියක්…</span></span>
               <span class="t-pick-bar" aria-hidden="true"></span>
             </button>
           </div>
         </div>
 
-        <div class="t-grid">
+        <div class="t-grid" id="tGrid">
+          <figure class="t-card reveal">
+            <blockquote class="t-body" lang="si"><p>මිස් එක්ක වැඩ කරපු කාලය ඉතා එළදායි උනා. වෙලාව ගෙවෙනවා දැනුනෙම නෑ. උගන්වපු දෙවල් දැනෙන්නම් ඉගැන්නුවා. මිස් ගැන කියන්න වචන නෑ, ඒ තරම් අනර්ග ගුරුවරියක්. ol කරන අපිට ලොකු හයියක් උනා.</p><p>ඇත්ත කියන්න ඕනේ, මිස්ගේ පන්තියේ දි නින්ද කියන දේ දැනෙන්නෙ වත් නෑ. අපිව ගොඩදාන්න හදන මිස්ට පිං. හදවතේ ගුරුවරියක්. මිස් දිනෙන් දින දියුණුවටම පත්වෙන්න ඔනේ.</p><p>බොහොම ස්තූතිය මිස්... ජයවේවා...</p></blockquote>
+            <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
+            <figcaption class="t-author"><span class="t-avatar c1" aria-hidden="true">Y</span><span class="t-who"><span class="t-name">Yasinu Sasanka</span><span class="t-meta"><span class="t-year">2023 O/L</span></span></span></figcaption>
+          </figure>
+          <figure class="t-card reveal">
+            <blockquote class="t-body" lang="si"><p>Good luck miss.</p><p>හොඳටම වැඩ ටික කරගෙන යන්න. අපිව ගොඩ දැම්ම වගේ තව ළමයි සිය දහස් ගානක් මිස්ට ගොඩ දාන්න ලැබෙනවාමයි. කවුරු කොහොම මොනවා කිව්වත්, මිස් 0 ඉන්න ළමයවත් A එකකින් තමා නතර කරන්නේ කියලා දන්නවා මිස්.</p><p>All the best.</p></blockquote>
+            <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
+            <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">S</span><span class="t-who"><span class="t-name">Suwansa Dewmini</span><span class="t-meta"><span class="t-year">2025 O/L</span><span class="t-year">9 A</span></span></span></figcaption>
+          </figure>
           <figure class="t-card reveal">
             <blockquote class="t-body" lang="en"><p>Dear Teacher,</p><p>Today may have been the last day of our Sinhala Literature class, but the stories, poems, and lessons you shared with us will stay in our hearts forever.</p><p>You didn’t just teach us literature — you taught us how to feel words, how to understand emotions hidden between lines, and how beautiful our language truly is. Every poem became alive because of you, and every lesson became a memory we’ll cherish.</p><p>Thank you for your patience, your guidance, and the passion you showed in every class. If literature is an art, then you are truly an artist who painted it beautifully for us.</p><p>We are grateful beyond words.</p></blockquote>
             <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
             <figcaption class="t-author"><span class="t-avatar c1" aria-hidden="true">ආ</span><span class="t-who"><span class="t-name">ආකාෂ් තිනුල</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
+          </figure>
+          <figure class="t-card reveal">
+            <blockquote class="t-body" lang="en"><p>KW miss,</p><p>Miss ada pepar eka liwuwa. Ane miss marama lesiiiiiii. Ane thank you miss. Miss hinda thama ithin mama rasaswadayak , wicharayak liyanna igena gaththe. Miss api wenuwen kochchara dewal kalada? E karapu dewal walata thank you very much miss. A ekak thiyenawama thama ithin. Final shot kala , night saminer thibba. Marama shok e dawas nam. Miss api wenuwen mahansi unata thank you so much. Love you so much miss.</p></blockquote>
+            <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
+            <figcaption class="t-author"><span class="t-avatar c3" aria-hidden="true">ද</span><span class="t-who"><span class="t-name">දිනාදි සහන්සා</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
           </figure>
           <figure class="t-card reveal">
             <blockquote class="t-body" lang="si"><p>මම මිස්ගේ online පන්තියට ආවේ දහය වසර ඉඳලා එතකොට මට lit වලට s සාමාර්‍ථයක් තමයි තිබුණේ මිස් කියල දීපු දේවල් හොඳින් අවධානයෙන් අහන් හිටියා online පන්තියක්උනාට කිසිම කම්මැලිකමක් දැනුනේ නෑ. මිස්ගෙ පන්තියට සම්බන්ධවෙලා ටික කාලයක් යනකොට මට A සාමාර්‍ථකට යන්න පුළුවන් වුණා. ඒ මිස්ගේ කැපවීම සහ අපිව උනන්දු කරපු හින්දා. විචාරයක් වගේම රස වින්දනයක් ලියනකොටත් මුල ඉඳන්ම අපිට තේරෙන විදියට හරිම සරල විදිහට කියලා දුන්නා . මම හිතන්නෑ වෙන ඔන්ලයින් පන්තියක වගේම physical පන්තියක උනත් මේ විදිහට කියලා දෙයි කියලා. පාඩම විතරක් නෙමේ එතනින් එහාට ජීවිතේම මිස් අපිට කියලා දුන්න. කොහොමහරි o/l වලට සිංහල රසාස්වාදයට A ගන්නවමයි . මිස්ගේ ඉදිරි වැඩ කටයුතු සාර්‍ථකව කරගන්න කියලා මම ප්‍රාර්‍ථනා කරනවා</p></blockquote>
@@ -536,25 +561,43 @@
             <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">අ</span><span class="t-who"><span class="t-name">අදීෂා අමන්දි</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
           </figure>
           <figure class="t-card reveal">
-            <blockquote class="t-body" lang="si"><p>ටීච මාරම දුකයි ටීචව දාලා යන්න. ටීච කරපු වැඩ කන්දරාවට මන් නම් ටීච කියලා දුන්න subject ලියන්න බයක් එන්නෙවත් නෑ .ඒ තරම් ටිච අපිට වැඩ කෙරෙවුවා.මන් ටීචගේ literature clz ආවේ grade 10 වලදී මට එත්කොට තිබ්බේ C එකක් අද මට A එකක් තියෙන්වා මාරම සතුටුයි ටීච .සිංහල ක්ල්ස් ආවේ grade 11 වලදී එතකොට මට B එකක් දැන් මට A එකක් .ඉතින් ටීච කියන්න වචන නෑ. ටීච අපිට ලස්සනට පාඩම් කියලා දීලා උපරිමයෙන් ම කරනවා.ඉදිරියටත් ටිචට ලස්සනට ටීච කියනවා ශෝයිවට වැඩ ටික කරගන්න සුබ පතනවා ආදරෙයි ටීච.සිංහල නම් කෞශල්‍යා මිස් තමා ඉතින් .අනිවාර්‍යයෙන් A ඇරන් එනෝ</p></blockquote>
+            <blockquote class="t-body" lang="en"><p>Ane mage miss harima aadarei missta apita me wishaya me tharam lssata igennuwata adarei teacher , harima dukai misswa daalayanna ilagata miss lagata igenaganna ena hema nangi kenektama malli kenektama sure me wishayata A ekak ganna puluwan e tharam lassnata me wishaya miss ugannanawa miss apita liyawapu tharam wichara rasawindana adarei miss ,hemdamath hadawathe innawa ape miss</p></blockquote>
             <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
-            <figcaption class="t-author"><span class="t-avatar c3" aria-hidden="true">ස</span><span class="t-who"><span class="t-name">සඳනි නිහාරා</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
+            <figcaption class="t-author"><span class="t-avatar c1" aria-hidden="true">ච</span><span class="t-who"><span class="t-name">චමුදි අකීෂා</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
           </figure>
-          <figure class="t-card reveal">
-            <blockquote class="t-body" lang="si"><p>සිංහලවලට A එකක් තියෙනවා මිස්..මම මිස්ගෙ Final shot වලට join වුණා..මට ව්‍යාකරණ කිසිම දෙයක් කලින් තේරුණේ නෑ..මිස්ගෙ seminar වලට join වුණාට පස්සෙ මම ව්‍යාකරණ ටික ගොඩ දාගත්තා..පාන්දර 2-3 වෙනකම් මිස්ගෙ seminar වල ඉඳියා..කිසිම කම්මැලිකමක් දැනුනෙ නෑ..ආසාවෙන් හිටියා..රසාස්වාදෙ seminar එකටත් මම ඉඳියා..මට රසාස්වාදෙටත් A එකක් තියෙනවා..Thank you Miss..ඕනම කෙනෙක්ට බය නැතුව මිස්ගෙ class වලට join වෙන්න කියන්න පුලුවන්...</p></blockquote>
-            <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
-            <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">ස</span><span class="t-who"><span class="t-name">සිසු අදහසක්</span><span class="t-meta"><span class="t-year">O/L</span></span></span></figcaption>
-          </figure>
-          <figure class="t-card reveal">
+          <figure class="t-card reveal is-more">
             <blockquote class="t-body" lang="en"><p>Teacher exam eka marama lesiii. Teacher kiyapuva ehem pitinma ava . Okkoma ava. Pepar eka athata gaththama misge katahada aheno aheno vage thereno. Vakya riithi karanakota ehema . Okkoma mathak venawa .</p><p>Thank you so much teacher</p><p>Mn teacherge class ave 11 vasare first term ekedi . Ethakota sinhala kiyanne mata epama karapu vishaya. Second term ekedi mn lakunu 62 k thibuna . Me para A+ekak sure</p><p>Lit class ekath ehemai .mulinma thibune lakunu 49i giya para exam ekata 89k tibuna dan asama subject deka . Mis hinda thama .</p></blockquote>
             <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
             <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">ස</span><span class="t-who"><span class="t-name">සිහෙලි නුලංගා</span><span class="t-meta"><span class="t-year">2026 O/L</span></span></span></figcaption>
           </figure>
-          <figure class="t-card reveal">
+          <figure class="t-card reveal is-more">
+            <blockquote class="t-body" lang="si"><p>කාලෙ කන ගුරුවරු ප්‍රසිද්ද වෙලා.. මේ වගේ ගුරුවරු ඇයි Underrated, අප්‍රසිද්ද උනේ... හේතුවත් දන්නවා ඉතීම්... අපි කරන්නේ තාවකාලික සතුකට හරියට syllabus වත් කවර් කරන්නේ නැති ගුරුවරු ගාවට යනවා... ව්‍යංගාර්ථ කුණුහරප අහන්න.</p><p>madam be like - තේරෙයි.. කල් යයි...</p><p>vena kenekta novenna share karala recomond karaham mallilata.</p></blockquote>
+            <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
+            <figcaption class="t-author"><span class="t-avatar c3" aria-hidden="true">ස</span><span class="t-who"><span class="t-name">සිසු අදහසක්</span><span class="t-meta"><span class="t-year">O/L</span></span></span></figcaption>
+          </figure>
+          <figure class="t-card reveal is-more">
+            <blockquote class="t-body" lang="si"><p>ටීච මාරම දුකයි ටීචව දාලා යන්න. ටීච කරපු වැඩ කන්දරාවට මන් නම් ටීච කියලා දුන්න subject ලියන්න බයක් එන්නෙවත් නෑ .ඒ තරම් ටිච අපිට වැඩ කෙරෙවුවා.මන් ටීචගේ literature clz ආවේ grade 10 වලදී මට එත්කොට තිබ්බේ C එකක් අද මට A එකක් තියෙන්වා මාරම සතුටුයි ටීච .සිංහල Class ආවේ grade 11 වලදී එතකොට මට B එකක් දැන් මට A එකක් .ඉතින් ටීච කියන්න වචන නෑ. ටීච අපිට ලස්සනට පාඩම් කියලා දීලා උපරිමයෙන් ම කරනවා.ඉදිරියටත් ටිචට ලස්සනට ටීච කියනවා ශෝයිවට වැඩ ටික කරගන්න සුබ පතනවා ආදරෙයි ටීච.සිංහල නම් කෞශල්‍යා මිස් තමා ඉතින් .අනිවාරෙන් A ඇරන් එනෝ</p></blockquote>
+            <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
+            <figcaption class="t-author"><span class="t-avatar c3" aria-hidden="true">ස</span><span class="t-who"><span class="t-name">සඳනි නිහාරා</span><span class="t-meta"><span class="t-year">2025 O/L</span></span></span></figcaption>
+          </figure>
+          <figure class="t-card reveal is-more">
+            <blockquote class="t-body" lang="si"><p>සිංහලවලට A එකක් තියෙනවා මිස්..මම මිස්ගෙ Final shot වලට join වුණා..මට ව්‍යාකරණ කිසිම දෙයක් කලින් තේරුණේ නෑ..මිස්ගෙ seminar වලට join වුණාට පස්සෙ මම ව්‍යාකරණ ටික ගොඩ දාගත්තා..පාන්දර 2-3 වෙනකම් මිස්ගෙ seminar වල ඉඳියා..කිසිම කම්මැලිකමක් දැනුනෙ නෑ..ආසාවෙන් හිටියා..රසාස්වාදෙ seminar එකටත් මම ඉඳියා..මට රසාස්වාදෙටත් A එකක් තියෙනවා..Thank you Miss..ඕනම කෙනෙක්ට බය නැතුව මිස්ගෙ class වලට join වෙන්න කියන්න පුලුවන්...</p></blockquote>
+            <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
+            <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">ස</span><span class="t-who"><span class="t-name">සිසු අදහසක්</span><span class="t-meta"><span class="t-year">O/L</span></span></span></figcaption>
+          </figure>
+          <figure class="t-card reveal is-more">
+            <blockquote class="t-body" lang="si"><p>අ යන්නෙන් පටන් ගෙන ජීවිතයම දිනන්න පා පෙන්නු ගුරුමෑණියනි......</p><p>මේ සටහන ඔබට උපහාරයක්ම වේවා</p><p>අපි වගේම දරුවන් ඉදිරියේදි දැයට දායාද කරන්නට සුබ පැතුම් !!</p></blockquote>
+            <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
+            <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">ම</span><span class="t-who"><span class="t-name">මන්තුලි · මහනුවර</span><span class="t-meta"><span class="t-year">2023 O/L</span></span></span></figcaption>
+          </figure>
+          <figure class="t-card reveal is-more">
             <blockquote class="t-body" lang="en"><p>Teacher karana dewal kawadawath weradi kiyanna be teacher mokada api teacher gena hodata dannawa. e wagema api wenuwe mahansi wechchi vidiha thama apita mathak wenawa.Teacherge mn class awe 10 anthima ware e enakotath mata vichararayak hriyata liyanna therenne ne.teacherge class ewilla 11 palaweni waredi mage wedima lakunu thibbe sinhala walata (85%). Sinhala mata be kiyala idala anthima mage asama vishaya sinhala una.teacher api wenuwen karapu siyallama poddakwath ahaka giye ne.MCQ walatai , wiyakrana paper ekatai, vichara paper ekatai lakunu ganna vidiha hodatama kiyala dunna.teacher dunna hema paper ekakma,hema seminar ekakkatama awa.poddakwath kammeli hithenne nethi wennam mis kiyala dunna.den inna nangila mallilatath apita wagema hodata ugannanawa kiyala api danno.. e hinda misge class ena mis kiyana weda tika hariyatama karana kenekta kawadawathma A ekak beri wenne ne.</p></blockquote>
             <button class="t-more" type="button" aria-expanded="false"><span>Read more</span></button>
             <figcaption class="t-author"><span class="t-avatar c2" aria-hidden="true">ස</span><span class="t-who"><span class="t-name">සිසු අදහසක්</span><span class="t-meta"><span class="t-year">O/L</span></span></span></figcaption>
           </figure>
+        </div>
+        <div class="t-showmore-wrap">
+          <button class="t-showmore" id="tShowMore" type="button" aria-expanded="false" aria-controls="tGrid"><span>Show more reviews</span><em>+6</em></button>
         </div>
       </div>
     </section>
@@ -688,7 +731,7 @@
         <div class="adv2 adv-v2">
           <div class="adv2-media reveal">
             <span class="adv2-block" aria-hidden="true"></span>
-            <img src="assets/optimized/teacher/class_whiteboard.webp" alt="ගුරුතුමිය සජීවී පන්තියේදී ව්‍යාකරණ වගුවක් පැහැදිලි කරමින්" loading="lazy" width="1100" height="619">
+            <img src="assets/optimized/teacher/teacher_formal.webp" alt="කෞෂල්‍යා වික්‍රමාරච්චි ගුරුතුමිය" loading="lazy" width="1067" height="1600">
             <div class="adv2-proof">
               <strong>A206+</strong>
               <span>2025 O/L A සාමාර්ථ</span>
@@ -730,12 +773,12 @@
             <span class="eyebrow reveal">CLASSES</span>
             <h2 class="h2 reveal">Join the Class</h2>
           </div>
-          <p class="sub reveal">වැඩ කරන සිංහල පන්තිය. ලංකාවේ ඕනෑම තැනක සිට Online ලෙස, නැතහොත් මතුගම සහ මීගහතැන්න පන්තිවලට සම්බන්ධ වන්න.</p>
+          <p class="sub reveal">ලංකාවේ ඕනෑම තැනක සිට Online ලෙස නැතහොත් මතුගම සහ මීගහතැන්න නගරවල ආයතනික පන්තිවලට සම්බන්ධවීමට හැක.</p>
         </div>
 
         <div class="venues">
           <article class="venue reveal">
-            <div class="venue-img"><img src="assets/optimized/teacher/online_class_zoom.webp" alt="ගුරුතුමිය Zoom හරහා සජීවී Online පන්තියක් උගන්වමින්" loading="lazy" width="960" height="540" style="object-position:72% center"></div>
+            <div class="venue-img"><img src="assets/optimized/teacher/online_class_laptop.webp" alt="ලැප්ටොප් තිරයේ ගුරුතුමිය සජීවී Online පන්තියක් උගන්වමින්" loading="lazy" width="1200" height="800" style="object-position:center 35%"></div>
             <div class="venue-body">
               <span class="tag tag-navy">ONLINE · ISLAND-WIDE</span>
               <h3>Online Class</h3>
@@ -829,17 +872,17 @@
         <div class="faq-head">
           <span class="eyebrow reveal">FAQ</span>
           <h2 class="h2 reveal">Frequently Asked Questions</h2>
-          <p class="sub reveal">තවත් ප්‍රශ්න ඇත්නම් අපට කෙලින්ම අමතන්න.</p>
-          <a href="tel:+94743624117" class="link-arrow reveal"><span>074 362 4117</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="sub reveal">වෙනත් යමක් දැනගැනීමට අවශ්‍යනම් WhatsApp කරන්න.</p>
+          <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener" class="link-arrow faq-wa reveal"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg><span>074 362 4117</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
         <div class="faq-list">
           <details class="qa reveal" open>
             <summary><span>විෂයන් දෙකම එකම ගුරුතුමියගෙන් ඉගෙනගත හැකිද?</span><i aria-hidden="true"></i></summary>
-            <p>ඔව්. සාමාන්‍ය පෙළ සිංහල භාෂාව හා සාහිත්‍යය සහ සිංහල සාහිත්‍ය රසාස්වාදය යන විෂයන් දෙකම කෞෂල්‍යා වික්‍රමාරච්චි ගුරුතුමිය උගන්වන අතර, විෂයන් දෙකටම A සාමාර්ථ 2ක් ලබාගැනීම අපගේ ඉලක්කයයි.</p>
+            <p>ඔව්. සාමාන්‍ය පෙළ සිංහල සහ සිංහල සාහිත්‍ය රසාස්වාදය යන විෂයන් දෙකම කෞෂල්‍යා වික්‍රමාරච්චි ගුරුතුමිය උගන්වන අතර, විෂයන් දෙකෙහිම A සාමාර්ථ 2කට ඔබව ගොඩනැගීම අපගේ ඉලක්කයයි.</p>
           </details>
           <details class="qa reveal">
             <summary><span>Online සිසුන්ට නිබන්ධන ලැබෙන්නේ කෙසේද?</span><i aria-hidden="true"></i></summary>
-            <p>ක්‍රමානුකූලව සිසුන්ව ගොඩනඟන වැඩපිළිවෙළට අදාළ නිබන්ධන කට්ටල (Theory Tute, Paper Tutes, Q Book, MCQ Tute, Final Guess Papers) ඔබේ නිවසටම එවනු ලැබේ.</p>
+            <p>ක්‍රමානුකූලව සිසුන්ව ගොඩනඟන වැඩපිළිවෙළට අදාළ නිබන්ධන කට්ටල (Theory Tute, Paper Tutes, Q Book, MCQ Tute, Final Guess Papers) නිවසටම එවනු ලැබේ.</p>
           </details>
           <details class="qa reveal">
             <summary><span>සජීවී පන්තියට සම්බන්ධ වීමට නොහැකි වුවහොත්?</span><i aria-hidden="true"></i></summary>
@@ -850,12 +893,12 @@
             <p>ගුරුතුමිය විසින්ම පන්තියේදී සහ WhatsApp හරහා සිසුන්ගේ විචාර ඇතුළු වැඩ පරීක්ෂා කර ලකුණු ලබාදෙනු ලැබේ.</p>
           </details>
           <details class="qa reveal">
-            <summary><span>Live Exam යනු කුමක්ද?</span><i aria-hidden="true"></i></summary>
-            <p>විභාගයට මුහුණදීමේදී බොහෝ සිසුන්ට ගැටලුවක් වන කාල කළමනාකරණයට විසඳුමක් ලෙස පවත්වන සජීවී විභාගයි. පිළිතුරු පරීක්ෂා කර සිසුන් Rank කරනු ලැබේ.</p>
+            <summary><span>Live Exam කියන්නෙ මොකක්ද?</span><i aria-hidden="true"></i></summary>
+            <p>Live Exam යනු විභාගයට මුහුණදීමේදී බොහෝ සිසුන්ට ගැටලුවක් වන කාල කළමනාකරණයට විසඳුමක් ලෙස පවත්වන සජීවී විභාගයි. එහිදී පිළිතුරු පරීක්ෂා කර සිසුන් Rank කරනු ලැබේ.</p>
           </details>
           <details class="qa reveal">
             <summary><span>පන්තියට ලියාපදිංචි වන්නේ කෙසේද?</span><i aria-hidden="true"></i></summary>
-            <p>පන්ති ලියාපදිංචිය ළඟදීම student.sinhalakw.lk ශිෂ්‍ය පද්ධතිය (Student LMS) හරහා සිදු කෙරේ. එතෙක් 074 362 4117 අංකයට අමතන්න, නැතහොත් පහත Contact Us පෝරමය හරහා පණිවිඩයක් එවන්න.</p>
+            <p>පන්ති ලියාපදිංචිය ළඟදීම student.sinhalakw.lk ශිෂ්‍ය පද්ධතිය (Student LMS) හරහා සිදු කෙරේ. එතෙක් තොරතුරු ලබාගැනීමට <a href="https://wa.me/message/GLVS7R45XIDAG1" target="_blank" rel="noopener">074 362 4117</a> අංකයට WhatsApp පණිවිඩයක් යොමු කරන්න.</p>
           </details>
         </div>
       </div>
@@ -965,6 +1008,14 @@
       </div>
 
       <div class="cfg-group">
+        <span class="cfg-label" id="pvHeroLbl">Hero design</span>
+        <div class="cfg-chips" role="radiogroup" aria-labelledby="pvHeroLbl" data-pv="hero">
+          <button type="button" role="radio" aria-checked="false" data-value="v1">V1 · 3D Logo</button>
+          <button type="button" role="radio" aria-checked="true" data-value="v2">V2 · Split</button>
+        </div>
+      </div>
+
+      <div class="cfg-group">
         <span class="cfg-label" id="pvAdvLbl">KW Advantage design</span>
         <div class="cfg-chips" role="radiogroup" aria-labelledby="pvAdvLbl" data-pv="adv">
           <button type="button" role="radio" aria-checked="false" data-value="v1">V1 · Cards</button>
@@ -974,7 +1025,7 @@
 
       <div class="cfg-group cfg-switches">
         <span class="cfg-label">Results</span>
-        <label class="cfg-toggle"><span>Result sheet images</span><input type="checkbox" role="switch" data-pv="sheets" checked></label>
+        <label class="cfg-toggle"><span>Results by year</span><input type="checkbox" role="switch" data-pv="sheets" checked></label>
         <label class="cfg-toggle"><span>Results graph</span><input type="checkbox" role="switch" data-pv="graph" checked></label>
         <label class="cfg-toggle pv-sub"><span><i class="r-swatch s-lang" aria-hidden="true"></i>Sinhala Language line</span><input type="checkbox" role="switch" data-pv="lang" checked></label>
         <label class="cfg-toggle pv-sub"><span><i class="r-swatch s-lit" aria-hidden="true"></i>Sinhala Lit line</span><input type="checkbox" role="switch" data-pv="lit" checked></label>
@@ -1027,6 +1078,5 @@
   </div>
 
   <script src="js/main.js" defer></script>
-  <script type="module" src="js/hero3d.js"></script>
 </body>
 </html>

@@ -1,11 +1,9 @@
 // Sinhala KW · Hero 3D logo.
 // The full "සිංහල KW" logo is extruded live from assets/logos/logo_full_vector.svg (traced from the
-// brand PDF), with the letters and the middle emblem as separate parts. A side panel (#cfg) lets the
-// visitor configure it; choices are saved in localStorage.
-//   styles:  solid (polished enamel + gold) · particles (scatters on hover) · glass (gold flakes inside)
-//            · layers (navy-to-gold slices that fan open on hover)
-//   colours: brand (ink letters) · navy (navy letters) · gold (all gold)
-//   also:    depth, motion speed, idle sway, emblem spin, hover effect
+// brand PDF), with the letters and the middle emblem as separate parts.
+// The look is fixed to the chosen preset (PRESET below): gold style, brand colours, normal depth and
+// speed, no idle sway, no emblem spin, hover effect on. The other styles' builders are kept for reference
+// but are never built. Loaded by main.js only when the 3D-logo hero (V1) is shown.
 import * as THREE from 'three';
 import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
@@ -13,17 +11,14 @@ import { MeshSurfaceSampler } from 'three/addons/math/MeshSurfaceSampler.js';
 
 const stage = document.getElementById('logoStage');
 const hint = document.getElementById('logoHint');
-const panel = document.getElementById('cfg');
 
-const STYLES = ['solid', 'particles', 'glass', 'layers'];
 const SCHEMES = {
   brand: { letters: '#08080a', edge: '#141416', speck: '#202024', stack: ['#FFE6A0', '#888888', '#333333', '#08080a'] },
   navy: { letters: '#235E83', edge: '#1B4D6D', speck: '#7FB0CF', stack: ['#FFE6A0', '#9FC3DA', '#235E83'] },
   gold: { letters: '#FFC20E', edge: '#D99A00', speck: '#D99A00', stack: ['#0E2E43', '#235E83', '#7FB0CF', '#FFE6A0', '#FFC20E'], metal: true },
 };
 const EMBLEM_STACK = ['#0E2E43', '#235E83', '#7FB0CF', '#FFE6A0', '#FFC20E'];
-const DEFAULTS = { style: 'solid', scheme: 'brand', depth: 1, speed: 1, sway: true, spin: false, hover: true };
-const STORE_KEY = 'kw-hero3d';
+const PRESET = { style: 'solid', scheme: 'brand', depth: 1, speed: 1, sway: false, spin: false, hover: true };
 
 const C = {
   gold: new THREE.Color('#FFC20E'),
@@ -42,7 +37,6 @@ function webglOK() {
 }
 
 function disableUI() {
-  panel?.setAttribute('hidden', '');
   hint?.setAttribute('hidden', '');
 }
 
@@ -50,41 +44,13 @@ if (stage && webglOK()) init().catch(err => { console.warn('[hero3d]', err); dis
 else disableUI();
 
 /* =========================================================
-   Settings
-   ========================================================= */
-function sanitize(o) {
-  const out = {};
-  if (!o || typeof o !== 'object') return out;
-  if (STYLES.includes(o.style)) out.style = o.style;
-  if (SCHEMES[o.scheme]) out.scheme = o.scheme;
-  for (const [k, lo, hi] of [['depth', 0.4, 2], ['speed', 0, 2]]) {
-    if (Number.isFinite(o[k])) out[k] = Math.min(hi, Math.max(lo, o[k]));
-  }
-  for (const k of ['sway', 'spin', 'hover']) if (typeof o[k] === 'boolean') out[k] = o[k];
-  return out;
-}
-
-function defaults(reduceMotion) {
-  return { ...DEFAULTS, sway: !reduceMotion, speed: reduceMotion ? 0.3 : 1 };
-}
-
-function loadSettings(reduceMotion) {
-  const s = defaults(reduceMotion);
-  try { Object.assign(s, sanitize(JSON.parse(localStorage.getItem(STORE_KEY) || '{}'))); } catch { /* ignore */ }
-  const q = new URLSearchParams(location.search);
-  const style = q.get('style') || q.get('emblem');
-  if (STYLES.includes(style)) s.style = style;
-  if (SCHEMES[q.get('colour')]) s.scheme = q.get('colour');
-  return s;
-}
-
-/* =========================================================
    Scene
    ========================================================= */
 async function init() {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isMobile = window.matchMedia('(max-width: 640px)').matches;
-  const settings = loadSettings(reduceMotion);
+  const settings = { ...PRESET, speed: reduceMotion ? 0.3 : PRESET.speed };
+  try { localStorage.removeItem('kw-hero3d'); } catch { /* old settings from the removed panel */ }
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -156,16 +122,6 @@ async function init() {
     stage.dataset.style = name;
   }
 
-  function save() {
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(settings)); } catch { /* private mode */ }
-  }
-  function apply(patch) {
-    Object.assign(settings, sanitize(patch));
-    if (patch.style) setStyle(settings.style);
-    if (patch.scheme) Object.values(built).forEach(s => s.setScheme(settings.scheme));
-    save();
-  }
-
   // ---------- interaction ----------
   const ndc = new THREE.Vector2(-10, -10);
   const mouseLocal = new THREE.Vector3(99, 99, 0);
@@ -228,22 +184,6 @@ async function init() {
   new IntersectionObserver(([en]) => { visible = en.isIntersecting; }, { threshold: 0 }).observe(stage);
 
   setStyle(settings.style);
-  setupPanel(settings, apply, defaults(reduceMotion));
-  window.sinhalaLogo3D = { settings, apply };
-
-  // build the other looks while the browser is idle so switching never stalls
-  const idle = window.requestIdleCallback || (fn => setTimeout(fn, 400));
-  const queue = STYLES.filter(n => !built[n]);
-  const warm = () => {
-    const name = queue.shift();
-    if (!name) return;
-    const s = getStyle(name);
-    s.group.visible = true;
-    renderer.compile(scene, camera);
-    if (s !== current && s !== leaving) s.group.visible = false;
-    idle(warm);
-  };
-  idle(warm);
 
   // ---------- loop ----------
   const clock = new THREE.Clock();
@@ -327,88 +267,6 @@ async function init() {
     renderer.render(scene, camera);
     if (first) { first = false; stage.classList.add('is-ready'); }
   });
-}
-
-/* =========================================================
-   Side panel
-   ========================================================= */
-function setupPanel(settings, apply, resetTo) {
-  if (!panel) return;
-  const tab = panel.querySelector('.cfg-tab');
-  const body = panel.querySelector('.cfg-body');
-  const hero = panel.closest('.hero');
-  const syncers = [];
-
-  const setOpen = open => {
-    panel.classList.toggle('is-open', open);
-    hero?.classList.toggle('cfg-open', open);
-    tab.setAttribute('aria-expanded', String(open));
-    body.inert = !open;
-    if (open) body.querySelector('[role="radio"][aria-checked="true"]')?.focus({ preventScroll: true });
-  };
-  body.inert = true;
-  tab.addEventListener('click', () => setOpen(!panel.classList.contains('is-open')));
-  panel.querySelector('.cfg-close')?.addEventListener('click', () => { setOpen(false); tab.focus(); });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && panel.classList.contains('is-open')) { setOpen(false); tab.focus(); }
-  });
-
-  // single-choice groups: style, colour
-  panel.querySelectorAll('[role="radiogroup"][data-setting]').forEach(group => {
-    const key = group.dataset.setting;
-    const radios = [...group.querySelectorAll('[role="radio"]')];
-    const sync = () => radios.forEach(r => {
-      const on = r.dataset.value === settings[key];
-      r.setAttribute('aria-checked', String(on));
-      r.tabIndex = on ? 0 : -1;
-    });
-    radios.forEach(r => r.addEventListener('click', () => { apply({ [key]: r.dataset.value }); sync(); }));
-    group.addEventListener('keydown', e => {
-      const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-      if (!step) return;
-      e.preventDefault();
-      const i = radios.findIndex(r => r.getAttribute('aria-checked') === 'true');
-      const n = radios[(i + step + radios.length) % radios.length];
-      n.focus();
-      n.click();
-    });
-    syncers.push(sync);
-  });
-
-  // sliders
-  panel.querySelectorAll('input[type="range"][data-setting]').forEach(input => {
-    const key = input.dataset.setting;
-    const out = panel.querySelector(`output[for="${input.id}"]`);
-    const sync = () => {
-      input.value = settings[key];
-      if (out) out.textContent = `${Math.round(settings[key] * 100)}%`;
-    };
-    input.addEventListener('input', () => { apply({ [key]: parseFloat(input.value) }); sync(); });
-    syncers.push(sync);
-  });
-
-  // switches
-  panel.querySelectorAll('input[type="checkbox"][data-setting]').forEach(input => {
-    const key = input.dataset.setting;
-    const sync = () => { input.checked = settings[key]; };
-    input.addEventListener('change', () => apply({ [key]: input.checked }));
-    syncers.push(sync);
-  });
-
-  panel.querySelector('.cfg-reset')?.addEventListener('click', () => {
-    apply({ ...resetTo });
-    syncers.forEach(s => s());
-  });
-
-  syncers.forEach(s => s());
-
-  // on phones the tab floats at the screen edge; hide it once the hero is scrolled away
-  if (hero) {
-    new IntersectionObserver(([en]) => {
-      panel.classList.toggle('is-away', !en.isIntersecting);
-      if (!en.isIntersecting && panel.classList.contains('is-open')) setOpen(false);
-    }, { threshold: 0.15 }).observe(hero);
-  }
 }
 
 /* =========================================================
