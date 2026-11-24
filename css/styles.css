@@ -2010,3 +2010,9 @@ h1, h2, h3, p, figure { margin: 0; }
   .set-page.p1 { transform: rotate(-6deg) translate(-10px, 6px); }
   .set-page.p2 { transform: rotate(6deg) translate(10px, 8px); }
 }
+
+/* set labels: phones drop the year (the year tab already shows it) so the label stays one short line */
+@media (max-width: 860px) {
+  .sheets-sets .tag-year { display: none; }
+  .sheets-sets .sheet-tag { left: 50%; right: auto; transform: translateX(-50%); white-space: nowrap; padding: 4px 10px; }
+}
