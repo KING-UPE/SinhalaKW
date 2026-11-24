@@ -1281,7 +1281,7 @@ h1, h2, h3, p, figure { margin: 0; }
 }
 
 /* about: facts row removed */
-.about-copy .yt-link { margin-top: 30px; }
+.about-copy .about-links { margin-top: 30px; }
 .stamp-big { letter-spacing: -.02em; }
 
 
@@ -1914,3 +1914,15 @@ h1, h2, h3, p, figure { margin: 0; }
   .sheets-sets .tag-year { display: none; }
   .sheets-sets .sheet-tag { left: 50%; right: auto; transform: translateX(-50%); white-space: nowrap; padding: 4px 10px; }
 }
+
+/* about: YouTube and WhatsApp channel cards side by side */
+.about-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.about-links .yt-link { display: flex; border-radius: 22px; min-width: 0; }
+.about-links .yt-link > span:nth-child(2) { min-width: 0; }
+.about-links .arrow { margin-left: auto; flex: none; }
+.wa-link .yt-ic { background: #25D366; }
+.wa-link:hover { border-color: #25D366; }
+@media (max-width: 480px) { .about-links { grid-template-columns: minmax(0, 1fr); } }
+.about-links .yt-link > span:nth-child(2) { display: flex; flex-direction: column; gap: 3px; line-height: 1.3; }
+.about-links .yt-link strong { line-height: 1.3; }
+.about-links .yt-ic { flex: none; }
