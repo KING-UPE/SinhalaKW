@@ -2033,3 +2033,4 @@ h1, h2, h3, p, figure { margin: 0; }
 .pl-half { width: 50%; }
 .pl-l { width: calc(50% + 1px); z-index: 1; }
 .pl-seam, .pl-center { z-index: 2; }
+.t-card .t-grade { color: var(--navy) !important; }
