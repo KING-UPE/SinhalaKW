@@ -81,6 +81,37 @@
 
   const hero = $('.hero');
 
+  /* ---------- loading screen ---------- */
+  // opens once the hero photos are ready (or the page has loaded); shown at least briefly so it
+  // never flashes, and never longer than 4 s. Fires 'kw:ready' when the curtains start to open.
+  const pre = $('#preloader');
+  const ready = () => {
+    document.documentElement.classList.remove('is-loading');
+    document.dispatchEvent(new Event('kw:ready'));
+  };
+  if (pre) {
+    const t0 = performance.now(), MIN = reduceMotion ? 0 : 700;
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      setTimeout(() => {
+        pre.classList.add('is-done');
+        ready();
+        setTimeout(() => pre.remove(), reduceMotion ? 300 : 1400);
+      }, Math.max(0, MIN - (performance.now() - t0)));
+    };
+    const photos = $$('.hs-photo');
+    Promise.all(photos.map(img => img.complete ? 1 : new Promise(r => {
+      img.addEventListener('load', r, { once: true });
+      img.addEventListener('error', r, { once: true });
+    }))).then(finish);
+    window.addEventListener('load', finish);
+    setTimeout(finish, 4000);
+  } else {
+    ready();
+  }
+
   /* ---------- gallery filter ---------- */
   // the first six photos of the chosen filter show; "View more" opens the rest
   const filters = $$('.filter');
@@ -635,13 +666,13 @@
       const s = tile ? tile.dataset.side : halfAt(e.clientX);
       setSide(s === side ? '' : s);
     });
-    // one gentle sway of the seam after load, so visitors see the halves can move
+    // one gentle sway of the seam once the loading screen has opened, so visitors see the halves can move
     if (!reduceMotion) {
-      setTimeout(() => {
+      document.addEventListener('kw:ready', () => setTimeout(() => {
         if (side || hs.offsetParent === null || hs.getBoundingClientRect().bottom < 0) return;
         hs.classList.add('is-hinting');
         hs.addEventListener('animationend', e => { if (e.animationName === 'hsHint') hs.classList.remove('is-hinting'); });
-      }, 1500);
+      }, 1600), { once: true });
     }
   }
 

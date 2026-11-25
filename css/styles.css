@@ -1948,3 +1948,88 @@ h1, h2, h3, p, figure { margin: 0; }
 .wa-fab:focus-visible { outline: 2.5px solid var(--ink); outline-offset: 3px; }
 .js .wa-fab:not(.is-shown), .menu-open .wa-fab, .modal-open .wa-fab { opacity: 0; visibility: hidden; transform: translateY(16px); pointer-events: none; }
 @media (max-width: 640px) { .wa-fab { right: 14px; bottom: calc(70px + env(safe-area-inset-bottom)); width: 48px; height: 48px; } .wa-fab .ic { width: 24px; height: 24px; } }
+
+
+/* =========================================================
+   LOADING SCREEN
+   Cream (Language) | navy (Literature) halves with the gold seam and the emblem,
+   like the hero; when the page is ready the halves slide apart.
+   Only shown when JS runs (the .js class is set in <head>).
+   ========================================================= */
+.preloader { display: none; }
+.js .preloader { display: block; position: fixed; inset: 0; z-index: 9999; overflow: hidden; }
+.pl-half {
+  position: absolute; top: 0; bottom: 0; width: 50.5%;
+  transition: transform .95s cubic-bezier(.7, 0, .2, 1);
+}
+.pl-l {
+  left: 0;
+  background:
+    linear-gradient(90deg, transparent 47px, rgba(229, 72, 77, .32) 47px 49px, transparent 49px),
+    repeating-linear-gradient(180deg, transparent 0 39px, rgba(35, 94, 131, .1) 39px 40px),
+    linear-gradient(180deg, #FFF6DA, #FFEDB8);
+}
+.pl-r {
+  right: 0;
+  background:
+    radial-gradient(rgba(255, 255, 255, .55) 1px, transparent 1.6px) 0 0 / 53px 47px,
+    radial-gradient(80% 70% at 30% 30%, #1F5479, #0E2E43 60%, #0B2A3E);
+}
+.pl-seam {
+  position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px;
+  background: linear-gradient(180deg, transparent, #FFC20E 30%, #FFC20E 70%, transparent);
+  box-shadow: 0 0 16px rgba(255, 194, 14, .6);
+  transform-origin: top; animation: plSeam 1s cubic-bezier(.65, 0, .35, 1) both;
+  transition: opacity .4s;
+}
+.pl-center {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center; gap: 22px;
+  transition: opacity .35s ease, transform .5s var(--ease);
+}
+.pl-knot {
+  width: 84px; height: 84px; border-radius: 50%;
+  display: grid; place-items: center; background: #fff;
+  box-shadow: 0 0 0 6px rgba(255, 194, 14, .32), 0 24px 50px -18px rgba(14, 28, 39, .55);
+  animation: plKnot 1.8s ease-in-out infinite;
+}
+.pl-knot img { width: 46px; height: 46px; }
+.pl-bar {
+  width: 120px; height: 4px; border-radius: 4px; overflow: hidden;
+  background: rgba(255, 255, 255, .55); box-shadow: 0 0 0 1px rgba(14, 46, 67, .12);
+}
+.pl-bar i {
+  display: block; height: 100%; border-radius: inherit; background: #FFC20E;
+  transform: scaleX(0); transform-origin: left;
+  animation: plLoad 2.6s cubic-bezier(.2, .7, .3, 1) forwards;
+}
+@keyframes plSeam { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes plKnot { 0%, 100% { box-shadow: 0 0 0 6px rgba(255, 194, 14, .32), 0 24px 50px -18px rgba(14, 28, 39, .55); } 50% { box-shadow: 0 0 0 12px rgba(255, 194, 14, .14), 0 24px 50px -18px rgba(14, 28, 39, .55); } }
+@keyframes plLoad { to { transform: scaleX(.88); } }
+
+/* ready: fill the bar, then open the curtains */
+.preloader.is-done { pointer-events: none; }
+.preloader.is-done .pl-bar i { animation: none; transform: scaleX(1); transition: transform .25s ease; }
+.preloader.is-done .pl-center { opacity: 0; transform: translate(-50%, -50%) scale(.85); transition-delay: .2s; }
+.preloader.is-done .pl-seam { opacity: 0; transition-delay: .2s; }
+.preloader.is-done .pl-l { transform: translateX(-101%); transition-delay: .3s; }
+.preloader.is-done .pl-r { transform: translateX(101%); transition-delay: .3s; }
+
+/* hold the hero's entrance until the curtains open */
+.is-loading .hs-photo, .is-loading .hs-knot { animation-play-state: paused; }
+.is-loading body { overflow: hidden; }
+
+@media (max-width: 640px) {
+  .pl-knot { width: 72px; height: 72px; }
+  .pl-knot img { width: 40px; height: 40px; }
+  .pl-bar { width: 96px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pl-half { display: none; }
+  .js .preloader { background: #FFF6DA; transition: opacity .2s; }
+  .preloader.is-done { opacity: 0; }
+}
+/* halves meet exactly at the gold seam (left overlaps by 1px so no hairline gap shows) */
+.pl-half { width: 50%; }
+.pl-l { width: calc(50% + 1px); z-index: 1; }
+.pl-seam, .pl-center { z-index: 2; }
