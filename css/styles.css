@@ -1932,3 +1932,19 @@ h1, h2, h3, p, figure { margin: 0; }
 /* tablets: the title already names the place, so the tag keeps only the class type */
 @media (min-width: 641px) and (max-width: 1080px) { .venue .tag-loc { display: none; } .venue .tag { font-size: 10.5px; letter-spacing: .06em; } }
 @media (max-width: 640px) { .venue .tag { font-size: 11px; letter-spacing: .06em; } }
+
+/* reviews: grade line at the top of a quote (e.g. Sinhala - A) */
+.t-grade { font-size: 14px !important; font-weight: 800 !important; letter-spacing: .04em; color: var(--yellow) !important; }
+
+/* floating WhatsApp chat button, stacked above the Student LMS button */
+.wa-fab {
+  position: fixed; z-index: 40; right: 24px; bottom: calc(84px + env(safe-area-inset-bottom));
+  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+  background: #25D366; color: #fff; box-shadow: 0 14px 30px -12px rgba(18, 140, 74, .7);
+  transition: transform .35s var(--ease), opacity .35s, visibility .35s;
+}
+.wa-fab .ic { width: 26px; height: 26px; }
+.wa-fab:hover { transform: translateY(-3px) scale(1.04); }
+.wa-fab:focus-visible { outline: 2.5px solid var(--ink); outline-offset: 3px; }
+.js .wa-fab:not(.is-shown), .menu-open .wa-fab, .modal-open .wa-fab { opacity: 0; visibility: hidden; transform: translateY(16px); pointer-events: none; }
+@media (max-width: 640px) { .wa-fab { right: 14px; bottom: calc(70px + env(safe-area-inset-bottom)); width: 48px; height: 48px; } .wa-fab .ic { width: 24px; height: 24px; } }

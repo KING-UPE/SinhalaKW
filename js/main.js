@@ -371,15 +371,17 @@
   });
 
   /* floating LMS button: only after the hero, and out of the way of the footer */
+  // (the floating WhatsApp button above it follows the same rule)
   const fab = $('.lms-fab');
+  const fabs = $$('.lms-fab, .wa-fab');
   const footer = $('.footer');
   if (fab && hero && 'IntersectionObserver' in window) {
     let pastHero = false, atFooter = false;
-    const sync = () => fab.classList.toggle('is-shown', pastHero && !atFooter);
+    const sync = () => fabs.forEach(f => f.classList.toggle('is-shown', pastHero && !atFooter));
     new IntersectionObserver(([en]) => { pastHero = !en.isIntersecting; sync(); }, { threshold: 0.15 }).observe(hero);
     if (footer) new IntersectionObserver(([en]) => { atFooter = en.isIntersecting; sync(); }).observe(footer);
   } else {
-    fab?.classList.add('is-shown');
+    fabs.forEach(f => f.classList.add('is-shown'));
   }
 
   /* ---------- contact form -> WhatsApp message ---------- */
